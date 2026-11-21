@@ -328,13 +328,54 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 @media (prefers-reduced-motion:reduce){.astro .in{animation:none}.astro{transition:none}}
 @media (max-width:700px){.orbita{height:auto;display:flex;gap:14px;overflow-x:auto;padding:24px 18px;background:none;border-radius:0}.orbita .eje{display:none}.astro{position:static;transform:none;flex:none}.orbita:not(.lista) .astro{opacity:1}.astro img{--h:150px}}
 .apoyo-sec{margin-top:44px;padding-top:26px;border-top:1px solid var(--linea)}
+.apoyo{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:46px 34px;align-items:center;perspective:1400px}
+.apoyo figure{margin:0;display:flex;flex-direction:column;align-items:center;--rx:0deg;--ry:0deg}
+.apoyo figcaption{font-size:.84rem;color:var(--gris);margin-top:16px;text-align:center}
+.ap-img{position:relative;display:block;padding:0;border:0;background:none;cursor:zoom-in;transform:rotateX(var(--rx)) rotateY(var(--ry)) rotate(var(--rz));transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.mk:hover .ap-img{transition:transform .12s linear}
+.mk-bar,.mk-base{display:none}
+.mk-pant{display:block;overflow:hidden}
+.mk-pant img{display:block;width:100%;height:auto}
+.mk::after{content:"";position:absolute}
+/* navegador */
+.mk-nav .ap-img{width:100%;border-radius:12px;background:#fff;box-shadow:0 30px 50px -22px rgba(20,30,60,.45),0 0 0 1px rgba(0,0,0,.06)}
+.mk-nav .mk-bar{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#f1f1f3;border-bottom:1px solid #e4e4e8;border-radius:12px 12px 0 0}
+.mk-nav .mk-bar i{width:9px;height:9px;border-radius:50%;background:#ff5f57}.mk-nav .mk-bar i:nth-child(2){background:#febc2e}.mk-nav .mk-bar i:nth-child(3){background:#28c840}
+.mk-nav .mk-bar b{margin-left:10px;flex:1;max-width:70%;height:17px;border-radius:5px;background:#fff;font:400 10px/17px -apple-system,Helvetica,sans-serif;color:#888;padding-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mk-nav .mk-pant{border-radius:0 0 12px 12px;max-height:380px}
+/* celular */
+.mk-tel .ap-img{width:min(220px,62%);padding:9px;border-radius:34px;background:#141416;box-shadow:0 34px 50px -22px rgba(0,0,0,.55),inset 0 0 0 2px #2c2c2e}
+.mk-tel .mk-pant{border-radius:26px;aspect-ratio:9/19.5;background:#000}
+.mk-tel .mk-pant img{height:100%;object-fit:cover;object-position:top}
+.mk-tel .ap-img::before{content:"";position:absolute;top:15px;left:50%;transform:translateX(-50%);width:62px;height:17px;border-radius:10px;background:#000;z-index:2}
+/* laptop para presentaciones */
+.mk-laptop .ap-img{width:92%}
+.mk-laptop .mk-pant{border:10px solid #18181b;border-bottom-width:14px;border-radius:14px 14px 4px 4px;background:#000;aspect-ratio:16/10}
+.mk-laptop .mk-pant img{height:100%;object-fit:contain;background:#0b0b0c}
+.mk-laptop .mk-base{display:block;height:12px;margin:0 -8%;background:linear-gradient(#d9dadd,#b8babf);border-radius:0 0 14px 14px;box-shadow:0 22px 30px -16px rgba(0,0,0,.45)}
+.mk-laptop .mk-base::after{content:"";display:block;width:16%;height:5px;margin:0 auto;background:#a9abb0;border-radius:0 0 6px 6px}
+/* hoja / documento apilado */
+.mk-hoja .ap-img{width:78%;background:#fff;padding:10px;border-radius:4px;box-shadow:0 26px 40px -22px rgba(0,0,0,.4),0 0 0 1px rgba(0,0,0,.05)}
+.mk-hoja .ap-img::before,.mk-hoja .ap-img::after{content:"";position:absolute;inset:0;background:#fff;border-radius:4px;box-shadow:0 10px 24px -14px rgba(0,0,0,.3),0 0 0 1px rgba(0,0,0,.05);z-index:-1}
+.mk-hoja .ap-img::before{transform:rotate(-4deg) translate(-10px,6px)}.mk-hoja .ap-img::after{transform:rotate(3deg) translate(10px,8px)}
+.mk-hoja .mk-pant{max-height:420px}
+/* polaroid */
+.mk-polaroid .ap-img{width:74%;background:#fff;padding:12px 12px 46px;box-shadow:0 26px 40px -20px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.04)}
+.mk-polaroid .mk-pant{aspect-ratio:1;}.mk-polaroid .mk-pant img{height:100%;object-fit:cover}
+.mk-polaroid .ap-img::before{content:"";position:absolute;top:-12px;left:50%;width:84px;height:24px;transform:translateX(-50%) rotate(-3deg);background:rgba(191,230,248,.85);z-index:2}
+/* libre: ya es mockup */
+.mk-libre .ap-img{width:100%;border-radius:16px;overflow:hidden;box-shadow:0 30px 50px -24px rgba(0,0,0,.4)}
+@media (prefers-reduced-motion:reduce){.ap-img{transition:none;transform:rotate(var(--rz))}}
+.deck{display:flex;flex-direction:column;align-items:center;margin:10px 0 46px;perspective:1400px}
+.deck-pc{width:min(720px,100%)}.deck-cap{align-self:stretch;text-align:center}
+.deck-pc .mk-pant{position:relative}
+.deck-pc .mk-pant img{position:absolute;inset:0;opacity:0;transform:scale(1.03);transition:opacity .6s,transform .8s}
+.deck-pc .mk-pant img.on{opacity:1;transform:none}
+.deck-tira{display:flex;gap:10px;margin-top:14px;overflow-x:auto;max-width:100%;padding:6px 4px}
+.deck-tira button{flex:none;width:86px;aspect-ratio:16/10;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;background:#111;cursor:pointer;opacity:.55;transition:opacity .2s,border-color .2s,transform .2s}
+.deck-tira button img{width:100%;height:100%;object-fit:cover;display:block}
+.deck-tira button.on,.deck-tira button:hover{opacity:1;border-color:#3f97c9;transform:translateY(-3px)}
 .apoyo-sec h3{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);font-weight:600;margin-bottom:18px}
-.apoyo{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px 20px}
-.apoyo figure{margin:0}
-.ap-img{display:grid;place-items:center;width:100%;padding:14px;border:1px solid var(--linea);border-radius:16px;background:var(--suave);cursor:zoom-in;transition:transform .25s,box-shadow .25s}
-.ap-img:hover{transform:translateY(-3px);box-shadow:0 16px 30px -18px rgba(0,0,0,.3)}
-.ap-img img{max-width:100%;max-height:420px;width:auto;height:auto;border-radius:8px;display:block}
-.apoyo figcaption{font-size:.84rem;color:var(--gris);margin-top:8px}
 .fan-hint{font-size:.8rem;color:var(--gris);margin-top:4px}
 .galeria2{display:none}
 .galeria2.vacia{columns:1;display:grid;place-items:center;background:var(--suave);border-radius:16px;padding:50px}
@@ -579,7 +620,7 @@ const P = {
     hice: ["Lideré la estrategia de contenido orgánico y la gestión de la comunidad.", "Un sistema visual para los bootcamps: misma estructura y un color por programa, para comparar de un vistazo.", "Contenido educativo como gancho: recursos gratuitos antes de cualquier invitación a conversar.", "Humanizar la marca: personas del equipo frente a cámara, nostalgia y situaciones con las que el público se identifica.", "Creé ai.tana para ordenar la producción mensual de contenido."],
     res: "El mayor engagement entre bootcamps y escuelas de tecnología, según el benchmark de competencia que realicé, y un flujo constante de leads orgánicos.",
     link: ["https://www.instagram.com/entertechschool/", "Ver en Instagram"],
-    imgs: [["img/enter/logo-portada.webp", "Logo de Enter Tech School"], ["img/enter/reel-error-tech.webp", "Reel: El error que cometen todos al aprender tech"], ["img/enter/programas.webp", "Nuestros programas"], ["img/enter/fullstack.webp", "Bootcamp Fullstack Developer"], ["img/enter/ciberseguridad.webp", "Bootcamp Ciberseguridad"], ["img/enter/data-analytics.webp", "Bootcamp Data Analytics"], ["img/enter/herramientas-ia.webp", "6 herramientas de IA"], ["img/enter/google-ia.webp", "Google tiene IA gratis"], ["img/enter/ia-en-serio.webp", "¿Quieres aplicar IA en serio?"], ["img/enter/mujeres-enter.webp", "Las mujeres detrás de Enter"], ["img/enter/tu-vs-2026.webp", "Tú vs tu versión tech 2026"], ["img/enter/cada-anio.webp", "Cada año es lo mismo"], ["img/enter/mensaje-para-ti.webp", "Tenemos un mensaje para ti"], ["img/enter/metodologia.webp", "Metodología"], ["img/enter/ruta-aprendizaje.webp", "Ruta de aprendizaje"], ["img/enter/enters-benefits.webp", "Enters Benefits"], ["img/enter/proyectos-reales.webp", "Proyectos reales"]]},
+    imgs: [["img/p/podcast/grabacion.webp", "Grabando contenido con el equipo"], ["img/enter/logo-portada.webp", "Logo de Enter Tech School"], ["img/enter/reel-error-tech.webp", "Reel: El error que cometen todos al aprender tech"], ["img/enter/programas.webp", "Nuestros programas"], ["img/enter/fullstack.webp", "Bootcamp Fullstack Developer"], ["img/enter/ciberseguridad.webp", "Bootcamp Ciberseguridad"], ["img/enter/data-analytics.webp", "Bootcamp Data Analytics"], ["img/enter/herramientas-ia.webp", "6 herramientas de IA"], ["img/enter/google-ia.webp", "Google tiene IA gratis"], ["img/enter/ia-en-serio.webp", "¿Quieres aplicar IA en serio?"], ["img/enter/mujeres-enter.webp", "Las mujeres detrás de Enter"], ["img/enter/tu-vs-2026.webp", "Tú vs tu versión tech 2026"], ["img/enter/cada-anio.webp", "Cada año es lo mismo"], ["img/enter/mensaje-para-ti.webp", "Tenemos un mensaje para ti"], ["img/enter/metodologia.webp", "Metodología"], ["img/enter/ruta-aprendizaje.webp", "Ruta de aprendizaje"], ["img/enter/enters-benefits.webp", "Enters Benefits"], ["img/enter/proyectos-reales.webp", "Proyectos reales"]]},
   "enterx-redes": {titulo: "Redes de EnterX: explicar IA a gerentes", marca: "EnterX", tipo: "Trabajo", anio: "2026",
     portada: "img/enterx/harness.webp",
     resumen: "Contenido sobrio y didáctico para líderes de empresa.",
@@ -590,8 +631,8 @@ const P = {
   "podcast": {titulo: "Podcast «Detrás del Código»", marca: "Enter Tech School", tipo: "Trabajo", anio: "2025",
     portada: "img/p/podcast/portada.webp",
     resumen: "El podcast de Enter Tech School, disponible en YouTube y Spotify.",
-    hice: ["Apoyé la producción y grabación del podcast con el equipo.", "Diseñé la pieza de lanzamiento de la temporada 2025."],
-    imgs: [["img/p/podcast/portada.webp", "Detrás del Código · temporada 2025"], ["img/p/podcast/grabacion.webp", "Grabando contenido con el equipo"]]},
+    hice: ["Apoyé la producción del podcast con el equipo.", "Diseñé la pieza de lanzamiento de la temporada 2025."],
+    imgs: [["img/p/podcast/portada.webp", "Detrás del Código · temporada 2025"]]},
   "direccion": {titulo: "Contenido para Dirección Estratégica", marca: "Dirección Estratégica", tipo: "Prácticas", anio: "2024",
     portada: "img/p/direccion/logo.webp",
     resumen: "Contenido para redes, copys y email marketing para una consultora de talento.",
@@ -864,7 +905,20 @@ function vistaProyecto(a, k) {
   const esApoyo = f => /instagram|\/feed|mailing|\/web-|enterx-web|\/hub|buscador|\/reel|canva|\/li-|presentacion|digital-|manual|papeleria|landing|precios|testimonios|catering\/p\d|cetemin-beneficios\/|kallpa\/|inclusiva\/|cultura\/|indice|introduccion|sesion-|reporte|refrigeracion|retiro-academico|wic-programa|enterx-brochure|\/toma|\/tripode|grabacion|pbf-concepto|pbf-stand\.webp|ads\/am|move\/moodboard|axel|aitana|casos\/openlabs|enters-benefits|branding-enterx|enter-soluciones|portada-m/.test(f);
   const lista = (p.imgs || []).filter(([f]) => !esApoyo(f)), n = lista.length;
   const apoyo = (p.imgs || []).filter(([f]) => esApoyo(f));
-  const apoyoHtml = apoyo.length ? `<section class="apoyo-sec"><h3>Proceso y material de apoyo</h3><div class="apoyo">${apoyo.map(([f, c]) => `<figure><button class="ap-img" aria-label="${c}"><img loading="lazy" src="${f}" alt="${c}" data-cap="${c}"></button><figcaption>${c}</figcaption></figure>`).join('')}</div></section>` : '';
+  const pista = f => /\/toma|\/tripode|grabacion|retiro-academico|\/canva/.test(f) ? 'polaroid'
+    : /digital-|papeleria|ac_station|dferrari-papeleria/.test(f) ? 'libre'
+    : /manual|kallpa|indice|introduccion|sesion-|reporte|refrigeracion|portada-m|pbf-concepto|pbf-stand|cetemin-x-enter|inclusiva\/plan/.test(f) ? 'hoja'
+    : /catering\/p|cetemin-beneficios|presentacion|wic-programa|cultura\/lamina|enterx-brochure|branding-enterx|enter-soluciones/.test(f) ? 'laptop'
+    : 'auto';
+  const urlDe = f => /enterx-web|enterx/.test(f) ? 'enterx.pe' : /move/.test(f) ? 'naaria.github.io/move.pe' : /hub|buscador/.test(f) ? 'arianacossio.github.io/links-de-recursos'
+    : /ads\/am/.test(f) ? 'adsmanager.facebook.com' : /mailing|mail/.test(f) ? 'mailchimp.com' : /axel/.test(f) ? 'kitmedia-axel.vercel.app' : /instagram/.test(f) ? 'instagram.com'
+    : /aitana|benefits|openlabs/.test(f) ? 'enter.edu.pe' : /direccion/.test(f) ? 'direccion-estrategica.com' : (p.link ? p.link[0].replace(/^https?:\/\//, '').replace(/\/$/, '') : 'naaria.github.io');
+  const slides = apoyo.filter(([f]) => pista(f) === 'laptop');
+  const deck = slides.length >= 3;
+  const resto = deck ? apoyo.filter(([f]) => pista(f) !== 'laptop') : apoyo;
+  const deckHtml = deck ? `<div class="deck"><figure class="mk mk-laptop deck-pc"><button class="ap-img" aria-label="Ver presentación en grande"><span class="mk-pant">${slides.map(([f, c], i) => `<img ${i ? 'loading="lazy" ' : ''}src="${f}" alt="${c}" data-cap="${c}" class="${i ? '' : 'on'}">`).join('')}</span><span class="mk-base"></span></button><figcaption class="deck-cap">${slides[0][1]}</figcaption></figure>
+    <div class="deck-tira" role="tablist">${slides.map(([f, c], i) => `<button role="tab" aria-label="${c}" class="${i ? '' : 'on'}" data-i="${i}"><img loading="lazy" src="${f}" alt=""></button>`).join('')}</div></div>` : '';
+  const apoyoHtml = apoyo.length ? `<section class="apoyo-sec"><h3>Proceso y material de apoyo</h3>${deckHtml}<div class="apoyo">${resto.map(([f, c], i) => `<figure class="mk mk-${pista(f)}" data-url="${urlDe(f)}" style="--rz:${((i % 3) - 1) * 1.6}deg"><button class="ap-img" aria-label="${c}"><span class="mk-bar"><i></i><i></i><i></i><b>${urlDe(f)}</b></span><span class="mk-pant"><img loading="lazy" src="${f}" alt="${c}" data-cap="${c}"></span><span class="mk-base"></span></button><figcaption>${c}</figcaption></figure>`).join('')}</div></section>` : '';
   const dos = n > 8, n1 = dos ? Math.ceil(n * 0.42) : n;
   const rnd = i => ((Math.sin(i * 12.9898 + k.length * 7.1) * 43758.5453) % 1 + 1) % 1;
   const gal = lista.map(([f, c], i) => {
@@ -890,6 +944,24 @@ function vistaProyecto(a, k) {
   if (orb) { requestAnimationFrame(() => requestAnimationFrame(() => orb.classList.add('lista')));
     orb.onmousemove = e => { const r = orb.getBoundingClientRect(); orb.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5).toFixed(3)); orb.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5).toFixed(3)); };
     orb.onmouseleave = () => { orb.style.setProperty('--mx', 0); orb.style.setProperty('--my', 0); }; }
+  const dk = cuerpo.querySelector('.deck');
+  if (dk) {
+    const sl = [...dk.querySelectorAll('.mk-pant img')], th = [...dk.querySelectorAll('.deck-tira button')], cap = dk.querySelector('.deck-cap');
+    let cur = 0, t;
+    const ir = n => { cur = (n + sl.length) % sl.length; sl.forEach((x, i) => x.classList.toggle('on', i === cur)); th.forEach((x, i) => x.classList.toggle('on', i === cur)); cap.textContent = sl[cur].dataset.cap; };
+    const auto = () => { clearInterval(t); if (!matchMedia('(prefers-reduced-motion: reduce)').matches) t = setInterval(() => { if (!document.body.contains(dk)) return clearInterval(t); ir(cur + 1); }, 3200); };
+    th.forEach((b, i) => b.onclick = () => { ir(i); auto(); });
+    dk.querySelector('.deck-pc .ap-img').onclick = () => abrirLB(sl.map(x => ({src: x.src, cap: x.dataset.cap})), cur);
+    auto();
+  }
+  cuerpo.querySelectorAll('.mk').forEach(fg => {
+    const im = fg.querySelector('img');
+    const decide = () => { if (!fg.classList.contains('mk-auto')) return; const r = im.naturalHeight / im.naturalWidth; fg.classList.remove('mk-auto'); fg.classList.add(r > 1.45 ? 'mk-tel' : 'mk-nav'); };
+    im.complete && im.naturalWidth ? decide() : im.addEventListener('load', decide, {once: true});
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    fg.addEventListener('mousemove', e => { const b = fg.getBoundingClientRect(); fg.style.setProperty('--ry', (((e.clientX - b.left) / b.width - .5) * 14).toFixed(1) + 'deg'); fg.style.setProperty('--rx', ((.5 - (e.clientY - b.top) / b.height) * 10).toFixed(1) + 'deg'); });
+    fg.addEventListener('mouseleave', () => { fg.style.setProperty('--rx', '0deg'); fg.style.setProperty('--ry', '0deg'); });
+  });
   ims.forEach((im, i) => (im.closest('.astro') || im.closest('.ap-img') || im.closest('.naipe') || im).onclick = () => abrirLB(ims.map(x => ({src: x.src, cap: x.dataset.cap})), i));
 }
 function ruta() {
