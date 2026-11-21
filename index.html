@@ -387,6 +387,17 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .giro-sombra{position:absolute;bottom:7%;left:50%;width:46%;height:16px;border-radius:50%;background:radial-gradient(rgba(0,0,0,.35),transparent 70%);transform:translateX(-50%) scaleX(var(--sx,1))}
 
 .giro figcaption{font-size:.84rem;color:var(--gris);margin-top:10px;text-align:center}
+.lap{margin:30px auto 10px;width:min(900px,100%)}
+.lap-tapa{border:12px solid #18181b;border-bottom-width:18px;border-radius:18px 18px 6px 6px;background:#18181b;box-shadow:0 40px 60px -30px rgba(0,0,0,.5)}
+.lap-bar{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;background:#f1f1f3;border-radius:6px 6px 0 0}
+.lap-bar i{width:10px;height:10px;border-radius:50%;background:#ff5f57}.lap-bar i:nth-child(2){background:#febc2e}.lap-bar i:nth-child(3){background:#28c840}
+.lap-bar b{margin-left:12px;flex:1;max-width:60%;height:19px;border-radius:6px;background:#fff;font:400 11px/19px -apple-system,Helvetica,sans-serif;color:#888;padding-left:10px;white-space:nowrap;overflow:hidden}
+.lap-scroll{height:min(480px,56vw);overflow-y:auto;overscroll-behavior:contain;background:#fff;scrollbar-width:thin;outline:none}
+.lap-scroll:focus-visible{box-shadow:inset 0 0 0 3px #3f97c9}
+.lap-scroll img{display:block;width:100%;height:auto}
+.lap-base{height:16px;margin:0 -7%;background:linear-gradient(#dcdde0,#b5b7bc);border-radius:0 0 18px 18px;position:relative}
+.lap-base::after{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:15%;height:6px;background:#a6a8ad;border-radius:0 0 8px 8px}
+.lap figcaption{font-size:.84rem;color:var(--gris);text-align:center;margin-top:14px}
 .apoyo-sec h3{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);font-weight:600;margin-bottom:18px}
 .fan-hint{font-size:.8rem;color:var(--gris);margin-top:4px}
 .galeria2{display:none}
@@ -741,13 +752,15 @@ const P = {
     resumen: "Diseño y optimización de la web, pensada para convertir.",
     hice: ["Co-lideré con el líder de TI el diseño y la optimización de la web.", "Propuse la estructura, los contenidos y las mejoras orientadas a conversión."],
     link: ["https://enterx.pe", "Ver enterx.pe"],
-    imgs: [["img/portada/enterx-web.webp", "Web de EnterX"], ["img/casos/enterx-web.webp", "Sección de la web"]]},
+    pantalla: ["img/p/landing/enterx.webp", "enterx.pe"],
+    imgs: []},
   "move": {titulo: "MOVE: marca y landing de una app de nutrición", marca: "MOVE", tipo: "Académico", anio: "2026",
     portada: "img/p/move/m-logo.webp",
     resumen: "Identidad y landing para una app de nutrición, actividad y progreso.",
     hice: ["Identidad de marca: logo, ícono de la app, paleta (naranja, lila y crema) y moodboard con frases como «Ideas in motion» y «Movement builds what’s next».", "Aplicaciones: app, tarjeta y tote bag.", "Concepto, copy y diseño de la landing.", "Páginas de inicio, precios, testimonios, preguntas frecuentes y compra."],
     link: ["https://naaria.github.io/move.pe/", "Ver la landing"],
-    imgs: [["img/p/move/m-logo.webp", "Movement builds what’s next"], ["img/p/move/m-energy.webp", "Energy, focus, progress, move"], ["img/p/move/m-app.webp", "Ícono en el celular"], ["img/p/move/m-paleta.webp", "Paleta de color"], ["img/p/move/m-letra.webp", "La m como elemento gráfico"], ["img/p/move/m-negro.webp", "Logo en negro"], ["img/p/move/m-ideas.webp", "Ideas in motion"], ["img/p/move/m-tarjeta.webp", "Tarjeta"], ["img/p/move/m-progress.webp", "Progress looks good on you"], ["img/p/move/m-tote.webp", "Tote bag"], ["img/p/move/m-people.webp", "Same people, a brighter next step"], ["img/p/move/logo.webp", "Logo"], ["img/p/move/icono.webp", "Ícono de la app"], ["img/p/move/landing-move.webp", "Inicio de la landing"], ["img/p/move/move-precios.webp", "Precios"], ["img/p/move/move-testimonios.webp", "Testimonios"]]},
+    pantalla: ["img/p/landing/move.webp", "naaria.github.io/move.pe"],
+    imgs: [["img/p/move/m-logo.webp", "Movement builds what’s next"], ["img/p/move/m-energy.webp", "Energy, focus, progress, move"], ["img/p/move/m-app.webp", "Ícono en el celular"], ["img/p/move/m-paleta.webp", "Paleta de color"], ["img/p/move/m-letra.webp", "La m como elemento gráfico"], ["img/p/move/m-negro.webp", "Logo en negro"], ["img/p/move/m-ideas.webp", "Ideas in motion"], ["img/p/move/m-tarjeta.webp", "Tarjeta"], ["img/p/move/m-progress.webp", "Progress looks good on you"], ["img/p/move/m-tote.webp", "Tote bag"], ["img/p/move/m-people.webp", "Same people, a brighter next step"], ["img/p/move/logo.webp", "Logo"], ["img/p/move/icono.webp", "Ícono de la app"]]},
   "enter-merch": {titulo: "Merch para egresados de Enter", marca: "Enter Tech School", tipo: "Trabajo", anio: "2026",
     portada: "img/p/enter-merch/poleron.webp",
     resumen: "Recuerdos para la comunidad de egresados.",
@@ -760,7 +773,8 @@ const P = {
     reto: "Un creador de contenido de tecnología necesitaba presentar su audiencia y su propuesta a las marcas de forma profesional.",
     hice: ["Ordené su historia y su propuesta de valor para marcas.", "Estructura, copy y diseño de la landing.", "Publiqué la web, lista para enviar a marcas."],
     link: ["https://kitmedia-axel.vercel.app", "Ver la landing"],
-    imgs: [["img/casos/axel-hero.webp", "Portada"], ["img/casos/axel-2.webp", "Sobre mí"], ["img/casos/axel-3.webp", "Audiencia y resultados"]]},
+    pantalla: ["img/p/landing/axel.webp", "kitmedia-axel.vercel.app"],
+    imgs: []},
   "direccion-web": {titulo: "Rediseño web de Dirección Estratégica", marca: "Dirección Estratégica", tipo: "Prácticas", anio: "2024",
     portada: "img/p/direccion-web/web-1.webp",
     resumen: "Actualización del diseño web como parte del rebranding.",
@@ -772,8 +786,8 @@ const P = {
     resumen: "Todos los recursos de marketing en un solo lugar, con un buscador con IA.",
     reto: "Los equipos pedían a marketing los mismos archivos una y otra vez: brochures, plantillas, logos, certificados.",
     hice: ["Creé con IA un hub con todos los recursos de marketing: plantillas de diseño, brochures (PDF y editables en Canva), recursos de marca, certificados y Enter Benefits.", "Le sumé un buscador con IA: escribes lo que necesitas y te da el link directo.", "Un botón para pedir al equipo de marketing lo que no está en el hub."],
-    link: ["https://arianacossio.github.io/links-de-recursos/", "Ver el hub"],
-    imgs: [["img/p/marketing-hub/hub.webp", "Recursos de marketing"], ["img/p/marketing-hub/buscador.webp", "Buscador con IA"]]},
+    pantalla: ["img/p/landing/hub.webp", "arianacossio.github.io/links-de-recursos"],
+    imgs: [["img/p/marketing-hub/buscador.webp", "Buscador con IA"]]},
   "aitana": {titulo: "ai.tana: asistente de contenido", marca: "Enter Tech School", tipo: "Trabajo", anio: "2026",
     portada: "img/casos/aitana.webp",
     resumen: "Un flujo mensual de contenido con prompts y plantillas.",
@@ -945,6 +959,7 @@ function vistaProyecto(a, k) {
   const idx = a.proyectos.indexOf(k), sig = a.proyectos[(idx + 1) % a.proyectos.length];
   cuerpo.innerHTML = `<a class="volver" href="#/${a.id}">← ${a.nombre}</a>
     <header class="v-head"><div class="chips">${tag(p)}<span>${meta(p)}</span></div><h2>${p.titulo}</h2><p>${p.resumen}</p></header>
+    ${p.pantalla ? `<figure class="lap"><div class="lap-tapa"><div class="lap-bar"><i></i><i></i><i></i><b>${p.pantalla[1]}</b></div><div class="lap-scroll" tabindex="0" aria-label="Vista de ${p.pantalla[1]}: desliza para recorrerla"><img src="${p.pantalla[0]}" alt="Captura completa de ${p.pantalla[1]}"></div></div><div class="lap-base"></div><figcaption>Desliza dentro de la pantalla para recorrer la web ↕</figcaption></figure>` : ''}
     ${p.giro ? `<div class="vitrina">${p.giro.map(([fr, es, c, t]) => `<figure class="giro ${t}"><div class="giro-esc" tabindex="0" aria-label="${c}: arrastra para girar"><div class="giro-obj"><img class="cara" src="${fr}" alt="${c}, frente" draggable="false"><img class="cara atras${es ? '' : ' espejo'}" src="${es || fr}" alt="${c}, espalda" draggable="false"></div><i class="giro-sombra"></i></div><figcaption>${c} · arrastra para girar</figcaption></figure>`).join('')}</div>` : ''}
     ${gal && !p.giro ? `<div class="orbita" style="--alto:${n > 8 ? 660 : 560}px"><div class="eje"><i class="tr"></i><i class="fr"></i><span>${k}</span></div>${gal}</div><p class="fan-hint">Toca una pieza para verla en grande.</p>` : ''}
     <div class="pdet solo">
@@ -959,6 +974,8 @@ function vistaProyecto(a, k) {
   if (orb) { requestAnimationFrame(() => requestAnimationFrame(() => orb.classList.add('lista')));
     orb.onmousemove = e => { const r = orb.getBoundingClientRect(); orb.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5).toFixed(3)); orb.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5).toFixed(3)); };
     orb.onmouseleave = () => { orb.style.setProperty('--mx', 0); orb.style.setProperty('--my', 0); }; }
+  const ls = cuerpo.querySelector('.lap-scroll');
+  if (ls && !matchMedia('(prefers-reduced-motion: reduce)').matches) setTimeout(() => { ls.scrollTo({top: 160, behavior: 'smooth'}); setTimeout(() => ls.scrollTo({top: 0, behavior: 'smooth'}), 900); }, 900);
   cuerpo.querySelectorAll('.giro-esc').forEach(esc => {
     const obj = esc.querySelector('.giro-obj'); let ang = 0, vel = 0.35, arr = false, x0 = 0, quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const pinta = () => { obj.style.setProperty('--ang', ang + 'deg'); esc.style.setProperty('--sx', (0.55 + 0.45 * Math.abs(Math.cos(ang * Math.PI / 180))).toFixed(2)); };
