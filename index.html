@@ -308,6 +308,21 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .fan .naipe img{width:100%;height:100%;object-fit:cover;display:block}
 .fan .naipe:hover,.fan .naipe:focus-visible{transform:rotate(0) translateY(-22px) scale(1.06);z-index:40;box-shadow:0 26px 44px -18px rgba(0,0,0,.55),0 0 0 4px #fff}
 .fan.chico{margin-top:4px;padding:30px 30px 40px 18px}.fan.chico .naipe{width:150px;height:188px}
+.orbita{position:relative;height:var(--alto,560px);margin:26px 0 6px;border-radius:24px;background:radial-gradient(ellipse at center,#f3f9fd 0%,#fff 62%);overflow:hidden;--mx:0;--my:0}
+.orbita .eje{position:absolute;left:50%;top:50%;width:170px;height:128px;transform:translate(-50%,-50%);z-index:5;pointer-events:none}
+.orbita .eje .tr{position:absolute;left:0;top:0;width:44%;height:22%;background:#9ad6f2;border-radius:10px 10px 0 0}
+.orbita .eje .fr{position:absolute;left:0;bottom:0;width:100%;height:86%;background:#bfe6f8;border-radius:4px 12px 12px 12px;box-shadow:0 16px 30px -14px rgba(31,95,134,.45)}
+.orbita .eje span{position:absolute;left:0;right:0;bottom:-26px;text-align:center;font-size:.8rem;color:var(--gris)}
+.astro{position:absolute;left:var(--x);top:var(--y);z-index:var(--zi,10);padding:0;border:0;background:none;cursor:zoom-in;transform:translate(-50%,-50%) translate(calc(var(--mx)*var(--p)*1px),calc(var(--my)*var(--p)*1px));transition:left .9s cubic-bezier(.2,.9,.25,1.1),top .9s cubic-bezier(.2,.9,.25,1.1),opacity .5s,transform .25s ease-out;transition-delay:var(--dl),var(--dl),var(--dl),0s}
+.orbita:not(.lista) .astro{left:50%;top:50%;opacity:0}
+.astro .in{display:block;transform:rotate(var(--r));animation:flotar var(--fd,7s) ease-in-out var(--fdl,0s) infinite alternate}
+.astro img{display:block;height:auto;width:auto;max-height:var(--h,140px);max-width:210px;border-radius:12px;background:#fff;box-shadow:0 18px 30px -16px rgba(0,0,0,.45),0 0 0 3px #fff;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.astro:hover,.astro:focus-visible{z-index:60}
+.astro:hover .in,.astro:focus-visible .in{animation-play-state:paused}
+.astro:hover img,.astro:focus-visible img{transform:scale(1.18) rotate(calc(var(--r)*-1));box-shadow:0 28px 46px -18px rgba(0,0,0,.5),0 0 0 3px #fff}
+@keyframes flotar{from{translate:0 -6px}to{translate:0 7px}}
+@media (prefers-reduced-motion:reduce){.astro .in{animation:none}.astro{transition:none}}
+@media (max-width:700px){.orbita{height:auto;display:flex;gap:14px;overflow-x:auto;padding:24px 18px;background:none;border-radius:0}.orbita .eje{display:none}.astro{position:static;transform:none;flex:none}.orbita:not(.lista) .astro{opacity:1}.astro img{--h:150px}}
 .fan-hint{font-size:.8rem;color:var(--gris);margin-top:4px}
 .galeria2{display:none}
 .galeria2.vacia{columns:1;display:grid;place-items:center;background:var(--suave);border-radius:16px;padding:50px}
@@ -439,8 +454,8 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 <section class="escritorio pad" id="contacto">
   <div class="mesa">
     <div class="mesa-centro">
-      <h2>En mi escritorio</h2>
-      <span class="pill">edición comunicadora</span>
+      <h2>Conoce más de mí</h2>
+      <span class="pill">pasa el cursor por mi escritorio</span>
     </div>
     <div class="obj flota b" tabindex="0" style="--w:210px;left:4%;top:2%;--r:-3deg"><img loading="lazy" src="img/escritorio/laptop.webp?v=3" alt=""><span class="num" style="left:-8px;bottom:-26px">(01)</span><span class="dato">Mi laptop: aquí viven mis agentes de IA, mis skills y todas las grillas.</span></div>
     <div class="obj flota c" tabindex="0" style="--w:118px;left:40%;top:2%"><svg viewBox="0 0 150 150" aria-hidden="true"><ellipse cx="70" cy="132" rx="58" ry="10" fill="#e7ded4"/>
@@ -494,9 +509,9 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 <script>
 const AREAS = [
   {id: "marca", nombre: "Marca y diseño", carpeta: "marca_y_diseño", desc: "Identidad visual, rebranding, merch y materiales editoriales.",
-    proyectos: ["enterx", "cetemin", "alexander", "begonia", "move", "catering", "identidades"]},
+    proyectos: ["enterx", "cetemin", "alexander", "begonia", "move", "enter-merch", "catering", "identidades"]},
   {id: "contenido", nombre: "Contenido y redes", carpeta: "contenido_y_redes", desc: "Estrategia, piezas y copys para redes sociales.",
-    proyectos: ["enter-redes", "enterx-redes", "cetemin-training", "marcas-locales", "moda"]},
+    proyectos: ["enter-redes", "enterx-redes", "podcast", "cetemin-training", "direccion", "alexander-contenido", "badiane", "oslo", "moda"]},
   {id: "eventos", nombre: "Eventos y comunidad", carpeta: "eventos", desc: "Ferias, workshops y espacios para la comunidad.",
     proyectos: ["pbf", "workshop", "comunidad", "alumni-night", "impulsa", "quimera", "origenes", "egresadas", "anda"]},
   {id: "web", nombre: "Web y producto", carpeta: "web_y_producto", desc: "Webs y landings pensadas para convertir.",
@@ -527,32 +542,32 @@ const P = {
     resumen: "Nueva identidad, manual de marca y presencia digital para una inmobiliaria con 18 años de historia.",
     reto: "Renovar la imagen de una inmobiliaria de Surquillo con más de 219 unidades entregadas, sin perder el símbolo de los edificios que el cliente quería conservar.",
     hice: ["Rediseñé el logo en tres formatos (vertical, horizontal e ícono): edificios rectos que transmiten solidez y curvas en los extremos que lo hacen más cercano.", "Definí la paleta (azul, celeste y verde), la tipografía (Intro Rust y Montserrat), el tono de voz y los mensajes clave: «Tu depa propio, a un paso» y «Cerca de ti, cerca de todo».", "Escribí el manual de identidad corporativa, se lo presenté al cliente y apliqué la marca a la web, Instagram, Facebook, LinkedIn y merch.", "Lancé la nueva identidad en redes con la campaña «¡Nos hemos renovado!» y contenido para Residencial Alexander IV."],
-    imgs: [["img/alexander/rebranding.webp?v=2", "Antes y después: logo e ícono"], ["img/alexander/sistema.webp", "Tipografía, paleta, tono y mensajes clave"], ["img/alexander/digital.webp", "Web, Instagram, Facebook y LinkedIn"], ["img/alexander/merch.webp", "Aplicaciones de marca"], ["img/alexander/presentacion.webp", "Presentación del rebranding al cliente por Meet"], ["img/alexander/planos.webp", "Carrusel de tipologías de Residencial Alexander IV"], ["img/alexander/perfil.webp", "Foto de perfil con el nuevo logo"], ["img/alexander/feed.webp", "El feed con la nueva identidad"], ["img/alexander/piezas.webp", "Piezas para Residencial Alexander IV"], ["img/alexander/copys.webp", "Posts con copy"]]},
+    imgs: [["img/p/alexander/logo.webp", "Logo principal a color"], ["img/p/alexander/icono.webp", "Ícono AC"], ["img/p/alexander/digital-1.webp", "Web"], ["img/p/alexander/digital-2.webp", "Instagram"], ["img/p/alexander/digital-4.webp", "LinkedIn"], ["img/p/alexander/merch-1.webp", "Aplicación de marca"], ["img/p/alexander/merch-2.webp", "Aplicación de marca"], ["img/p/alexander/merch-3.webp", "Aplicación de marca"], ["img/p/alexander/merch-4.webp", "Aplicación de marca"], ["img/p/alexander/papeleria.webp", "Papelería"], ["img/p/alexander/manual.webp", "Manual de identidad"], ["img/p/alexander/presentacion.webp", "Presentando el rebranding al cliente por Meet"], ["img/p/alexander/perfil.webp", "Foto de perfil con el nuevo logo"]]},
   "begonia": {titulo: "Bégonia: una marca de moda inclusiva", marca: "Chio Lecca Fashion School · marca ficticia", tipo: "Académico", anio: "2024",
-    portada: "img/begonia/marca.webp",
+    portada: "img/p/begonia/logo.webp",
     resumen: "Branding y plan de marketing para lanzar una marca de vestidos y su colección Aurora.",
     reto: "Crear desde cero una marca de moda que redefina la belleza femenina sin cánones impuestos, y planificar el lanzamiento de su primera colección. Proyecto de la especialización en Marketing y Comunicación de Moda.",
     hice: ["Identidad de marca: logo, paleta, packaging «Be yourself» y etiqueta.", "Buyer persona (Isabella, 25 años) y colección Aurora: cuatro vestidos con boceto y referencia.", "Storytelling «Es hoy, es ahora. Siéntete como quieras ser» y campaña visual para Instagram, TikTok, web y WhatsApp.", "Objetivos (posicionarse como marca inclusiva, sold out de Aurora en 3 meses y 5,000 seguidores), calendario de producción y cuadro de costos y rentabilidad."],
-    imgs: [["img/begonia/marca.webp", "Logo, packaging, etiqueta y paleta"], ["img/begonia/aurora.webp", "Colección Aurora"], ["img/begonia/campana.webp", "Campaña en redes y buyer persona"]]},
+    imgs: [["img/p/begonia/logo.webp", "Logo"], ["img/p/begonia/packaging-1.webp", "Packaging «Be yourself»"], ["img/p/begonia/packaging-2.webp", "Packaging"], ["img/p/begonia/etiqueta.webp", "Etiqueta"], ["img/p/begonia/boceto-1.webp", "Vestido mini encorsetado · boceto"], ["img/p/begonia/boceto-2.webp", "Vestido midi escote cuadrado · boceto"], ["img/p/begonia/boceto-3.webp", "Vestido midi cuello alto · boceto"], ["img/p/begonia/boceto-4.webp", "Vestido con apertura en la espalda · boceto"], ["img/p/begonia/campana-1.webp", "Campaña en redes"], ["img/p/begonia/campana-2.webp", "Campaña en redes"], ["img/p/begonia/campana-3.webp", "Campaña en redes"], ["img/p/begonia/campana-4.webp", "Campaña en redes"], ["img/p/begonia/persona.webp", "Buyer persona: Isabella"]]},
   "catering": {titulo: "Brochure para Cocina & Pastelería", marca: "Cocina & Pastelería", tipo: "Freelance", anio: "2024",
-    portada: "img/catering/brochure.webp",
+    portada: "img/p/catering/p1.webp",
     resumen: "Catálogo 2024 de un servicio de catering para eventos corporativos.",
     reto: "Presentar 20 años de trayectoria y todos los servicios de catering en un solo documento para enviar a empresas.",
     hice: ["Diseñé y redacté el brochure: historia, misión, visión y promesa, servicios y otros servicios.", "Catálogo por tipo de servicio (desayunos ejecutivos, buffets, cocktails, coffee breaks, cheese & wine, loncheras y eventos especiales), clientes que confían en la marca, testimonio y contacto."],
-    imgs: [["img/catering/brochure.webp", "Brochure y catálogo 2024"], ["img/catering/paginas.webp", "Páginas interiores"]]},
+    imgs: [["img/p/catering/p1.webp", "Portada"], ["img/p/catering/p2.webp", "Quiénes somos"], ["img/p/catering/p3.webp", "Misión, visión y promesa"], ["img/p/catering/p4.webp", "Servicios"], ["img/p/catering/p5.webp", "Otros servicios"], ["img/p/catering/p6.webp", "Catálogo 2024"], ["img/p/catering/p7.webp", "Desayunos ejecutivos"], ["img/p/catering/p8.webp", "Buffets"], ["img/p/catering/p11.webp", "Cheese & wine"], ["img/p/catering/p13.webp", "Eventos especiales"], ["img/p/catering/p14.webp", "Confían en nosotros"], ["img/p/catering/p15.webp", "Contacto"]]},
   "identidades": {titulo: "Logotipos, manuales y piezas impresas", marca: "Varias marcas", tipo: "Freelance", anio: "2024",
-    portada: "img/identidades/logos.webp",
+    portada: "img/p/identidades/logo-m.webp",
     resumen: "Identidades visuales, manuales de marca, folletos y flyers.",
-    imgs: [["img/identidades/logos.webp", "Logotipos"], ["img/identidades/dferrari.webp", "Identidad de D’Ferrari: papelería, moodboard y sticker"], ["img/identidades/flyer.webp", "Flyer de Idóneo"]]},
+    imgs: [["img/p/identidades/logo-m.webp", "Logotipo"], ["img/p/identidades/logo-dferrari.webp", "Logotipo de D’Ferrari"], ["img/p/alexander/icono.webp", "Ícono de Alexander Construye"], ["img/p/identidades/dferrari-papeleria.webp", "D’Ferrari · papelería"], ["img/p/identidades/dferrari-mood.webp", "D’Ferrari · moodboard"], ["img/p/identidades/dferrari-sticker.webp", "D’Ferrari · sticker"], ["img/p/identidades/flyer-idoneo.webp", "Flyer de Idóneo"]]},
 
   "enter-redes": {titulo: "Las redes con el mayor engagement de su categoría", marca: "Enter Tech School", tipo: "Trabajo", anio: "2025 – 2026",
     portada: "img/enter/logo-portada.webp",
     resumen: "Estrategia de contenido orgánico para una escuela de tecnología.",
     reto: "Destacar en el rubro de bootcamps y educación tech con contenido orgánico, sin depender de la pauta.",
-    hice: ["Lideré la estrategia de contenido orgánico y la gestión de la comunidad.", "Un sistema visual para los bootcamps: misma estructura y un color por programa, para comparar de un vistazo.", "Contenido educativo como gancho: recursos gratuitos antes de cualquier invitación a conversar.", "Humanizar la marca: personas del equipo frente a cámara, nostalgia y situaciones con las que el público se identifica.", "Creé ai.tana para ordenar la producción mensual de contenido.", "Diseñé el polerón Alumni, merch para la comunidad de egresados."],
+    hice: ["Lideré la estrategia de contenido orgánico y la gestión de la comunidad.", "Un sistema visual para los bootcamps: misma estructura y un color por programa, para comparar de un vistazo.", "Contenido educativo como gancho: recursos gratuitos antes de cualquier invitación a conversar.", "Humanizar la marca: personas del equipo frente a cámara, nostalgia y situaciones con las que el público se identifica.", "Creé ai.tana para ordenar la producción mensual de contenido."],
     res: "El mayor engagement entre bootcamps y escuelas de tecnología, según el benchmark de competencia que realicé, y un flujo constante de leads orgánicos.",
     link: ["https://www.instagram.com/entertechschool/", "Ver en Instagram"],
-    imgs: [["img/enter/logo-portada.webp", "Logo de Enter Tech School"], ["img/enter/podcast.webp", "Podcast Detrás del Código · temporada 2025"], ["img/enter/grabacion.webp", "Detrás de cámara: grabando contenido con el equipo"], ["img/enter/merch-alumni.webp", "Polerón Alumni para egresados"], ["img/enter/reel-error-tech.webp", "Reel: El error que cometen todos al aprender tech"], ["img/enter/programas.webp", "Nuestros programas"], ["img/enter/fullstack.webp", "Bootcamp Fullstack Developer"], ["img/enter/ciberseguridad.webp", "Bootcamp Ciberseguridad"], ["img/enter/data-analytics.webp", "Bootcamp Data Analytics"], ["img/enter/herramientas-ia.webp", "6 herramientas de IA"], ["img/enter/google-ia.webp", "Google tiene IA gratis"], ["img/enter/ia-en-serio.webp", "¿Quieres aplicar IA en serio?"], ["img/enter/mujeres-enter.webp", "Las mujeres detrás de Enter"], ["img/enter/tu-vs-2026.webp", "Tú vs tu versión tech 2026"], ["img/enter/cada-anio.webp", "Cada año es lo mismo"], ["img/enter/mensaje-para-ti.webp", "Tenemos un mensaje para ti"], ["img/enter/metodologia.webp", "Metodología"], ["img/enter/ruta-aprendizaje.webp", "Ruta de aprendizaje"], ["img/enter/enters-benefits.webp", "Enters Benefits"], ["img/enter/proyectos-reales.webp", "Proyectos reales"]]},
+    imgs: [["img/enter/logo-portada.webp", "Logo de Enter Tech School"], ["img/enter/reel-error-tech.webp", "Reel: El error que cometen todos al aprender tech"], ["img/enter/programas.webp", "Nuestros programas"], ["img/enter/fullstack.webp", "Bootcamp Fullstack Developer"], ["img/enter/ciberseguridad.webp", "Bootcamp Ciberseguridad"], ["img/enter/data-analytics.webp", "Bootcamp Data Analytics"], ["img/enter/herramientas-ia.webp", "6 herramientas de IA"], ["img/enter/google-ia.webp", "Google tiene IA gratis"], ["img/enter/ia-en-serio.webp", "¿Quieres aplicar IA en serio?"], ["img/enter/mujeres-enter.webp", "Las mujeres detrás de Enter"], ["img/enter/tu-vs-2026.webp", "Tú vs tu versión tech 2026"], ["img/enter/cada-anio.webp", "Cada año es lo mismo"], ["img/enter/mensaje-para-ti.webp", "Tenemos un mensaje para ti"], ["img/enter/metodologia.webp", "Metodología"], ["img/enter/ruta-aprendizaje.webp", "Ruta de aprendizaje"], ["img/enter/enters-benefits.webp", "Enters Benefits"], ["img/enter/proyectos-reales.webp", "Proyectos reales"]]},
   "enterx-redes": {titulo: "Redes de EnterX: explicar IA a gerentes", marca: "EnterX", tipo: "Trabajo", anio: "2026",
     portada: "img/enterx/harness.webp",
     resumen: "Contenido sobrio y didáctico para líderes de empresa.",
@@ -560,16 +575,31 @@ const P = {
     hice: ["Analogías simples (cerebro + cuerpo) y diagramas limpios, con una estética más cercana a una consultora que a una escuela.", "La carpeta como recurso narrativo: primero se insinúa lo que viene y después se «abre» para mostrar el producto o el evento."],
     link: ["https://www.instagram.com/enterx.pe/", "Ver en Instagram"],
     imgs: [["img/enterx/harness.webp", "Lo que cambia es el harness"], ["img/enterx/analogia.webp", "La analogía"], ["img/enterx/antes-de-invertir.webp", "Antes de invertir más en IA"], ["img/enterx/una-pregunta.webp", "Una pregunta simple"], ["img/enterx/que-viene.webp", "¿Qué se viene en EnterX?"], ["img/enterx/nuevo-producto.webp", "Nuevo producto: Workshop in Company"], ["img/enterx/pbf-hoy.webp", "¡Es hoy! Perú Business Fest"]]},
-  "marcas-locales": {titulo: "Contenido para marcas locales", marca: "Cuatro marcas", tipo: "Freelance y prácticas", anio: "2024",
-    portada: "img/badiane/feed.webp?v=2",
-    resumen: "Una voz propia para cada marca, según su negocio y su público.",
-    reto: "Darle a cada marca una voz propia en redes, con equipos y presupuestos pequeños.",
-    marcas: [
-      ["Dirección Estratégica", "Prácticas", "Consultora de talento: contenido para redes, copys y email marketing en Mailchimp.", ["img/direccion/marca.webp", "img/direccion/feed.webp", "img/direccion/copys.webp", "img/direccion/piezas.webp", "img/direccion/mailing.webp"]],
-      ["Alexander Construye", "Freelance", "Inmobiliaria: contenido y copys para redes sociales.", ["img/alexander/feed.webp", "img/alexander/copys.webp", "img/alexander/piezas.webp"]],
-      ["La Badiane", "Freelance", "Cafetería: reels, stories y posts.", ["img/badiane/feed.webp?v=2", "img/badiane/toma.webp", "img/badiane/bowl.webp", "img/badiane/tripode.webp", "img/badiane/desayuno.webp", "img/badiane/reels.webp"]],
-      ["Oslo Languages", "Freelance", "Academia de idiomas: estrategia digital, concepto creativo y posts.", ["img/oslo/feed.webp", "img/oslo/carruseles.webp", "img/oslo/reels.webp"]]
-    ]},
+  "podcast": {titulo: "Podcast «Detrás del Código»", marca: "Enter Tech School", tipo: "Trabajo", anio: "2025",
+    portada: "img/p/podcast/portada.webp",
+    resumen: "El podcast de Enter Tech School, disponible en YouTube y Spotify.",
+    hice: ["Apoyé la producción y grabación del podcast con el equipo.", "Diseñé la pieza de lanzamiento de la temporada 2025."],
+    imgs: [["img/p/podcast/portada.webp", "Detrás del Código · temporada 2025"], ["img/p/podcast/grabacion.webp", "Grabando contenido con el equipo"]]},
+  "direccion": {titulo: "Contenido para Dirección Estratégica", marca: "Dirección Estratégica", tipo: "Prácticas", anio: "2024",
+    portada: "img/p/direccion/logo.webp",
+    resumen: "Contenido para redes, copys y email marketing para una consultora de talento.",
+    hice: ["Posts y copys para Instagram y LinkedIn con una voz cercana para líderes y profesionales.", "Campañas de email marketing en Mailchimp, como la de INPLACEMENT."],
+    imgs: [["img/p/direccion/logo.webp", "Logo"], ["img/p/direccion/instagram.webp", "El feed en Instagram"], ["img/p/direccion/soluciones.webp", "Post para Instagram"], ["img/p/direccion/emociones.webp", "Post para Instagram"], ["img/p/direccion/curriculums.webp", "Post para Instagram"], ["img/p/direccion/equipo.webp", "Post para Instagram"], ["img/p/direccion/convicciones.webp", "Post para Instagram"], ["img/p/direccion/gerencia.webp", "Post para Instagram"], ["img/p/direccion/palabras.webp", "Post para Instagram"], ["img/p/direccion/creatividad.webp", "Post para Instagram"], ["img/p/direccion/pronto.webp", "Post para Instagram"], ["img/p/direccion/mailing.webp", "Email marketing en Mailchimp"]]},
+  "alexander-contenido": {titulo: "Contenido para Alexander Construye", marca: "Alexander Construye", tipo: "Freelance", anio: "2024",
+    portada: "img/p/alexander-contenido/renovado.webp",
+    resumen: "Posts, copys y carruseles para vender Residencial Alexander IV.",
+    hice: ["Posts y copys sobre precios, beneficios y la vida en el barrio.", "Carrusel de tipologías: planos, metrajes y precios de cada departamento."],
+    imgs: [["img/p/alexander-contenido/renovado.webp", "¡Nos hemos renovado!"], ["img/p/alexander-contenido/depa.webp", "Tu depa propio"], ["img/p/alexander-contenido/minutos.webp", "A minutos de todo"], ["img/p/alexander-contenido/cafe.webp", "Hora del café"], ["img/p/alexander-contenido/cultura.webp", "Cultura y entretenimiento"], ["img/p/alexander-contenido/cerca.webp", "Cerca de ti"], ["img/p/alexander-contenido/beneficios.webp", "Beneficios"], ["img/p/alexander-contenido/desde48.webp", "Desde 48 m²"], ["img/p/alexander-contenido/local.webp", "Local comercial"], ["img/p/alexander-contenido/contacto.webp", "Contacto"], ["img/p/alexander-contenido/tipo-1.webp", "Carrusel de tipologías · Tipo 1"], ["img/p/alexander-contenido/tipo-2.webp", "Carrusel de tipologías · Tipo 2"], ["img/p/alexander-contenido/tipo-3.webp", "Carrusel de tipologías · Tipo 3"]]},
+  "badiane": {titulo: "Contenido para La Badiane", marca: "La Badiane", tipo: "Freelance", anio: "2024",
+    portada: "img/p/badiane/instagram.webp",
+    resumen: "Fotografía de producto, reels, stories y posts para una cafetería.",
+    hice: ["Fotografía y video de producto en el local.", "Reels, stories y posts con una identidad cálida y cercana."],
+    imgs: [["img/p/badiane/instagram.webp", "El feed en Instagram"], ["img/p/badiane/post-101.webp", "Post para Instagram"], ["img/p/badiane/post-103.webp", "Post para Instagram"], ["img/p/badiane/post-97.webp", "Post para Instagram"], ["img/p/badiane/post-102.webp", "Post para Instagram"], ["img/p/badiane/post-105.webp", "Post para Instagram"], ["img/p/badiane/post-96.webp", "Post para Instagram"], ["img/p/badiane/post-100.webp", "Post para Instagram"], ["img/p/badiane/post-98.webp", "Post para Instagram"], ["img/p/badiane/post-99.webp", "Post para Instagram"], ["img/p/badiane/reel.webp", "Reel: el lugar perfecto para desayunar"], ["img/p/badiane/toma.webp", "Haciendo la toma"], ["img/p/badiane/bowl.webp", "La foto"], ["img/p/badiane/tripode.webp", "Grabando"], ["img/p/badiane/desayuno.webp", "Desayuno en La Badiane"]]},
+  "oslo": {titulo: "Contenido para Oslo Languages", marca: "Oslo Languages", tipo: "Freelance", anio: "2024",
+    portada: "img/p/oslo/post-3.webp",
+    resumen: "Estrategia digital, concepto creativo y posts para una academia de idiomas.",
+    hice: ["Concepto creativo y líneas de contenido: #OsloTips, Oslo Quiz y anuncios de becas.", "Posts, carruseles y reels para Instagram."],
+    imgs: [["img/p/oslo/post-3.webp", "Post para Instagram"], ["img/p/oslo/post-8.webp", "Post para Instagram"], ["img/p/oslo/post-13.webp", "Post para Instagram"], ["img/p/oslo/post-9.webp", "Post para Instagram"], ["img/p/oslo/post-15.webp", "Post para Instagram"], ["img/p/oslo/post-1.webp", "Post para Instagram"], ["img/p/oslo/post-2.webp", "Post para Instagram"], ["img/p/oslo/post-14.webp", "Post para Instagram"], ["img/p/oslo/post-7.webp", "Post para Instagram"], ["img/p/oslo/post-10.webp", "Post para Instagram"], ["img/p/oslo/post-11.webp", "Post para Instagram"], ["img/p/oslo/post-19.webp", "Post para Instagram"], ["img/p/oslo/reel.webp", "Reel"]]},
   "cetemin-training": {titulo: "Lanzamiento de CETEMIN Training", marca: "CETEMIN Training", tipo: "Trabajo", anio: "2026",
     portada: "img/cetemin/training-lanzamiento.webp",
     resumen: "Contenido para redes y anuncios de la nueva submarca de CETEMIN.",
@@ -577,9 +607,9 @@ const P = {
     hice: ["Apoyé con contenido para redes sociales y ads de la submarca.", "Piezas de lanzamiento («CETEMIN Training ya está aquí») y de su primer programa, el diplomado en Cierre de Minas y Rehabilitación Minera."],
     imgs: [["img/cetemin/training-lanzamiento.webp", "Lanzamiento de la submarca"], ["img/cetemin/training-programa.webp", "Primer programa"], ["img/cetemin/training-diplomado.webp", "Anuncio del diplomado"], ["img/cetemin/training-inicio.webp", "Nuevo inicio"]]},
   "moda": {titulo: "Contenido sobre marketing y moda", marca: "LinkedIn", tipo: "Personal", anio: "2024",
-    portada: "img/moda/taylor.webp",
+    portada: "img/p/moda/taylor-46.webp",
     resumen: "Publicaciones propias que cruzan moda, branding y marketing.",
-    imgs: [["img/moda/taylor.webp", "Marketing, branding y moda (Taylor’s Version)"], ["img/moda/sostenibilidad.webp", "Sostenibilidad en la industria de la moda"]]},
+    imgs: [["img/p/moda/taylor-46.webp", "Marketing, branding y moda (Taylor’s Version)"], ["img/p/moda/taylor-47.webp", "Marketing, branding y moda (Taylor’s Version)"], ["img/p/moda/taylor-48.webp", "Marketing, branding y moda (Taylor’s Version)"], ["img/p/moda/taylor-49.webp", "Marketing, branding y moda (Taylor’s Version)"], ["img/p/moda/li-taylor.webp", "Publicado en LinkedIn"], ["img/p/moda/sost-57.webp", "Sostenibilidad en la industria de la moda"], ["img/p/moda/sost-58.webp", "Sostenibilidad en la industria de la moda"], ["img/p/moda/sost-59.webp", "Sostenibilidad en la industria de la moda"], ["img/p/moda/sost-60.webp", "Sostenibilidad en la industria de la moda"], ["img/p/moda/li-sost.webp", "Publicado en LinkedIn"]]},
 
   "pbf": {titulo: "La primera feria presencial de ENTER", marca: "Perú Business Fest", tipo: "Trabajo", anio: "2026",
     portada: "img/portada/ariana-pbf.webp", pos: "center 18%",
@@ -602,16 +632,16 @@ const P = {
     hice: ["Una comunidad que reúne los espacios de EnterX: OpenLabs, OpenTalks y workshops.", "Una identidad propia para cada formato: OpenLabs para talleres prácticos y OpenTalks para charlas de IA aplicada al trabajo.", "Comunicación, recordatorios y distribución de grabaciones por WhatsApp y YouTube."],
     imgs: [["img/enterx/comunidad.webp", "Comunidad, OpenLabs y Workshops"], ["img/enterx/opentalks.webp", "OpenTalks"], ["img/enterx/openlabs-logo.webp", "OpenLabs"], ["img/casos/openlabs.webp", "OpenLabs: dashboard con IA"], ["img/enterx/openlabs-02.webp", "OpenLabs #02"]]},
   "alumni-night": {titulo: "Enter Alumni Night: ceremonia de graduación", marca: "Enter Tech School", tipo: "Trabajo", anio: "2026",
-    portada: "img/enter/alumni-night.webp",
+    portada: "img/p/alumni-night/anuncio.webp",
     resumen: "Organicé la graduación con el equipo de marketing y llevé casi toda la parte creativa y de comunicación.",
-    hice: ["Organización del evento junto al equipo de marketing de Enter.", "Identidad visual del evento y piezas de anuncio.", "Invitaciones personalizadas para los instructores y comunicación con los invitados.", "Copa grabada con el logo de egresados como recuerdo, junto al polerón Alumni."],
-    imgs: [["img/enter/alumni-night.webp", "Anuncio, invitación a instructores y copa grabada"], ["img/enter/merch-alumni.webp", "Polerón Alumni"]]},
+    hice: ["Organización del evento junto al equipo de marketing de Enter.", "Identidad visual del evento y piezas de anuncio.", "Invitaciones personalizadas para los instructores y comunicación con los invitados."],
+    imgs: [["img/p/alumni-night/anuncio.webp", "Anuncio del evento"], ["img/p/alumni-night/invitacion.webp", "Invitación a instructores"]]},
   "impulsa": {titulo: "Tour de la Moda: conferencias y prensa en regiones", marca: "Chio Lecca Fashion School", tipo: "Trabajo", anio: "2024",
     portada: "img/chiolecca/conferencia.webp",
     resumen: "Lideré la edición Cusco: aliados locales, agenda de medios para la CEO y un evento con cerca de 200 asistentes.",
     reto: "Llevar a Rocío Lecca, presidenta de Chio Lecca, a Loreto, Cajamarca y Cusco con una conferencia gratuita para diseñadores, confeccionistas y emprendedores, y que cada región se enterara.",
     hice: ["Lideré la edición Cusco: coordiné con los aliados locales, entre ellos la Municipalidad Provincial del Cusco. Asistieron cerca de 200 personas.", "Gestioné la prensa: redacté las notas de prensa y las cartas a los medios locales, y conseguí entrevistas para la CEO, como en «Hablemos Claro» de Tevesur (Canal 23, Cusco).", "Invitaciones personalizadas para invitados especiales, como la diseñadora Jessica Newton.", "Campaña de expectativa en redes «Algo grande está llegando a…» para cada región, y volante del evento con inscripción por QR."],
-    imgs: [["img/chiolecca/conferencia.webp", "Conferencia en la Sala Machu Picchu del Palacio Municipal"], ["img/chiolecca/auditorio.webp", "Cerca de 200 asistentes"], ["img/chiolecca/impulsa.webp", "Volante del evento en Cusco"], ["img/chiolecca/invitacion.webp", "Invitación personalizada para invitados especiales"], ["img/chiolecca/tv-cusco.webp", "Rocío Lecca en «Hablemos Claro», Tevesur Canal 23 Cusco"], ["img/chiolecca/cusco-evento.webp", "Tour de la Moda Cusco: Rocío Lecca con invitados locales"], ["img/chiolecca/tour.webp", "Campaña de expectativa por región"], ["img/chiolecca/expotextil.webp", "Expotextil Perú 2024 · área de comunicaciones"]]},
+    imgs: [["img/p/impulsa/conferencia.webp", "Conferencia en el Palacio Municipal del Cusco"], ["img/p/impulsa/auditorio.webp", "Cerca de 200 asistentes"], ["img/p/impulsa/tv-cusco.webp", "Rocío Lecca en «Hablemos Claro», Tevesur"], ["img/p/impulsa/cusco-evento.webp", "Rocío Lecca con invitados locales"], ["img/p/impulsa/volante.webp", "Volante del evento en Cusco"], ["img/p/impulsa/invitacion.webp", "Invitación personalizada"], ["img/p/impulsa/expectativa-1.webp", "Campaña de expectativa por región"], ["img/p/impulsa/expectativa-2.webp", "Campaña de expectativa por región"], ["img/p/impulsa/expectativa-3.webp", "Campaña de expectativa por región"], ["img/p/impulsa/expotextil.webp", "Expotextil Perú 2024 · área de comunicaciones"]]},
   "quimera": {titulo: "Desfile Quimera", marca: "Chio Lecca Fashion School", tipo: "Trabajo", anio: "2024",
     portada: "img/chiolecca/qu-1.webp",
     resumen: "Cobertura en foto, video y redes en vivo de un desfile nocturno al aire libre.",
@@ -631,7 +661,7 @@ const P = {
     portada: "img/anda/trofeos-1.webp",
     resumen: "Piezas, foto, video y cobertura en vivo de la premiación.",
     hice: ["Producción de piezas para redes.", "Foto y video durante el evento.", "Cobertura en vivo en stories."],
-    imgs: [["img/anda/trofeos-1.webp", "Trofeos Premio ANDA 2024"], ["img/anda/gran-premio.webp", "Gran Premio ANDA 2024 · Kimberly Clark - Kotex"], ["img/anda/trofeos-2.webp", "Los trofeos"], ["img/anda/trofeo-detalle.webp", "Detalle del trofeo"], ["img/anda/trofeos-3.webp", "Trofeos en fila"], ["img/anda/montaje.webp", "El montaje del evento"], ["img/anda/entrada.webp", "La entrada, de noche"], ["img/anda/ganadores.webp", "Post de casos ganadores"], ["img/anda/cobertura.webp", "Cobertura en Instagram"]]},
+    imgs: [["img/p/anda/trofeos-1.webp", "Trofeos Premio ANDA 2024"], ["img/p/anda/gran-premio.webp", "Gran Premio ANDA 2024 · Kimberly Clark - Kotex"], ["img/p/anda/trofeos-2.webp", "Los trofeos"], ["img/p/anda/trofeo-detalle.webp", "Detalle del trofeo"], ["img/p/anda/trofeos-3.webp", "Trofeos en fila"], ["img/p/anda/montaje.webp", "El montaje del evento"], ["img/p/anda/entrada.webp", "La entrada, de noche"], ["img/p/anda/ganadores.webp", "Post de casos ganadores"], ["img/p/anda/instagram.webp", "Cobertura en Instagram"], ["img/p/anda/canva.webp", "Diseñando en Canva"]]},
 
   "enterx-web": {titulo: "Web enterx.pe", marca: "EnterX", tipo: "Trabajo", anio: "2026",
     portada: "img/portada/enterx-web.webp", pos: "center 45%",
@@ -640,11 +670,16 @@ const P = {
     link: ["https://enterx.pe", "Ver enterx.pe"],
     imgs: [["img/portada/enterx-web.webp", "Web de EnterX"], ["img/casos/enterx-web.webp", "Sección de la web"]]},
   "move": {titulo: "MOVE: marca y landing de una app de nutrición", marca: "MOVE", tipo: "Académico", anio: "2026",
-    portada: "img/move/moodboard.webp",
+    portada: "img/p/move/moodboard.webp",
     resumen: "Identidad y landing para una app de nutrición, actividad y progreso.",
     hice: ["Identidad de marca: logo, ícono de la app, paleta (naranja, lila y crema) y moodboard con frases como «Ideas in motion» y «Movement builds what’s next».", "Aplicaciones: app, tarjeta y tote bag.", "Concepto, copy y diseño de la landing.", "Páginas de inicio, precios, testimonios, preguntas frecuentes y compra."],
     link: ["https://naaria.github.io/move.pe/", "Ver la landing"],
-    imgs: [["img/move/moodboard.webp", "Moodboard de marca"], ["img/move/logo.webp", "Logo e ícono de la app"], ["img/servicios/landing-move.webp", "Inicio de la landing"], ["img/servicios/move-precios.webp", "Precios"], ["img/servicios/move-testimonios.webp", "Testimonios"]]},
+    imgs: [["img/p/move/moodboard.webp", "Moodboard de marca"], ["img/p/move/logo.webp", "Logo"], ["img/p/move/icono.webp", "Ícono de la app"], ["img/p/move/landing-move.webp", "Inicio de la landing"], ["img/p/move/move-precios.webp", "Precios"], ["img/p/move/move-testimonios.webp", "Testimonios"]]},
+  "enter-merch": {titulo: "Merch para egresados de Enter", marca: "Enter Tech School", tipo: "Trabajo", anio: "2026",
+    portada: "img/p/enter-merch/poleron.webp",
+    resumen: "Recuerdos para la comunidad de egresados.",
+    hice: ["Diseñé el polerón Alumni.", "Copa grabada con el logo de egresados para la ceremonia de graduación."],
+    imgs: [["img/p/enter-merch/poleron.webp", "Polerón Alumni para egresados"], ["img/p/enter-merch/copa.webp", "Copa grabada para la graduación"]]},
   "axel": {titulo: "Media kit para un creador de contenido de tecnología", marca: "Axel Mateo", tipo: "Freelance", anio: "2026",
     portada: "img/casos/axel-hero.webp",
     resumen: "Un media kit en formato web para presentar su audiencia a marcas.",
@@ -653,18 +688,18 @@ const P = {
     link: ["https://kitmedia-axel.vercel.app", "Ver la landing"],
     imgs: [["img/casos/axel-hero.webp", "Portada"], ["img/casos/axel-2.webp", "Sobre mí"], ["img/casos/axel-3.webp", "Audiencia y resultados"]]},
   "direccion-web": {titulo: "Rediseño web de Dirección Estratégica", marca: "Dirección Estratégica", tipo: "Prácticas", anio: "2024",
-    portada: "img/direccion/web.webp",
+    portada: "img/p/direccion-web/web-1.webp",
     resumen: "Actualización del diseño web como parte del rebranding.",
     hice: ["Rebranding completo: nueva imagen corporativa, web y landing pages."],
-    imgs: [["img/direccion/web.webp", "Landing de INPLACEMENT"]]},
+    imgs: [["img/p/direccion-web/web-1.webp", "Landing INPLACEMENT"], ["img/p/direccion-web/web-2.webp", "Landing INPLACEMENT"]]},
 
   "marketing-hub": {titulo: "Marketing Hub de Enter", marca: "Enter Tech School", tipo: "Trabajo", anio: "2025 – 2026",
-    portada: "img/enter/marketing-hub.webp",
+    portada: "img/p/marketing-hub/hub.webp",
     resumen: "Todos los recursos de marketing en un solo lugar, con un buscador con IA.",
     reto: "Los equipos pedían a marketing los mismos archivos una y otra vez: brochures, plantillas, logos, certificados.",
     hice: ["Creé con IA un hub con todos los recursos de marketing: plantillas de diseño, brochures (PDF y editables en Canva), recursos de marca, certificados y Enter Benefits.", "Le sumé un buscador con IA: escribes lo que necesitas y te da el link directo.", "Un botón para pedir al equipo de marketing lo que no está en el hub."],
     link: ["https://arianacossio.github.io/links-de-recursos/", "Ver el hub"],
-    imgs: [["img/enter/marketing-hub.webp", "Recursos de marketing y buscador con IA"]]},
+    imgs: [["img/p/marketing-hub/hub.webp", "Recursos de marketing"], ["img/p/marketing-hub/buscador.webp", "Buscador con IA"]]},
   "aitana": {titulo: "ai.tana: asistente de contenido", marca: "Enter Tech School", tipo: "Trabajo", anio: "2026",
     portada: "img/casos/aitana.webp",
     resumen: "Un flujo mensual de contenido con prompts y plantillas.",
@@ -684,11 +719,11 @@ const P = {
     imgs: []},
 
   "cetemin-beneficios": {titulo: "Beneficios para colaboradores de CETEMIN", marca: "Enter Tech School × CETEMIN", tipo: "Trabajo", anio: "2026",
-    portada: "img/cetemin/beneficios.webp",
+    portada: "img/p/cetemin-beneficios/s1.webp",
     resumen: "Presentación de la alianza para que los colaboradores de CETEMIN y sus familias estudien en Enter.",
     reto: "Explicar a los colaboradores de un cliente un beneficio educativo con varios programas, precios y condiciones, de forma simple y atractiva.",
     hice: ["Diseñé y redacté la presentación: quiénes son los beneficiarios (colaboradores, padres, hermanos, hijos y cónyuges), la ruta de aprendizaje, los precios especiales, las cuotas y los términos.", "Junté a las mascotas de Enter y de CETEMIN para mostrar la alianza de forma cercana."],
-    imgs: [["img/cetemin/beneficios.webp", "Presentación Beneficios CETEMIN 2026"]]},
+    imgs: [["img/p/cetemin-beneficios/s1.webp", "Portada"], ["img/p/cetemin-beneficios/s2.webp", "Tu compromiso abre puertas"], ["img/p/cetemin-beneficios/s3.webp", "Beneficiarios"], ["img/p/cetemin-beneficios/s4.webp", "Programas"], ["img/p/cetemin-beneficios/s5.webp", "Ruta de aprendizaje"], ["img/p/cetemin-beneficios/s6.webp", "Tu beneficio"], ["img/p/cetemin-beneficios/s7.webp", "Precios especiales"], ["img/p/cetemin-beneficios/s8.webp", "Términos"], ["img/p/cetemin-beneficios/s9.webp", "Cierre"]]},
   "cetemin-interna": {titulo: "Retiro Académico CETEMIN 4.0", marca: "Enter Tech School × CETEMIN", tipo: "Trabajo", anio: "2025",
     portada: "img/cetemin/cetemin-40.webp",
     resumen: "Contenido para el equipo interno: convocatoria, checklist y agenda del retiro.",
@@ -696,28 +731,28 @@ const P = {
     hice: ["Apoyé al equipo interno de CETEMIN con grabación y creación de contenido.", "Diseñé la serie del Retiro Académico: convocatoria, checklist de qué llevar, agenda de ambos días y la portada de «CETEMIN 4.0: Estrategia de crecimiento».", "Usé a la mascota de la marca para darle un tono cercano y divertido."],
     imgs: [["img/cetemin/cetemin-40.webp", "Portada: CETEMIN 4.0"], ["img/cetemin/retiro-1.webp", "Convocatoria al Retiro Académico"], ["img/cetemin/retiro-checklist.webp", "Checklist: qué llevar"], ["img/cetemin/retiro-agenda-1.webp", "Agenda del primer día"], ["img/cetemin/retiro-agenda-2.webp", "Agenda del segundo día"], ["img/cetemin/retiro-academico.webp", "Diseñando en Canva"]]},
   "prssa": {titulo: "Contenido para PRSSA USMP", marca: "PRSSA USMP", tipo: "Prácticas", anio: "",
-    portada: "img/prssa/premios.webp",
+    portada: "img/p/prssa/premios-1.webp",
     resumen: "Piezas para comunicar los logros del capítulo de estudiantes de relaciones públicas de la USMP.",
     hice: ["Co-encargada de redes sociales y de Responsabilidad Social del capítulo.", "Lideré el Club de Idiomas.", "Diseñé y redacté la serie «PRSSA: premios y logros», sobre los Star Chapter Awards 2017 y 2021 que PRSSA National otorgó al capítulo."],
-    imgs: [["img/prssa/premios.webp", "PRSSA: premios y logros"]]},
+    imgs: [["img/p/prssa/premios-1.webp", "PRSSA: premios y logros"], ["img/p/prssa/premios-2.webp", "PRSSA: premios y logros"]]},
   "kallpa": {titulo: "Boletín de responsabilidad social para Kallpa", marca: "Kallpa Generación", tipo: "Personal", anio: "2023",
-    portada: "img/kallpa/boletin.webp",
+    portada: "img/p/kallpa/boletin.webp",
     resumen: "Prueba de redacción y diseño para un proceso de selección.",
     reto: "Contar en una sola pieza cómo el programa social de Kallpa en Chilca ayudó a siete artesanas a crear su propia marca.",
     hice: ["Redacté y diseñé el boletín de noviembre 2023 sobre QORIKILLA, la marca de Manos Chilcanas: su llegada al Boulevard de Asia, la formación de más de 300 horas y el impacto en la comunidad."],
-    imgs: [["img/kallpa/boletin.webp", "Boletín informativo"]]},
+    imgs: [["img/p/kallpa/boletin.webp", "Boletín informativo"]]},
   "inclusiva": {titulo: "Manual de comunicación inclusiva", marca: "Innova Schools · FIRMA PR", tipo: "Prácticas preprofesionales", anio: "2020",
-    portada: "img/innova/inclusiva.webp",
+    portada: "img/p/inclusiva/plan.webp",
     resumen: "Guía para adoptar un lenguaje respetuoso y equitativo.",
     reto: "Guiar a los equipos de comunicación hacia prácticas inclusivas en todas sus interacciones.",
     hice: ["Manual de comunicación inclusiva.", "Plan de comunicación interna para un relanzamiento."],
-    imgs: [["img/innova/inclusiva.webp", "Plan para el manual de comunicación inclusiva"]]},
+    imgs: [["img/p/inclusiva/plan.webp", "Plan para el manual de comunicación inclusiva"]]},
   "cultura": {titulo: "Presentación de cultura y beneficios", marca: "Innova Schools", tipo: "Prácticas preprofesionales", anio: "2020",
-    portada: "img/innova/cultura.webp",
+    portada: "img/p/cultura/movil.webp",
     resumen: "Para atraer talento y fortalecer la imagen como empleador.",
     reto: "Informar a posibles colaboradores sobre la cultura de la empresa y los beneficios de trabajar en ella.",
     hice: ["Presentación de cultura y beneficios para atraer talento y fomentar la retención."],
-    imgs: [["img/innova/cultura.webp", "Presentación de inducción y cultura"]]}
+    imgs: [["img/p/cultura/movil.webp", "Presentación en el celular"], ["img/p/cultura/lamina-1.webp", "Lámina de cultura"], ["img/p/cultura/lamina-2.webp", "Lámina de beneficios"]]}
 };
 
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
@@ -807,21 +842,32 @@ function vistaProyecto(a, k) {
   const marcas = p.marcas ? p.marcas.map(([n, t, d, ims]) => `
     <div class="marca-b"><div class="marca-h"><h3>${n}</h3><span class="tag-tipo">${t}</span></div><p>${d}</p>
       <div class="fan chico">${ims.map((f, i) => { const t = ims.length > 1 ? i / (ims.length - 1) : 0; return `<button class="naipe" style="--r:${(-5 + t * 16).toFixed(1)}deg;--y:${(Math.sin(t * Math.PI) * -12 + t * 16).toFixed(0)}px;z-index:${20 - i}" aria-label="${n}"><img src="${f}" alt="${n}" data-cap="${n}"></button>`; }).join('')}</div></div>`).join('') : '';
-  const n = (p.imgs || []).length;
-  const gal = (p.imgs || []).map(([f, c], i) => { const t = n > 1 ? i / (n - 1) : 0; const r = (-4 + i * 4.5).toFixed(1), y = (i * i * 2.2 - 10).toFixed(0);
-    return `<button class="naipe" style="--r:${r}deg;--y:${y}px;z-index:${20 - i}" aria-label="${c}"><img src="${f}" alt="${c}" data-cap="${c}"></button>`; }).join('');
+  const lista = p.imgs || [], n = lista.length;
+  const dos = n > 8, n1 = dos ? Math.ceil(n * 0.42) : n;
+  const rnd = i => ((Math.sin(i * 12.9898 + k.length * 7.1) * 43758.5453) % 1 + 1) % 1;
+  const gal = lista.map(([f, c], i) => {
+    const anillo = dos && i >= n1 ? 1 : 0, m = anillo ? n - n1 : n1, j = anillo ? i - n1 : i;
+    const ang = (j / m) * Math.PI * 2 - Math.PI / 2 + (anillo ? Math.PI / m : 0) + (rnd(i) - .5) * .35;
+    const rx = anillo ? 43 : (dos ? 27 : 36), ry = anillo ? 40 : (dos ? 27 : 33);
+    const x = 50 + Math.cos(ang) * rx, y = 50 + Math.sin(ang) * ry;
+    const h = anillo ? 118 : (n > 5 ? 138 : 165);
+    return `<button class="astro" style="--x:${x.toFixed(1)}%;--y:${y.toFixed(1)}%;--r:${((rnd(i + 3) - .5) * 14).toFixed(1)}deg;--h:${h}px;--p:${(anillo ? 18 : 10) + Math.round(rnd(i + 5) * 8)};--fd:${(6 + rnd(i + 9) * 4).toFixed(1)}s;--fdl:-${(rnd(i + 2) * 5).toFixed(1)}s;--dl:${(i * 0.05).toFixed(2)}s;--zi:${10 + i}" aria-label="${c}"><span class="in"><img src="${f}" alt="${c}" data-cap="${c}"></span></button>`; }).join('');
   const idx = a.proyectos.indexOf(k), sig = a.proyectos[(idx + 1) % a.proyectos.length];
   cuerpo.innerHTML = `<a class="volver" href="#/${a.id}">← ${a.nombre}</a>
     <header class="v-head"><div class="chips">${tag(p)}<span>${meta(p)}</span></div><h2>${p.titulo}</h2><p>${p.resumen}</p></header>
-    ${gal ? `<div class="fan"><div class="carpeta"><i class="tr"></i><i class="fr"></i><span>${k}</span></div>${gal}</div><p class="fan-hint">Toca una pieza para verla en grande.</p>` : ''}
+    ${gal ? `<div class="orbita" style="--alto:${n > 8 ? 660 : 560}px"><div class="eje"><i class="tr"></i><i class="fr"></i><span>${k}</span></div>${gal}</div><p class="fan-hint">Toca una pieza para verla en grande.</p>` : ''}
     <div class="pdet solo">
       <div class="ptexto"><dl>${bloques}</dl>${p.cita ? `<blockquote class="cita">“${p.cita}”</blockquote>` : ''}${p.link ? `<a class="btn btn-negro" href="${p.link[0]}" target="_blank" rel="noopener">${p.link[1]} ↗</a>` : ''}</div>
       
     </div>
     ${marcas ? `<div class="marcas">${marcas}</div>` : ''}
     <a class="siguiente" href="#/${a.id}/${sig}"><span>Siguiente proyecto</span><b>${P[sig].titulo} →</b></a>`;
-  const ims = [...cuerpo.querySelectorAll('.fan img')];
-  ims.forEach((im, i) => (im.closest('.naipe') || im).onclick = () => abrirLB(ims.map(x => ({src: x.src, cap: x.dataset.cap})), i));
+  const ims = [...cuerpo.querySelectorAll('.orbita img, .fan img')];
+  const orb = cuerpo.querySelector('.orbita');
+  if (orb) { requestAnimationFrame(() => requestAnimationFrame(() => orb.classList.add('lista')));
+    orb.onmousemove = e => { const r = orb.getBoundingClientRect(); orb.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5).toFixed(3)); orb.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5).toFixed(3)); };
+    orb.onmouseleave = () => { orb.style.setProperty('--mx', 0); orb.style.setProperty('--my', 0); }; }
+  ims.forEach((im, i) => (im.closest('.astro') || im.closest('.naipe') || im).onclick = () => abrirLB(ims.map(x => ({src: x.src, cap: x.dataset.cap})), i));
 }
 function ruta() {
   const m = location.hash.match(/^#\/([\w-]+)(?:\/([\w-]+))?/);
