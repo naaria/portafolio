@@ -82,7 +82,7 @@ section{padding-top:110px;padding-bottom:20px}
 /* ===== Quién soy ===== */
 .quien-wrap{display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:center}
 .quien-foto{display:flex;flex-direction:column;align-items:center;gap:10px;transform:rotate(2deg)}
-.quien-foto img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;border:6px solid #fff;border-radius:4px;box-shadow:0 18px 40px rgba(0,0,0,.12)}
+.quien-foto img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 20%;border:6px solid #fff;border-radius:4px;box-shadow:0 18px 40px rgba(0,0,0,.12)}
 .quien-foto figcaption{font-size:.85rem;font-weight:600}
 @media (max-width:980px){.quien-wrap{grid-template-columns:1fr;gap:34px}.quien-foto{max-width:260px;margin:0 auto}}
 .quien .titulo{max-width:1000px}
@@ -300,7 +300,7 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
     <a class="enlace" href="#trayectoria">Ver trayectoria →</a>
   </div>
  </div>
-  <figure class="quien-foto"><img loading="lazy" src="img/portada/ariana-pbf.webp" alt="Ariana Cossio en Perú Business Fest 2026"><figcaption>ariana_pbf_2026.jpeg</figcaption></figure>
+  <figure class="quien-foto"><img loading="lazy" src="img/portada/ariana-retrato.webp" alt="Retrato de Ariana Cossio"><figcaption>ariana.jpeg</figcaption></figure>
  </div>
 </section>
 
@@ -322,7 +322,7 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
   <h2 class="titulo">Casos destacados.</h2>
   <div class="cards">
     <button class="card" data-caso="enterx"><div class="img"><img loading="lazy" src="img/casos/enterx-merch.webp" alt="" style="object-position:center 40%"></div><div class="txt"><div><h3>EnterX: una marca para empresas, desde cero</h3><div class="sub">Branding · ENTER · 2026</div></div><span class="fl">↗</span></div></button>
-    <button class="card" data-caso="pbf"><div class="img"><img loading="lazy" src="img/casos/pbf-concepto.webp" alt=""></div><div class="txt"><div><h3>La primera feria presencial de ENTER</h3><div class="sub">Eventos · Perú Business Fest · 2026</div></div><span class="fl">↗</span></div></button>
+    <button class="card" data-caso="pbf"><div class="img"><img loading="lazy" src="img/portada/ariana-pbf.webp" alt="" style="object-position:center 18%"></div><div class="txt"><div><h3>La primera feria presencial de ENTER</h3><div class="sub">Eventos · Perú Business Fest · 2026</div></div><span class="fl">↗</span></div></button>
     <button class="card" data-caso="workshop"><div class="img"><img loading="lazy" src="img/casos/workshop-foto2.webp" alt="" style="object-position:center 35%"></div><div class="txt"><div><h3>Workshop «IA para Líderes»: de la idea al evento</h3><div class="sub">Producto y comunicación · EnterX · 2026</div></div><span class="fl">↗</span></div></button>
     <button class="card" data-caso="redes"><div class="img"><img loading="lazy" src="img/enter/programas.webp" alt="" style="object-position:center 25%"></div><div class="txt"><div><h3>Las redes con el mayor engagement de su categoría</h3><div class="sub">Redes sociales · Enter Tech School · 2025 – 2026</div></div><span class="fl">↗</span></div></button>
     <button class="card doble" data-caso="cetemin"><div class="img"><img loading="lazy" src="img/cetemin/indice.webp" alt="" style="object-position:center 30%"></div><div class="txt"><div><h3>Workbooks de Inglés Técnico para CETEMIN</h3><div class="sub">Diseño editorial · Producto educativo · 2026</div></div><span class="fl">↗</span></div></button>
@@ -489,7 +489,7 @@ const CASOS = {
     hice:['Concepto, identidad visual y voz de marca.','Merch: tote bag, tarjetero para celular, libreta «Pensar mejor. Ejecutar mejor.» y flyer.','Brochures y materiales para cada servicio.','Co-lideré con el líder de TI el diseño de la web, pensada para convertir.'],
     res:'Una marca con su propia línea de servicios (workshops, Workshop in Company y Cotiza) y presencia en web, redes y eventos.'},
   pbf: {meta:['ENTER · Perú Business Fest','Octubre 2026','Eventos'], titulo:'La primera feria presencial de ENTER',
-    imgs:[['img/casos/pbf-concepto.webp','Guía de concepto: Enter como una sola marca'],['img/casos/pbf-stand.webp','Concepto del stand'],['img/casos/pbf-post.webp','Anuncio de la participación']],
+    imgs:[['img/portada/ariana-pbf.webp','Ariana en Perú Business Fest 2026'],['img/casos/pbf-concepto.webp','Guía de concepto: Enter como una sola marca'],['img/casos/pbf-stand.webp','Concepto del stand'],['img/casos/pbf-post.webp','Anuncio de la participación']],
     reto:'Participar en ferias era una idea que estaba en el aire desde mis primeros meses en marketing. Encontré el Perú Business Fest 2026, la propuse y recibimos el GO. Era mi primera vez gestionando una participación así.',
     hice:['Desarrollé el concepto de presentar a ENTER como una sola marca, integrando EnterX y Enter Tech School.','Coordiné con los organizadores y llevé la gestión documental.','Diseñé el merchandising y coticé y coordiné a los proveedores.','Aunque el stand no estaba a mi cargo, ajusté su diseño a una línea visual más neutra y coherente con la marca.','Diseñé el flyer «Continúa la conversación», con QR, diagnóstico gratis y descuento para seguir el contacto después de la feria.','Todo en paralelo con nuestro primer workshop presencial y el rediseño de los workshops virtuales.'],
     res:'Un buen MVP: la primera participación presencial de ENTER, sostenida por un equipo que se encargó de la producción del stand, los materiales y la atención a visitantes. Una experiencia para repetir en una versión mejorada.',
