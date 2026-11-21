@@ -701,8 +701,9 @@ const P = {
   "comunidad": {titulo: "La comunidad de EnterX", marca: "EnterX", tipo: "Trabajo", anio: "2026",
     portada: "img/enterx/comunidad.webp",
     resumen: "Espacios gratuitos para acercar a la comunidad antes de cualquier venta.",
-    hice: ["Una comunidad que reúne los espacios de EnterX: OpenLabs, OpenTalks y workshops.", "Una identidad propia para cada formato: OpenLabs para talleres prácticos y OpenTalks para charlas de IA aplicada al trabajo.", "Comunicación, recordatorios y distribución de grabaciones por WhatsApp y YouTube."],
-    imgs: [["img/enterx/comunidad.webp", "Comunidad, OpenLabs y Workshops"], ["img/enterx/opentalks.webp", "OpenTalks"], ["img/enterx/openlabs-logo.webp", "OpenLabs"], ["img/casos/openlabs.webp", "OpenLabs: dashboard con IA"], ["img/enterx/openlabs-02.webp", "OpenLabs #02"]]},
+    hice: ["Una comunidad que reúne los espacios de EnterX: OpenLabs, OpenTalks y workshops.", "Una identidad propia para cada formato: OpenLabs para talleres prácticos y OpenTalks para charlas de IA aplicada al trabajo.", "Publiqué y gestioné los eventos de la comunidad en Luma: páginas de registro, calendario público y recordatorios a los inscritos.", "Comunicación, recordatorios y distribución de grabaciones por WhatsApp y YouTube."],
+    link: ["https://luma.com/enterx", "Ver el calendario en Luma"],
+    imgs: [["img/p/comunidad/luma.webp", "Calendario de EnterX en Luma"], ["img/enterx/comunidad.webp", "Comunidad, OpenLabs y Workshops"], ["img/enterx/opentalks.webp", "OpenTalks"], ["img/enterx/openlabs-logo.webp", "OpenLabs"], ["img/casos/openlabs.webp", "OpenLabs: dashboard con IA"], ["img/enterx/openlabs-02.webp", "OpenLabs #02"]]},
   "alumni-night": {titulo: "Enter Alumni Night: ceremonia de graduación", marca: "Enter Tech School", tipo: "Trabajo", anio: "2026",
     portada: "img/p/alumni-night/anuncio.webp",
     resumen: "Organicé la graduación con el equipo de marketing y llevé casi toda la parte creativa y de comunicación.",
@@ -915,7 +916,7 @@ function vistaProyecto(a, k) {
   const marcas = p.marcas ? p.marcas.map(([n, t, d, ims]) => `
     <div class="marca-b"><div class="marca-h"><h3>${n}</h3><span class="tag-tipo">${t}</span></div><p>${d}</p>
       <div class="fan chico">${ims.map((f, i) => { const t = ims.length > 1 ? i / (ims.length - 1) : 0; return `<button class="naipe" style="--r:${(-5 + t * 16).toFixed(1)}deg;--y:${(Math.sin(t * Math.PI) * -12 + t * 16).toFixed(0)}px;z-index:${20 - i}" aria-label="${n}"><img src="${f}" alt="${n}" data-cap="${n}"></button>`; }).join('')}</div></div>`).join('') : '';
-  const esApoyo = f => /instagram|\/feed|mailing|\/web-|enterx-web|\/hub|buscador|\/reel|canva|\/li-|presentacion|digital-|manual|papeleria|landing|precios|testimonios|catering\/p\d|cetemin-beneficios\/|kallpa\/|inclusiva\/|cultura\/|indice|introduccion|sesion-|reporte|refrigeracion|retiro-academico|wic-programa|enterx-brochure|\/toma|\/tripode|grabacion|pbf-concepto|pbf-stand\.webp|ads\/am|move\/moodboard|axel|aitana|casos\/openlabs|enters-benefits|branding-enterx|enter-soluciones|portada-m/.test(f);
+  const esApoyo = f => /instagram|\/feed|mailing|\/web-|enterx-web|\/hub|buscador|\/reel|canva|\/li-|presentacion|digital-|manual|papeleria|landing|precios|testimonios|catering\/p\d|cetemin-beneficios\/|kallpa\/|inclusiva\/|cultura\/|indice|introduccion|sesion-|reporte|refrigeracion|retiro-academico|wic-programa|enterx-brochure|\/toma|\/tripode|grabacion|pbf-concepto|pbf-stand\.webp|luma|ads\/am|move\/moodboard|axel|aitana|casos\/openlabs|enters-benefits|branding-enterx|enter-soluciones|portada-m/.test(f);
   const lista = (p.imgs || []).filter(([f]) => !esApoyo(f)), n = lista.length;
   const apoyo = (p.imgs || []).filter(([f]) => esApoyo(f));
   const pista = f => /\/toma|\/tripode|grabacion|retiro-academico|\/canva/.test(f) ? 'polaroid'
@@ -925,7 +926,7 @@ function vistaProyecto(a, k) {
     : 'auto';
   const urlDe = f => /enterx-web|enterx/.test(f) ? 'enterx.pe' : /move/.test(f) ? 'naaria.github.io/move.pe' : /hub|buscador/.test(f) ? 'arianacossio.github.io/links-de-recursos'
     : /ads\/am/.test(f) ? 'adsmanager.facebook.com' : /mailing|mail/.test(f) ? 'mailchimp.com' : /axel/.test(f) ? 'kitmedia-axel.vercel.app' : /instagram/.test(f) ? 'instagram.com'
-    : /aitana|benefits|openlabs/.test(f) ? 'enter.edu.pe' : /direccion/.test(f) ? 'direccion-estrategica.com' : (p.link ? p.link[0].replace(/^https?:\/\//, '').replace(/\/$/, '') : 'naaria.github.io');
+    : /luma/.test(f) ? 'luma.com/enterx' : /aitana|benefits|openlabs/.test(f) ? 'enter.edu.pe' : /direccion/.test(f) ? 'direccion-estrategica.com' : (p.link ? p.link[0].replace(/^https?:\/\//, '').replace(/\/$/, '') : 'naaria.github.io');
   const slides = apoyo.filter(([f]) => pista(f) === 'laptop');
   const deck = slides.length >= 3;
   const resto = deck ? apoyo.filter(([f]) => pista(f) !== 'laptop') : apoyo;
