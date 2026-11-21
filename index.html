@@ -274,7 +274,11 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .visor.abierto{display:flex}
 .ventana2{background:#fff;border-radius:20px;width:min(1180px,100%);height:100%;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.25)}
 .barra2{display:flex;align-items:center;gap:16px;padding:12px 16px;border-bottom:1px solid var(--linea);background:var(--suave)}
-.semaforo{display:flex;gap:7px}.semaforo i{width:12px;height:12px;border-radius:50%;background:#ff5f57}.semaforo i:nth-child(2){background:#febc2e}.semaforo i:nth-child(3){background:#28c840}
+.semaforo{display:flex;gap:8px}.semaforo button{width:14px;height:14px;border-radius:50%;border:0;padding:0;background:#ff5f57;cursor:pointer;display:grid;place-items:center;font:700 10px/1 -apple-system,Helvetica,sans-serif;color:transparent;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.15)}
+.semaforo button:nth-child(2){background:#febc2e}.semaforo button:nth-child(3){background:#28c840}
+.semaforo:hover button{color:rgba(0,0,0,.55)}.semaforo button:focus-visible{outline:2px solid #1f5f86;outline-offset:2px;color:rgba(0,0,0,.55)}
+.visor.max{padding:0}.visor.max .ventana2{width:100%;border-radius:0}
+.ventana2{transition:width .3s ease,border-radius .3s}
 .migas{flex:1;display:flex;gap:8px;align-items:center;font-size:.85rem;color:var(--gris);overflow:hidden;white-space:nowrap}
 .migas a:hover{color:var(--tinta);text-decoration:underline}
 .migas b{color:var(--tinta);font-weight:600}
@@ -506,7 +510,7 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 
 <div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Mi trabajo">
   <div class="ventana2">
-    <div class="barra2"><span class="semaforo"><i></i><i></i><i></i></span><nav class="migas" id="migas"></nav><button class="x2" id="cerrarVisor" aria-label="Cerrar">×</button></div>
+    <div class="barra2"><span class="semaforo"><button id="cerrarVisor" aria-label="Cerrar y volver al inicio" title="Cerrar">×</button><button id="minVisor" aria-label="Volver al nivel anterior" title="Volver">−</button><button id="maxVisor" aria-label="Pantalla completa" title="Pantalla completa">+</button></span><nav class="migas" id="migas"></nav></div>
     <div class="cuerpo" id="cuerpo"></div>
   </div>
 </div>
@@ -892,6 +896,8 @@ function ruta() {
 addEventListener('hashchange', ruta); ruta();
 const cerrarVisor = () => { location.hash = 'mi-trabajo'; };
 $('#cerrarVisor').onclick = cerrarVisor;
+$('#minVisor').onclick = () => { const m = location.hash.match(/^#\/([\w-]+)\/[\w-]+/); if (m) location.hash = '/' + m[1]; else cerrarVisor(); };
+$('#maxVisor').onclick = () => visor.classList.toggle('max');
 visor.addEventListener('click', e => { if (e.target === visor) cerrarVisor(); });
 
 /* --- Pausa de animaciones fuera de pantalla y teclado --- */
