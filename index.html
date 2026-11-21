@@ -298,8 +298,18 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .pdet{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;margin-top:30px;align-items:start}
 .pdet.solo{grid-template-columns:1fr;max-width:760px}
 .ptexto .btn{margin-top:20px}
-.galeria2{columns:2;column-gap:12px}
-.galeria2 img{width:100%;border-radius:12px;margin-bottom:12px;break-inside:avoid;cursor:zoom-in;background:var(--suave)}
+.fan{position:relative;display:flex;align-items:center;gap:0;margin:30px 0 10px;padding:40px 30px 50px 0;overflow-x:auto;overflow-y:visible;scrollbar-width:thin}
+.fan .carpeta{flex:none;position:relative;width:210px;height:156px;margin-right:-96px;z-index:50;align-self:center;pointer-events:none}
+.fan .carpeta .tr{position:absolute;left:0;top:0;width:44%;height:22%;background:#9ad6f2;border-radius:10px 10px 0 0}
+.fan .carpeta .fr{position:absolute;left:0;bottom:0;width:100%;height:86%;background:#bfe6f8;border-radius:4px 12px 12px 12px;box-shadow:0 14px 26px -14px rgba(31,95,134,.45)}
+.fan .carpeta span{position:absolute;left:0;bottom:-28px;text-align:left;font-size:.82rem;color:var(--gris);white-space:nowrap}
+ .fan .naipe{flex:none;width:184px;height:232px;padding:0;border:0;margin-left:-28px;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 18px 34px -16px rgba(0,0,0,.45),0 0 0 4px #fff;cursor:zoom-in;transform-origin:50% 120%;transform:rotate(var(--r)) translateY(var(--y));transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;position:relative}
+.fan .naipe:first-of-type{margin-left:0}
+.fan .naipe img{width:100%;height:100%;object-fit:cover;display:block}
+.fan .naipe:hover,.fan .naipe:focus-visible{transform:rotate(0) translateY(-22px) scale(1.06);z-index:40;box-shadow:0 26px 44px -18px rgba(0,0,0,.55),0 0 0 4px #fff}
+.fan.chico{margin-top:4px;padding:30px 30px 40px 18px}.fan.chico .naipe{width:150px;height:188px}
+.fan-hint{font-size:.8rem;color:var(--gris);margin-top:4px}
+.galeria2{display:none}
 .galeria2.vacia{columns:1;display:grid;place-items:center;background:var(--suave);border-radius:16px;padding:50px}
 .sk .pg{position:relative;width:112px;height:144px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.1))}
 .sk .pg div{position:absolute;inset:0;background:linear-gradient(170deg,#fff,#ecebea);border-radius:12px;clip-path:polygon(0 0,70% 0,100% 23%,100% 100%,0 100%);display:grid;place-items:center}
@@ -316,7 +326,7 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .siguiente b{font-weight:600}
 .siguiente:hover b{text-decoration:underline}
 @media (max-width:980px){.areas{grid-template-columns:1fr 1fr}.pdet{grid-template-columns:1fr}.marca-imgs{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:600px){.areas{grid-template-columns:1fr}.visor{padding:0}.ventana2{border-radius:0}.galeria2{columns:1}.siguiente{flex-direction:column;align-items:flex-start}}
+@media (max-width:600px){.fan .naipe{width:140px;height:176px;margin-left:-26px}.fan .carpeta{width:130px;height:100px;margin-right:-40px}.areas{grid-template-columns:1fr}.visor{padding:0}.ventana2{border-radius:0}.siguiente{flex-direction:column;align-items:flex-start}}
 
 /* ===== Herramientas estilo app de Mac ===== */
 .tools{display:flex;flex-wrap:wrap;justify-content:center;gap:26px 6px;margin-top:24px;max-width:1060px;margin-left:auto;margin-right:auto}
@@ -557,7 +567,7 @@ const P = {
     marcas: [
       ["Dirección Estratégica", "Prácticas", "Consultora de talento: contenido para redes, copys y email marketing en Mailchimp.", ["img/direccion/marca.webp", "img/direccion/feed.webp", "img/direccion/copys.webp", "img/direccion/piezas.webp", "img/direccion/mailing.webp"]],
       ["Alexander Construye", "Freelance", "Inmobiliaria: contenido y copys para redes sociales.", ["img/alexander/feed.webp", "img/alexander/copys.webp", "img/alexander/piezas.webp"]],
-      ["La Badiane", "Freelance", "Cafetería: reels, stories y posts.", ["img/badiane/feed.webp?v=2", "img/badiane/proceso.webp", "img/badiane/produccion.webp", "img/badiane/reels.webp"]],
+      ["La Badiane", "Freelance", "Cafetería: reels, stories y posts.", ["img/badiane/feed.webp?v=2", "img/badiane/toma.webp", "img/badiane/bowl.webp", "img/badiane/tripode.webp", "img/badiane/desayuno.webp", "img/badiane/reels.webp"]],
       ["Oslo Languages", "Freelance", "Academia de idiomas: estrategia digital, concepto creativo y posts.", ["img/oslo/feed.webp", "img/oslo/carruseles.webp", "img/oslo/reels.webp"]]
     ]},
   "cetemin-training": {titulo: "Lanzamiento de CETEMIN Training", marca: "CETEMIN Training", tipo: "Trabajo", anio: "2026",
@@ -618,10 +628,10 @@ const P = {
     hice: ["Foto y video del desfile.", "Contenido en vivo para las redes de Chio Lecca."],
     imgs: [["img/chiolecca/eg-1.webp", "Desfile de egresadas"], ["img/chiolecca/eg-2.webp", "Desfile de egresadas"], ["img/chiolecca/eg-3.webp", "Desfile de egresadas"]]},
   "anda": {titulo: "Premios ANDA 2024: cobertura en vivo", marca: "ANDA Perú", tipo: "Freelance", anio: "2024",
-    portada: "img/anda/premios.webp",
+    portada: "img/anda/trofeos-1.webp",
     resumen: "Piezas, foto, video y cobertura en vivo de la premiación.",
     hice: ["Producción de piezas para redes.", "Foto y video durante el evento.", "Cobertura en vivo en stories."],
-    imgs: [["img/anda/premios.webp", "Premio ANDA"], ["img/anda/fotografia.webp", "Fotografía de los trofeos y del evento"], ["img/anda/gran-premio.webp", "Gran Premio ANDA 2024 · Kimberly Clark - Kotex"], ["img/anda/trofeo-detalle.webp", "Detalle del trofeo"], ["img/anda/proceso.webp", "Del diseño en Canva al post publicado"], ["img/anda/cobertura.webp", "Cobertura y contenido en Instagram"], ["img/anda/ganadores.webp", "Casos ganadores #PremioANDA2024"]]},
+    imgs: [["img/anda/trofeos-1.webp", "Trofeos Premio ANDA 2024"], ["img/anda/gran-premio.webp", "Gran Premio ANDA 2024 · Kimberly Clark - Kotex"], ["img/anda/trofeos-2.webp", "Los trofeos"], ["img/anda/trofeo-detalle.webp", "Detalle del trofeo"], ["img/anda/trofeos-3.webp", "Trofeos en fila"], ["img/anda/montaje.webp", "El montaje del evento"], ["img/anda/entrada.webp", "La entrada, de noche"], ["img/anda/ganadores.webp", "Post de casos ganadores"], ["img/anda/cobertura.webp", "Cobertura en Instagram"]]},
 
   "enterx-web": {titulo: "Web enterx.pe", marca: "EnterX", tipo: "Trabajo", anio: "2026",
     portada: "img/portada/enterx-web.webp", pos: "center 45%",
@@ -796,19 +806,22 @@ function vistaProyecto(a, k) {
     p.res ? `<div class="bloque"><dt>Resultado</dt><dd>${p.res}</dd></div>` : ''].join('');
   const marcas = p.marcas ? p.marcas.map(([n, t, d, ims]) => `
     <div class="marca-b"><div class="marca-h"><h3>${n}</h3><span class="tag-tipo">${t}</span></div><p>${d}</p>
-      <div class="marca-imgs">${ims.map(i => `<img loading="lazy" src="${i}" alt="${n}" data-cap="${n}">`).join('')}</div></div>`).join('') : '';
-  const gal = (p.imgs || []).map(([f, c]) => `<img loading="lazy" src="${f}" alt="${c}" data-cap="${c}">`).join('');
+      <div class="fan chico">${ims.map((f, i) => { const t = ims.length > 1 ? i / (ims.length - 1) : 0; return `<button class="naipe" style="--r:${(-5 + t * 16).toFixed(1)}deg;--y:${(Math.sin(t * Math.PI) * -12 + t * 16).toFixed(0)}px;z-index:${20 - i}" aria-label="${n}"><img src="${f}" alt="${n}" data-cap="${n}"></button>`; }).join('')}</div></div>`).join('') : '';
+  const n = (p.imgs || []).length;
+  const gal = (p.imgs || []).map(([f, c], i) => { const t = n > 1 ? i / (n - 1) : 0; const r = (-4 + i * 4.5).toFixed(1), y = (i * i * 2.2 - 10).toFixed(0);
+    return `<button class="naipe" style="--r:${r}deg;--y:${y}px;z-index:${20 - i}" aria-label="${c}"><img src="${f}" alt="${c}" data-cap="${c}"></button>`; }).join('');
   const idx = a.proyectos.indexOf(k), sig = a.proyectos[(idx + 1) % a.proyectos.length];
   cuerpo.innerHTML = `<a class="volver" href="#/${a.id}">← ${a.nombre}</a>
     <header class="v-head"><div class="chips">${tag(p)}<span>${meta(p)}</span></div><h2>${p.titulo}</h2><p>${p.resumen}</p></header>
-    <div class="pdet ${gal ? '' : 'solo'}">
+    ${gal ? `<div class="fan"><div class="carpeta"><i class="tr"></i><i class="fr"></i><span>${k}</span></div>${gal}</div><p class="fan-hint">Toca una pieza para verla en grande.</p>` : ''}
+    <div class="pdet solo">
       <div class="ptexto"><dl>${bloques}</dl>${p.cita ? `<blockquote class="cita">“${p.cita}”</blockquote>` : ''}${p.link ? `<a class="btn btn-negro" href="${p.link[0]}" target="_blank" rel="noopener">${p.link[1]} ↗</a>` : ''}</div>
-      ${gal ? `<div class="galeria2">${gal}</div>` : (p.marcas ? '' : `<div class="galeria2 vacia">${skillDoc}</div>`)}
+      
     </div>
     ${marcas ? `<div class="marcas">${marcas}</div>` : ''}
     <a class="siguiente" href="#/${a.id}/${sig}"><span>Siguiente proyecto</span><b>${P[sig].titulo} →</b></a>`;
-  const ims = [...cuerpo.querySelectorAll('.galeria2 img, .marca-imgs img')];
-  ims.forEach((im, i) => im.onclick = () => abrirLB(ims.map(x => ({src: x.src, cap: x.dataset.cap})), i));
+  const ims = [...cuerpo.querySelectorAll('.fan img')];
+  ims.forEach((im, i) => (im.closest('.naipe') || im).onclick = () => abrirLB(ims.map(x => ({src: x.src, cap: x.dataset.cap})), i));
 }
 function ruta() {
   const m = location.hash.match(/^#\/([\w-]+)(?:\/([\w-]+))?/);
