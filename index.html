@@ -375,6 +375,18 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .deck-tira button{flex:none;width:86px;aspect-ratio:16/10;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;background:#111;cursor:pointer;opacity:.55;transition:opacity .2s,border-color .2s,transform .2s}
 .deck-tira button img{width:100%;height:100%;object-fit:cover;display:block}
 .deck-tira button.on,.deck-tira button:hover{opacity:1;border-color:#3f97c9;transform:translateY(-3px)}
+.vitrina{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin:28px 0 8px}
+.giro{margin:0}
+.giro-esc{position:relative;height:440px;border-radius:24px;perspective:1100px;display:grid;place-items:center;cursor:grab;overflow:hidden;touch-action:pan-y;outline:none}
+.giro-esc:active{cursor:grabbing}.giro-esc:focus-visible{box-shadow:0 0 0 3px #3f97c9}
+.giro.claro .giro-esc{background:radial-gradient(ellipse at 50% 35%,#ffffff 0%,#e9eef3 60%,#d6dde5 100%)}
+.giro.oscuro .giro-esc{background:radial-gradient(ellipse at 50% 30%,#3a3a42 0%,#16161a 60%,#0b0b0d 100%)}
+.giro-obj{position:relative;width:72%;height:80%;transform-style:preserve-3d;transform:rotateY(var(--ang,0deg));will-change:transform}
+.cara{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backface-visibility:hidden;-webkit-backface-visibility:hidden;user-select:none;filter:drop-shadow(0 18px 22px rgba(0,0,0,.28))}
+.cara.atras{transform:rotateY(180deg)}.cara.atras.espejo{transform:rotateY(180deg) scaleX(-1)}
+.giro-sombra{position:absolute;bottom:7%;left:50%;width:46%;height:16px;border-radius:50%;background:radial-gradient(rgba(0,0,0,.35),transparent 70%);transform:translateX(-50%) scaleX(var(--sx,1))}
+.giro.oscuro .giro-sombra{background:radial-gradient(rgba(255,255,255,.12),transparent 70%)}
+.giro figcaption{font-size:.84rem;color:var(--gris);margin-top:10px;text-align:center}
 .apoyo-sec h3{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);font-weight:600;margin-bottom:18px}
 .fan-hint{font-size:.8rem;color:var(--gris);margin-top:4px}
 .galeria2{display:none}
@@ -611,7 +623,7 @@ const P = {
   "identidades": {titulo: "Logotipos, manuales y piezas impresas", marca: "Varias marcas", tipo: "Freelance", anio: "2024",
     portada: "img/p/identidades/logo-m.webp",
     resumen: "Identidades visuales, manuales de marca, folletos y flyers.",
-    imgs: [["img/p/identidades/logo-m.webp", "Logotipo"], ["img/p/identidades/logo-dferrari.webp", "Logotipo de D’Ferrari"], ["img/p/alexander/icono.webp", "Ícono de Alexander Construye"], ["img/p/identidades/dferrari-papeleria.webp", "D’Ferrari · papelería"], ["img/p/identidades/dferrari-mood.webp", "D’Ferrari · moodboard"], ["img/p/identidades/dferrari-sticker.webp", "D’Ferrari · sticker"], ["img/p/identidades/flyer-idoneo.webp", "Flyer de Idóneo"]]},
+    imgs: [["img/enterx/logo-portada.webp", "Logotipo de EnterX"], ["img/p/move/logo.webp", "Logotipo de MOVE"], ["img/p/move/icono.webp", "Ícono de MOVE"], ["img/p/identidades/logo-m.webp", "Logotipo"], ["img/p/identidades/logo-dferrari.webp", "Logotipo de D’Ferrari"], ["img/p/alexander/icono.webp", "Ícono de Alexander Construye"], ["img/p/identidades/dferrari-papeleria.webp", "D’Ferrari · papelería"], ["img/p/identidades/dferrari-mood.webp", "D’Ferrari · moodboard"], ["img/p/identidades/dferrari-sticker.webp", "D’Ferrari · sticker"], ["img/p/identidades/flyer-idoneo.webp", "Flyer de Idóneo"]]},
 
   "enter-redes": {titulo: "Las redes con el mayor engagement de su categoría", marca: "Enter Tech School", tipo: "Trabajo", anio: "2025 – 2026",
     portada: "img/enter/logo-portada.webp",
@@ -739,6 +751,7 @@ const P = {
     portada: "img/p/enter-merch/poleron.webp",
     resumen: "Recuerdos para la comunidad de egresados.",
     hice: ["Diseñé el polerón Alumni.", "Copa grabada con el logo de egresados para la ceremonia de graduación."],
+    giro: [["img/p/enter-merch/poleron-frente.png", "img/p/enter-merch/poleron-espalda.png", "Polerón Alumni", "claro"], ["img/p/enter-merch/copa.png", "", "Copa grabada", "oscuro"]],
     imgs: [["img/p/enter-merch/poleron.webp", "Polerón Alumni para egresados"], ["img/p/enter-merch/copa.webp", "Copa grabada para la graduación"]]},
   "axel": {titulo: "Media kit para un creador de contenido de tecnología", marca: "Axel Mateo", tipo: "Freelance", anio: "2026",
     portada: "img/casos/axel-hero.webp",
@@ -931,7 +944,8 @@ function vistaProyecto(a, k) {
   const idx = a.proyectos.indexOf(k), sig = a.proyectos[(idx + 1) % a.proyectos.length];
   cuerpo.innerHTML = `<a class="volver" href="#/${a.id}">← ${a.nombre}</a>
     <header class="v-head"><div class="chips">${tag(p)}<span>${meta(p)}</span></div><h2>${p.titulo}</h2><p>${p.resumen}</p></header>
-    ${gal ? `<div class="orbita" style="--alto:${n > 8 ? 660 : 560}px"><div class="eje"><i class="tr"></i><i class="fr"></i><span>${k}</span></div>${gal}</div><p class="fan-hint">Toca una pieza para verla en grande.</p>` : ''}
+    ${p.giro ? `<div class="vitrina">${p.giro.map(([fr, es, c, t]) => `<figure class="giro ${t}"><div class="giro-esc" tabindex="0" aria-label="${c}: arrastra para girar"><div class="giro-obj"><img class="cara" src="${fr}" alt="${c}, frente" draggable="false"><img class="cara atras${es ? '' : ' espejo'}" src="${es || fr}" alt="${c}, espalda" draggable="false"></div><i class="giro-sombra"></i></div><figcaption>${c} · arrastra para girar</figcaption></figure>`).join('')}</div>` : ''}
+    ${gal && !p.giro ? `<div class="orbita" style="--alto:${n > 8 ? 660 : 560}px"><div class="eje"><i class="tr"></i><i class="fr"></i><span>${k}</span></div>${gal}</div><p class="fan-hint">Toca una pieza para verla en grande.</p>` : ''}
     <div class="pdet solo">
       <div class="ptexto"><dl>${bloques}</dl>${p.cita ? `<blockquote class="cita">“${p.cita}”</blockquote>` : ''}${p.link ? `<a class="btn btn-negro" href="${p.link[0]}" target="_blank" rel="noopener">${p.link[1]} ↗</a>` : ''}</div>
       
@@ -944,6 +958,16 @@ function vistaProyecto(a, k) {
   if (orb) { requestAnimationFrame(() => requestAnimationFrame(() => orb.classList.add('lista')));
     orb.onmousemove = e => { const r = orb.getBoundingClientRect(); orb.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5).toFixed(3)); orb.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5).toFixed(3)); };
     orb.onmouseleave = () => { orb.style.setProperty('--mx', 0); orb.style.setProperty('--my', 0); }; }
+  cuerpo.querySelectorAll('.giro-esc').forEach(esc => {
+    const obj = esc.querySelector('.giro-obj'); let ang = 0, vel = 0.35, arr = false, x0 = 0, quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pinta = () => { obj.style.setProperty('--ang', ang + 'deg'); esc.style.setProperty('--sx', (0.55 + 0.45 * Math.abs(Math.cos(ang * Math.PI / 180))).toFixed(2)); };
+    const loop = () => { if (!document.body.contains(esc)) return; if (!arr && !quieto) { ang += vel; pinta(); } requestAnimationFrame(loop); };
+    esc.addEventListener('pointerdown', e => { arr = true; x0 = e.clientX; esc.setPointerCapture(e.pointerId); });
+    esc.addEventListener('pointermove', e => { if (!arr) return; const d = e.clientX - x0; x0 = e.clientX; ang += d * 0.6; vel = Math.sign(d || vel) * 0.35; pinta(); });
+    esc.addEventListener('pointerup', () => arr = false); esc.addEventListener('pointercancel', () => arr = false);
+    esc.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { ang -= 20; pinta(); } if (e.key === 'ArrowRight') { ang += 20; pinta(); } });
+    pinta(); loop();
+  });
   const dk = cuerpo.querySelector('.deck');
   if (dk) {
     const sl = [...dk.querySelectorAll('.mk-pant img')], th = [...dk.querySelectorAll('.deck-tira button')], cap = dk.querySelector('.deck-cap');
