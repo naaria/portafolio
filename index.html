@@ -128,6 +128,10 @@ section{padding-top:110px;padding-bottom:20px}
 .servicios{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
 .serv .img{aspect-ratio:1;border-radius:18px;background:var(--hoja);border:1px solid var(--linea);display:grid;place-items:center;padding:22px;overflow:hidden}
 .serv .img img{max-height:100%;width:auto;object-fit:contain;transition:transform .3s}
+.serv .img.lleno{padding:0}
+.serv .img.lleno img{width:100%;height:100%;max-height:none;object-fit:cover}
+.serv-de{display:block;margin-top:6px;font-size:.8rem;font-weight:600;color:var(--tinta)}
+a.serv-de{text-decoration:underline;text-underline-offset:3px}
 .serv:hover .img img{transform:translateY(-4px) scale(1.03)}
 .serv h3{font-size:1rem;margin:16px 0 6px}
 .serv p{font-size:.9rem;color:var(--gris)}
@@ -335,9 +339,9 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
   <span class="rotulo">servicios</span>
   <h2 class="titulo">Mi trabajo incluye.</h2>
   <div class="servicios">
-    <div class="serv"><div class="img"><img loading="lazy" src="img/servicios/contenido-celular.webp" alt="Grilla de contenido en celular"></div><h3>Estrategia de contenido</h3><p>Grillas, copys y piezas para redes que construyen comunidad y generan resultados.</p></div>
-    <div class="serv"><div class="img"><img loading="lazy" src="img/servicios/branding-manual.webp" alt="Manual de marca"></div><h3>Branding</h3><p>Concepto, identidad visual, manuales y rebranding de marcas.</p></div>
-    <div class="serv"><div class="img"><img loading="lazy" src="img/servicios/web-laptop.webp" alt="Web en laptop"></div><h3>Web y landing pages</h3><p>Estructura, contenidos y diseño de webs pensadas para convertir.</p></div>
+    <div class="serv"><div class="img lleno"><img loading="lazy" src="img/servicios/contenido-enter.webp" alt="Piezas de redes de Enter Tech School"></div><h3>Estrategia de contenido</h3><p>Grillas, copys y piezas para redes que construyen comunidad y generan resultados. <span class="serv-de">Enter Tech School</span></p></div>
+    <div class="serv"><div class="img"><img loading="lazy" src="img/servicios/branding-enterx.webp" alt="Logotipo de EnterX" style="max-width:82%;height:auto"></div><h3>Branding</h3><p>Concepto, identidad visual, manuales y rebranding de marcas. <span class="serv-de">EnterX</span></p></div>
+    <div class="serv"><div class="img lleno"><img loading="lazy" src="img/servicios/landing-move.webp" alt="Landing de MOVE" style="object-position:left top"></div><h3>Web y landing pages</h3><p>Estructura, contenidos y diseño de webs pensadas para convertir. <a class="serv-de" href="https://naaria.github.io/move.pe/" target="_blank" rel="noopener">MOVE ↗</a></p></div>
     <div class="serv"><div class="img"><img loading="lazy" src="img/servicios/interna-laptop.webp" alt="Manual de comunicación inclusiva"></div><h3>Comunicación interna y PR</h3><p>Manuales, planes de comunicación y relación con stakeholders.</p></div>
   </div>
 </section>
