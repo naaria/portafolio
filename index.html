@@ -213,6 +213,7 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 .bloque dt{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--gris);margin-bottom:6px}
 .bloque dd{font-size:.95rem}
 .bloque ul{margin-left:18px}
+.cita{margin-top:18px;padding:16px 18px;border-left:3px solid var(--cel2);background:var(--suave);border-radius:0 12px 12px 0;font-size:1.05rem;font-weight:300}
 .x{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;border:0;background:var(--tinta);color:#fff;font-size:1.3rem;cursor:pointer;z-index:2}
 .lb{position:fixed;inset:0;background:rgba(15,15,17,.94);display:none;align-items:center;justify-content:center;z-index:80;padding:4vh 4vw;flex-direction:column;gap:14px}
 .lb.abierto{display:flex}
@@ -488,10 +489,11 @@ const CASOS = {
     hice:['Concepto, identidad visual y voz de marca.','Merch: tote bag, tarjetero para celular, libreta «Pensar mejor. Ejecutar mejor.» y flyer.','Brochures y materiales para cada servicio.','Co-lideré con el líder de TI el diseño de la web, pensada para convertir.'],
     res:'Una marca con su propia línea de servicios (workshops, Workshop in Company y Cotiza) y presencia en web, redes y eventos.'},
   pbf: {meta:['ENTER · Perú Business Fest','Octubre 2026','Eventos'], titulo:'La primera feria presencial de ENTER',
-    imgs:[['img/casos/pbf-concepto.webp','Guía de concepto del stand'],['img/casos/pbf-stand.webp','Concepto del stand'],['img/casos/pbf-post.webp','Anuncio de la participación']],
-    reto:'Llevar a ENTER por primera vez a una feria empresarial presencial, sin experiencia previa en este tipo de eventos.',
-    hice:['Impulsé la participación y llevé la gestión documental.','Trabajé con el equipo el concepto del stand.','Diseñé el flyer «Continúa la conversación», con QR, diagnóstico gratis y descuento para seguir el contacto después de la feria.','Coordiné con los proveedores la producción del merch.','Supervisé el día del evento y conté la experiencia en LinkedIn.'],
-    res:'ENTER estuvo presente en el Perú Business Fest 2026, con un stand propio que mostraba cómo piensa la marca.'},
+    imgs:[['img/casos/pbf-concepto.webp','Guía de concepto: Enter como una sola marca'],['img/casos/pbf-stand.webp','Concepto del stand'],['img/casos/pbf-post.webp','Anuncio de la participación']],
+    reto:'Participar en ferias era una idea que estaba en el aire desde mis primeros meses en marketing. Encontré el Perú Business Fest 2026, la propuse y recibimos el GO. Era mi primera vez gestionando una participación así.',
+    hice:['Desarrollé el concepto de presentar a ENTER como una sola marca, integrando EnterX y Enter Tech School.','Coordiné con los organizadores y llevé la gestión documental.','Diseñé el merchandising y coticé y coordiné a los proveedores.','Diseñé el flyer «Continúa la conversación», con QR, diagnóstico gratis y descuento para seguir el contacto después de la feria.','Todo en paralelo con nuestro primer workshop presencial y el rediseño de los workshops virtuales.'],
+    res:'Un buen MVP: la primera participación presencial de ENTER, sostenida por un equipo que se encargó del stand, los materiales y la atención a visitantes. Una experiencia para repetir en una versión mejorada.',
+    cita:'Antes de descartar una idea, hay que darse la oportunidad de probarla.'},
   workshop: {meta:['EnterX','2026','Producto y comunicación'], titulo:'Workshop «IA para Líderes»: de la idea al evento',
     imgs:[['img/casos/workshop-foto2.webp','Workshop de IA para Líderes, edición presencial'],['img/casos/wic-portada.webp','Brochure de Workshop in Company']],
     reto:'Crear un formato que llevara a los líderes de empresa de “usar IA” a trabajar con ella, y comunicarlo bien.',
@@ -569,7 +571,7 @@ $$('.card').forEach(c => c.addEventListener('click', () => {
   modal.querySelector('.txt').innerHTML = `<div class="meta">${k.meta.map(m => `<span>${m}</span>`).join('')}</div><h3>${k.titulo}</h3>
     <dl><div class="bloque"><dt>El reto</dt><dd>${k.reto}</dd></div>
     <div class="bloque"><dt>Lo que hice</dt><dd><ul>${k.hice.map(h => `<li>${h}</li>`).join('')}</ul></dd></div>
-    <div class="bloque"><dt>Resultado</dt><dd>${k.res}</dd></div></dl>${k.link ? `<a class="btn btn-negro" style="margin-top:18px" href="${k.link}" target="_blank" rel="noopener">Ver la landing ↗</a>` : ''}`;
+    <div class="bloque"><dt>Resultado</dt><dd>${k.res}</dd></div></dl>${k.cita ? `<blockquote class="cita">“${k.cita}”</blockquote>` : ''}${k.link ? `<a class="btn btn-negro" style="margin-top:18px" href="${k.link}" target="_blank" rel="noopener">Ver la landing ↗</a>` : ''}`;
   const ims = [...modal.querySelectorAll('.imgs img')];
   ims.forEach((im, i) => im.onclick = () => abrirLB(ims.map(x => ({src: x.src, cap: x.dataset.cap})), i));
   modal.classList.add('abierto');
