@@ -682,11 +682,11 @@ const P = {
     link: ["https://enterx.pe", "Ver enterx.pe"],
     imgs: [["img/portada/enterx-web.webp", "Web de EnterX"], ["img/casos/enterx-web.webp", "Sección de la web"]]},
   "move": {titulo: "MOVE: marca y landing de una app de nutrición", marca: "MOVE", tipo: "Académico", anio: "2026",
-    portada: "img/p/move/moodboard.webp",
+    portada: "img/p/move/m-logo.webp",
     resumen: "Identidad y landing para una app de nutrición, actividad y progreso.",
     hice: ["Identidad de marca: logo, ícono de la app, paleta (naranja, lila y crema) y moodboard con frases como «Ideas in motion» y «Movement builds what’s next».", "Aplicaciones: app, tarjeta y tote bag.", "Concepto, copy y diseño de la landing.", "Páginas de inicio, precios, testimonios, preguntas frecuentes y compra."],
     link: ["https://naaria.github.io/move.pe/", "Ver la landing"],
-    imgs: [["img/p/move/moodboard.webp", "Moodboard de marca"], ["img/p/move/logo.webp", "Logo"], ["img/p/move/icono.webp", "Ícono de la app"], ["img/p/move/landing-move.webp", "Inicio de la landing"], ["img/p/move/move-precios.webp", "Precios"], ["img/p/move/move-testimonios.webp", "Testimonios"]]},
+    imgs: [["img/p/move/m-logo.webp", "Movement builds what’s next"], ["img/p/move/m-energy.webp", "Energy, focus, progress, move"], ["img/p/move/m-app.webp", "Ícono en el celular"], ["img/p/move/m-paleta.webp", "Paleta de color"], ["img/p/move/m-letra.webp", "La m como elemento gráfico"], ["img/p/move/m-negro.webp", "Logo en negro"], ["img/p/move/m-ideas.webp", "Ideas in motion"], ["img/p/move/m-tarjeta.webp", "Tarjeta"], ["img/p/move/m-progress.webp", "Progress looks good on you"], ["img/p/move/m-tote.webp", "Tote bag"], ["img/p/move/m-people.webp", "Same people, a brighter next step"], ["img/p/move/moodboard.webp", "Moodboard completo"], ["img/p/move/logo.webp", "Logo"], ["img/p/move/icono.webp", "Ícono de la app"], ["img/p/move/landing-move.webp", "Inicio de la landing"], ["img/p/move/move-precios.webp", "Precios"], ["img/p/move/move-testimonios.webp", "Testimonios"]]},
   "enter-merch": {titulo: "Merch para egresados de Enter", marca: "Enter Tech School", tipo: "Trabajo", anio: "2026",
     portada: "img/p/enter-merch/poleron.webp",
     resumen: "Recuerdos para la comunidad de egresados.",
@@ -854,7 +854,7 @@ function vistaProyecto(a, k) {
   const marcas = p.marcas ? p.marcas.map(([n, t, d, ims]) => `
     <div class="marca-b"><div class="marca-h"><h3>${n}</h3><span class="tag-tipo">${t}</span></div><p>${d}</p>
       <div class="fan chico">${ims.map((f, i) => { const t = ims.length > 1 ? i / (ims.length - 1) : 0; return `<button class="naipe" style="--r:${(-5 + t * 16).toFixed(1)}deg;--y:${(Math.sin(t * Math.PI) * -12 + t * 16).toFixed(0)}px;z-index:${20 - i}" aria-label="${n}"><img src="${f}" alt="${n}" data-cap="${n}"></button>`; }).join('')}</div></div>`).join('') : '';
-  const esApoyo = f => /instagram|\/feed|mailing|\/web-|enterx-web|\/hub|buscador|\/reel|canva|\/li-|presentacion|digital-|manual|papeleria|landing|precios|testimonios|catering\/p\d|cetemin-beneficios\/|kallpa\/|inclusiva\/|cultura\/|indice|introduccion|sesion-|reporte|refrigeracion|retiro-academico|wic-programa|enterx-brochure|\/toma|\/tripode|grabacion|pbf-concepto|pbf-stand\.webp|axel|aitana|casos\/openlabs|enters-benefits|branding-enterx|enter-soluciones|portada-m/.test(f);
+  const esApoyo = f => /instagram|\/feed|mailing|\/web-|enterx-web|\/hub|buscador|\/reel|canva|\/li-|presentacion|digital-|manual|papeleria|landing|precios|testimonios|catering\/p\d|cetemin-beneficios\/|kallpa\/|inclusiva\/|cultura\/|indice|introduccion|sesion-|reporte|refrigeracion|retiro-academico|wic-programa|enterx-brochure|\/toma|\/tripode|grabacion|pbf-concepto|pbf-stand\.webp|move\/moodboard|axel|aitana|casos\/openlabs|enters-benefits|branding-enterx|enter-soluciones|portada-m/.test(f);
   const lista = (p.imgs || []).filter(([f]) => !esApoyo(f)), n = lista.length;
   const apoyo = (p.imgs || []).filter(([f]) => esApoyo(f));
   const apoyoHtml = apoyo.length ? `<section class="apoyo-sec"><h3>Proceso y material de apoyo</h3><div class="apoyo">${apoyo.map(([f, c]) => `<figure><button class="ap-img" aria-label="${c}"><img loading="lazy" src="${f}" alt="${c}" data-cap="${c}"></button><figcaption>${c}</figcaption></figure>`).join('')}</div></section>` : '';
