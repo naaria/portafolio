@@ -342,7 +342,7 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .mk-nav .mk-bar{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#f1f1f3;border-bottom:1px solid #e4e4e8;border-radius:12px 12px 0 0}
 .mk-nav .mk-bar i{width:9px;height:9px;border-radius:50%;background:#ff5f57}.mk-nav .mk-bar i:nth-child(2){background:#febc2e}.mk-nav .mk-bar i:nth-child(3){background:#28c840}
 .mk-nav .mk-bar b{margin-left:10px;flex:1;max-width:70%;height:17px;border-radius:5px;background:#fff;font:400 10px/17px -apple-system,Helvetica,sans-serif;color:#888;padding-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mk-nav .mk-pant{border-radius:0 0 12px 12px;max-height:380px}
+.mk-nav .mk-pant{border-radius:0 0 12px 12px}
 /* celular */
 .mk-tel .ap-img{width:min(220px,62%);padding:9px;border-radius:34px;background:#141416;box-shadow:0 34px 50px -22px rgba(0,0,0,.55),inset 0 0 0 2px #2c2c2e}
 .mk-tel .mk-pant{border-radius:26px;aspect-ratio:9/19.5;background:#000}
@@ -358,7 +358,7 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .mk-hoja .ap-img{width:78%;background:#fff;padding:10px;border-radius:4px;box-shadow:0 26px 40px -22px rgba(0,0,0,.4),0 0 0 1px rgba(0,0,0,.05)}
 .mk-hoja .ap-img::before,.mk-hoja .ap-img::after{content:"";position:absolute;inset:0;background:#fff;border-radius:4px;box-shadow:0 10px 24px -14px rgba(0,0,0,.3),0 0 0 1px rgba(0,0,0,.05);z-index:-1}
 .mk-hoja .ap-img::before{transform:rotate(-4deg) translate(-10px,6px)}.mk-hoja .ap-img::after{transform:rotate(3deg) translate(10px,8px)}
-.mk-hoja .mk-pant{max-height:420px}
+
 /* polaroid */
 .mk-polaroid .ap-img{width:74%;background:#fff;padding:12px 12px 46px;box-shadow:0 26px 40px -20px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.04)}
 .mk-polaroid .mk-pant{aspect-ratio:1;}.mk-polaroid .mk-pant img{height:100%;object-fit:cover}
@@ -379,13 +379,13 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .giro{margin:0}
 .giro-esc{position:relative;height:440px;border-radius:24px;perspective:1100px;display:grid;place-items:center;cursor:grab;overflow:hidden;touch-action:pan-y;outline:none}
 .giro-esc:active{cursor:grabbing}.giro-esc:focus-visible{box-shadow:0 0 0 3px #3f97c9}
-.giro.claro .giro-esc{background:radial-gradient(ellipse at 50% 35%,#ffffff 0%,#e9eef3 60%,#d6dde5 100%)}
-.giro.oscuro .giro-esc{background:radial-gradient(ellipse at 50% 30%,#3a3a42 0%,#16161a 60%,#0b0b0d 100%)}
+.giro.claro .giro-esc,.giro.oscuro .giro-esc{background:none}
+
 .giro-obj{position:relative;width:72%;height:80%;transform-style:preserve-3d;transform:rotateY(var(--ang,0deg));will-change:transform}
-.cara{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backface-visibility:hidden;-webkit-backface-visibility:hidden;user-select:none;filter:drop-shadow(0 18px 22px rgba(0,0,0,.28))}
+.cara{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;backface-visibility:hidden;-webkit-backface-visibility:hidden;user-select:none}
 .cara.atras{transform:rotateY(180deg)}.cara.atras.espejo{transform:rotateY(180deg) scaleX(-1)}
 .giro-sombra{position:absolute;bottom:7%;left:50%;width:46%;height:16px;border-radius:50%;background:radial-gradient(rgba(0,0,0,.35),transparent 70%);transform:translateX(-50%) scaleX(var(--sx,1))}
-.giro.oscuro .giro-sombra{background:radial-gradient(rgba(255,255,255,.12),transparent 70%)}
+
 .giro figcaption{font-size:.84rem;color:var(--gris);margin-top:10px;text-align:center}
 .apoyo-sec h3{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);font-weight:600;margin-bottom:18px}
 .fan-hint{font-size:.8rem;color:var(--gris);margin-top:4px}
@@ -752,7 +752,7 @@ const P = {
     portada: "img/p/enter-merch/poleron.webp",
     resumen: "Recuerdos para la comunidad de egresados.",
     hice: ["Diseñé el polerón Alumni.", "Copa grabada con el logo de egresados para la ceremonia de graduación."],
-    giro: [["img/p/enter-merch/poleron-frente.png", "img/p/enter-merch/poleron-espalda.png", "Polerón Alumni", "claro"], ["img/p/enter-merch/copa.png", "", "Copa grabada", "oscuro"]],
+    giro: [["img/p/enter-merch/poleron-frente.png", "img/p/enter-merch/poleron-espalda.png", "Polerón Alumni", "claro"], ["img/p/enter-merch/copa.png?v=2", "", "Copa grabada", "oscuro"]],
     imgs: [["img/p/enter-merch/poleron.webp", "Polerón Alumni para egresados"], ["img/p/enter-merch/copa.webp", "Copa grabada para la graduación"]]},
   "axel": {titulo: "Media kit para un creador de contenido de tecnología", marca: "Axel Mateo", tipo: "Freelance", anio: "2026",
     portada: "img/casos/axel-hero.webp",
