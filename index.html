@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ariana Cossio’s portafolio</title>
+<meta name="description" content="Portafolio de Ariana Cossio Tabata, comunicadora especializada en comunicación digital, marketing y relaciones públicas.">
+<link rel="preload" href="fonts/OpenSauceOne-SemiBold.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/OpenSauceOne-Light.woff" as="font" type="font/woff" crossorigin>
+<style>
+@font-face{font-family:'Open Sauce One';font-style:normal;font-weight:300;font-display:swap;src:url(fonts/OpenSauceOne-Light.woff) format('woff')}
+@font-face{font-family:'Open Sauce One';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/OpenSauceOne-SemiBold.woff) format('woff')}
+:root{
+  --fondo:#f1f0ed; --hoja:#fff; --suave:#f6f5f2; --linea:#e6e3de;
+  --tinta:#1d1d1f; --gris:#636366; --gris2:#6a6a6f;
+  --cel1:#9ad6f2; --cel2:#5fb3e0; --cel3:#3f97c9; --acento:#2f8fd0;
+  --sans:"Open Sauce One","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;color:var(--tinta);background:var(--fondo);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.pad{padding-left:clamp(20px,5vw,72px);padding-right:clamp(20px,5vw,72px)}
+.ancho{max-width:1240px;margin:0 auto}
+section{padding-top:110px;padding-bottom:20px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:600;font-size:.9rem;transition:transform .15s,background .15s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn-negro{background:var(--tinta);color:#fff}
+.btn-borde{border:1.5px solid var(--tinta)}
+
+/* Etiqueta de sección con carpetita */
+.rotulo{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:600;color:var(--gris)}
+.rotulo::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cel2)}
+.rotulo .mini{width:22px;aspect-ratio:1.28;position:relative}
+.titulo{font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.04;font-weight:600;letter-spacing:-.035em;margin-top:14px;max-width:900px}
+.titulo em{font-style:normal;color:var(--gris2);font-weight:300}
+.bajada{color:var(--gris);font-size:1.05rem;max-width:620px;margin-top:14px}
+
+/* ===== Carpeta estilo Mac (celeste) ===== */
+.mf{position:relative;width:var(--w,96px);aspect-ratio:1.28}
+.mf .tr{position:absolute;inset:7% 0 0 0;border-radius:9%/12%;background:var(--cel3)}
+.mf .tr::before{content:"";position:absolute;left:0;top:-9%;width:42%;height:16%;border-radius:10px 14px 0 0;background:var(--cel3)}
+.mf .papel{position:absolute;left:7%;right:7%;top:12%;height:40%;border-radius:5px;background:#fff}
+.mf .fr{position:absolute;inset:24% 0 0 0;border-radius:9%/12%;background:linear-gradient(180deg,var(--cel1),var(--cel2));box-shadow:inset 0 1.5px 0 rgba(255,255,255,.6),0 12px 22px rgba(30,90,130,.16)}
+.mf .fr::after{content:"";position:absolute;left:6%;right:6%;bottom:12%;height:1.5px;background:rgba(255,255,255,.35);border-radius:2px}
+.icono{position:absolute;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.85rem;font-weight:600;color:var(--tinta);z-index:3}
+.app{width:68px;height:68px;border-radius:17px;background:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.app svg{width:36px;height:36px}
+.pdf{width:66px;height:84px;background:linear-gradient(170deg,#fff,#efefef);border-radius:8px;clip-path:polygon(0 0,70% 0,100% 22%,100% 100%,0 100%);display:grid;place-items:center}
+.pdf b{font-size:.75rem;font-weight:600;color:#fff;background:#c4282d;border-radius:4px;padding:2px 7px}
+.flota{animation:flotar 6s ease-in-out infinite;will-change:transform}
+.flota.b{animation-duration:7.5s;animation-delay:-2s}.flota.c{animation-duration:5.5s;animation-delay:-4s}
+@keyframes flotar{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-9px) rotate(var(--r,0deg))}}
+.cursor{position:absolute;width:40px;z-index:8;pointer-events:none;filter:drop-shadow(0 3px 4px rgba(0,0,0,.25))}
+
+/* ===== Portada con animación al bajar ===== */
+.portada-wrap{position:relative;height:230vh}
+.portada{position:sticky;top:0;height:100vh;min-height:620px;overflow:hidden;background:var(--fondo)}
+.escena{position:absolute;inset:0}
+.p-nombre{position:absolute;left:50%;top:30%;transform:translateX(-50%);font-size:clamp(2.6rem,7.4vw,7rem);font-weight:600;letter-spacing:-.045em;line-height:.9;text-transform:uppercase;white-space:nowrap;z-index:1;text-align:center;transition:opacity .2s}
+.p-nombre span{display:block;font-weight:300}
+.p-folder{position:absolute;left:50%;top:42.5%;width:clamp(230px,30vw,380px);aspect-ratio:1.3;transform:translateX(-50%);z-index:4;cursor:pointer}
+.p-folder .tr{position:absolute;inset:6% 0 0 0;border-radius:6%/8%;background:rgba(63,151,201,.55)}
+.p-folder .tr::before{content:"";position:absolute;left:0;top:-8%;width:40%;height:14%;border-radius:12px 18px 0 0;background:rgba(63,151,201,.55)}
+.p-folder .fr{position:absolute;inset:16% 0 0 0;border-radius:6%/8%;background:linear-gradient(180deg,rgba(154,214,242,.62),rgba(95,179,224,.78));box-shadow:inset 0 2px 0 rgba(255,255,255,.55),0 30px 50px rgba(30,90,130,.18);transform-origin:50% 100%;z-index:3}
+.p-hojas{position:absolute;left:8%;right:8%;top:10%;height:60%;z-index:2}
+.p-hoja{position:absolute;left:0;right:0;top:0;height:100%;background:rgba(255,255,255,.85);border-radius:10px;box-shadow:0 6px 16px rgba(0,0,0,.08);display:flex;align-items:flex-start;justify-content:center;padding-top:12px;font-size:.85rem;font-weight:600;color:var(--gris)}
+.p-label{position:absolute;left:50%;top:calc(42.5% + clamp(230px,30vw,380px)/1.3 + 14px);transform:translateX(-50%);font-size:clamp(1.1rem,1.8vw,1.4rem);font-weight:600;z-index:4;padding:2px 12px;border-radius:7px}
+.p-label.sel{background:var(--acento);color:#fff}
+.p-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font-size:.85rem;color:var(--gris);display:flex;gap:8px;align-items:center}
+.p-hint i{display:inline-block;width:18px;height:28px;border:1.5px solid var(--gris2);border-radius:10px;position:relative}
+.p-hint i::after{content:"";position:absolute;left:50%;top:5px;width:3px;height:6px;border-radius:2px;background:var(--gris);transform:translateX(-50%);animation:rueda 1.6s ease-in-out infinite}
+@keyframes rueda{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,9px)}}
+.p-cursor{left:50%;top:50%}
+.p-i1{left:5%;top:13%}.p-i2{left:19%;top:6%}.p-i3{right:20%;top:6%}.p-i4{right:5%;top:14%}
+.p-i5{right:21%;top:56%}.p-i6{left:19%;top:60%}.p-i7{left:29%;bottom:6%}.p-i8{right:5%;bottom:8%}
+.f-oreo{left:5%;top:38%}.f-web{right:5%;top:37%}.f-21k{right:29%;bottom:5%}
+.foto img{width:var(--w,100px);aspect-ratio:4/5;object-fit:cover;border:4px solid #fff;border-radius:3px;box-shadow:0 12px 24px rgba(0,0,0,.12)}
+.esparcidos{transition:opacity .2s}
+
+/* ===== Quién soy ===== */
+.quien-wrap{display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:center}
+.quien-foto{display:flex;flex-direction:column;align-items:center;gap:10px;transform:rotate(2deg)}
+.quien-foto img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 30%;border:6px solid #fff;border-radius:4px;box-shadow:0 18px 40px rgba(0,0,0,.12)}
+.quien-foto figcaption{font-size:.85rem;font-weight:600}
+@media (max-width:980px){.quien-wrap{grid-template-columns:1fr;gap:34px}.quien-foto{max-width:260px;margin:0 auto}}
+.quien .titulo{max-width:1000px}
+.quien-pie{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-top:34px;flex-wrap:wrap}
+.datos{display:flex;gap:28px;flex-wrap:wrap}
+.dato-q{font-size:.92rem;color:var(--gris)}
+.dato-q b{display:block;color:var(--tinta);font-size:1rem}
+.enlace{font-weight:600;border-bottom:1.5px solid var(--tinta);padding-bottom:3px}
+
+/* ===== Cómo trabajo ===== */
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:40px}
+.paso b{font-weight:300;font-size:3rem;font-weight:600;letter-spacing:-.04em;line-height:1}
+.paso hr{border:0;border-top:1.5px solid var(--linea);margin:16px 0}
+.paso h3{font-size:1.05rem;margin-bottom:6px}
+.paso p{font-size:.92rem;color:var(--gris)}
+
+/* ===== Casos ===== */
+.abanico{position:relative;height:440px;margin-top:20px}
+.ab-folder{left:2%;top:120px}
+.ab-cartas{position:absolute;left:calc(2% + 70px);top:70px;z-index:3}
+.carta{position:absolute;left:0;top:0;width:160px;aspect-ratio:3/4;border-radius:14px;overflow:hidden;box-shadow:0 16px 30px rgba(0,0,0,.14);background:#ddd;
+  transform:translate(0,40px) scale(.85);opacity:0;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity .6s;transition-delay:calc(var(--i)*.12s)}
+.carta img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.abanico.visto .carta{opacity:1;transform:translate(calc(var(--i)*112px + 40px),calc(var(--i)*var(--i)*8px - 40px)) rotate(calc(var(--i)*8deg - 6deg)) scale(1)}
+.ab-folder .fr{z-index:5}
+.cur-ab{left:calc(2% + 120px);top:230px;animation:clicAb 3.5s ease-in-out infinite}
+@keyframes clicAb{0%,100%{transform:translate(0,0) scale(1)}45%{transform:translate(-12px,-10px) scale(1)}55%{transform:translate(-12px,-10px) scale(.85)}65%{transform:translate(-12px,-10px) scale(1)}}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+.card{background:var(--hoja);border:1px solid var(--linea);border-radius:22px;padding:14px;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.07)}
+.card .img{aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:var(--suave)}
+.card .img img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .4s,transform .5s}
+.card:hover .img img{filter:grayscale(0);transform:scale(1.03)}
+.card .txt{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:16px 6px 6px}
+.card h3{font-size:1.25rem;line-height:1.2;letter-spacing:-.01em}
+.card .sub{font-size:.85rem;color:var(--gris);margin-top:5px}
+.card .fl{flex:none;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--tinta);display:grid;place-items:center;transition:transform .2s}
+.card:hover .fl{transform:rotate(45deg)}
+.card.doble{grid-column:1/-1}
+.card.doble .img{aspect-ratio:21/8}
+
+/* ===== Mi trabajo incluye ===== */
+.servicios{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.serv .img{aspect-ratio:1;border-radius:18px;background:var(--hoja);border:1px solid var(--linea);display:grid;place-items:center;padding:22px;overflow:hidden}
+.serv .img img{max-height:100%;width:auto;object-fit:contain;transition:transform .3s}
+.serv:hover .img img{transform:translateY(-4px) scale(1.03)}
+.serv h3{font-size:1rem;margin:16px 0 6px}
+.serv p{font-size:.9rem;color:var(--gris)}
+
+/* ===== Trabajos con criterio ===== */
+.grupos{margin-top:40px;display:grid;gap:18px}
+.grupo{display:grid;grid-template-columns:.85fr 1.6fr;gap:34px;background:var(--hoja);border:1px solid var(--linea);border-radius:24px;padding:28px}
+.g-num{font-size:.85rem;font-weight:600;color:var(--gris)}
+.grupo h3{font-size:1.45rem;line-height:1.15;letter-spacing:-.02em;margin:8px 0 6px}
+.g-marca{font-size:.85rem;color:var(--gris);margin-bottom:16px}
+.g-par{font-size:.93rem;margin-bottom:10px}
+.g-par b{display:block;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gris);margin-bottom:2px}
+.g-piezas{display:grid;grid-template-columns:repeat(var(--n,3),1fr);gap:12px;align-content:start}
+.g-piezas figure{border-radius:12px;overflow:hidden;background:var(--suave);cursor:zoom-in;aspect-ratio:var(--ar,4/5)}
+.g-piezas img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.g-piezas figure:hover img{transform:scale(1.03)}
+.g-link{display:inline-block;margin-top:6px;font-size:.85rem;font-weight:600;border-bottom:1.5px solid var(--tinta)}
+
+/* ===== IA ===== */
+.skills{position:relative;display:flex;flex-direction:column;align-items:center;margin:50px 0 10px}
+.docs{display:flex;gap:clamp(20px,5vw,64px);align-items:flex-start}
+.doc{display:flex;flex-direction:column;align-items:center;gap:12px;font-size:.92rem;max-width:220px;text-align:center}
+.doc .pg{transform:rotate(var(--r,0deg))}
+.doc span{font-weight:600}
+.doc p{font-size:.88rem;color:var(--gris);line-height:1.45}
+.doc .pg{position:relative;width:112px;height:144px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.1))}
+.doc .pg div{position:absolute;inset:0;background:linear-gradient(170deg,#fff,#ecebea);border-radius:12px;clip-path:polygon(0 0,70% 0,100% 23%,100% 100%,0 100%);display:grid;place-items:center}
+.doc .pg div b{font-weight:600;font-size:1.35rem;color:#5c5c61}
+.doc .pg::after{content:"";position:absolute;right:0;top:0;width:30%;height:23%;background:linear-gradient(225deg,#fff 50%,#d9d8d6 50%);border-radius:0 0 0 10px}
+.skills .mf{margin-top:46px}
+.skills .fol-nom{margin-top:12px;font-weight:600}
+.cur-sk{left:52%;top:72%;animation:clicAb 3.5s ease-in-out infinite}
+.ia-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.tile{background:var(--hoja);border:1px solid var(--linea);border-radius:22px;padding:28px;display:flex;flex-direction:column;min-height:240px}
+.tile .n{font-weight:300;font-size:2.4rem;font-weight:600;letter-spacing:-.04em;line-height:1}
+.tile h3{font-size:1.15rem;margin:14px 0 8px}
+.tile p{font-size:.92rem;color:var(--gris)}
+.tile .ad{margin-top:auto;padding-top:16px;font-size:.82rem;font-weight:600;display:grid;gap:3px}
+.tile .ad s{color:var(--gris);font-weight:600}
+.tools{display:flex;flex-wrap:wrap;gap:22px 30px;margin-top:50px;justify-content:center}
+.tool{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.74rem;color:var(--gris);width:72px;text-align:center}
+.tool svg{width:26px;height:26px;fill:var(--tinta)}
+.tool .sin{width:26px;height:26px;border-radius:7px;border:2px solid var(--tinta)}
+
+/* ===== Trayectoria ===== */
+.fila{display:grid;grid-template-columns:180px 1fr 1.2fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--linea);align-items:baseline}
+.fila .anio{font-weight:600;color:var(--gris)}
+.fila b{display:block;font-size:1.08rem}
+.fila span{font-size:.88rem;color:var(--gris)}
+.fila p{font-size:.93rem}
+
+/* ===== Escritorio ===== */
+.escritorio{padding-bottom:90px}
+.mesa{position:relative;height:820px;max-width:1120px;margin:30px auto 0;background:var(--hoja);border:1px solid var(--linea);border-radius:28px}
+.mesa-centro{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);text-align:center;width:min(640px,90%);z-index:2}
+.mesa-centro h2{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1;font-weight:600;letter-spacing:-.045em}
+.pill{display:inline-block;margin-top:16px;border:1.5px solid var(--tinta);background:var(--cel1);border-radius:999px;padding:6px 20px;font-weight:600;font-size:.95rem}
+.obj{position:absolute;width:var(--w)}
+.obj svg,.obj img{width:100%;height:auto;display:block;transition:transform .25s}
+.obj img{filter:drop-shadow(0 14px 18px rgba(0,0,0,.12))}
+.obj:hover svg,.obj:hover img{transform:scale(1.05) rotate(-2deg)}
+.obj .num{position:absolute;font-size:.95rem;font-weight:600;white-space:nowrap}
+.obj .dato{position:absolute;left:50%;top:calc(100% + 8px);transform:translate(-50%,6px);width:210px;background:var(--tinta);color:#fff;font-size:.82rem;line-height:1.4;padding:10px 12px;border-radius:12px;opacity:0;pointer-events:none;transition:.2s;z-index:5}
+.obj:hover .dato,.obj:focus .dato{opacity:1;transform:translate(-50%,0)}
+.pista-hover{text-align:center;color:var(--gris);font-size:.88rem;margin-top:14px}
+.cierre{text-align:center;margin-top:60px}
+.cierre h3{font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.cierre p{color:var(--gris);margin:12px auto 26px;max-width:540px}
+.c-acc{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:26px clamp(20px,5vw,72px);border-top:1px solid var(--linea);font-size:.82rem;color:var(--gris)}
+
+/* ===== Modal y visor ===== */
+.modal{position:fixed;inset:0;background:rgba(20,20,22,.6);display:none;align-items:center;justify-content:center;z-index:60;padding:3vh 3vw}
+.modal.abierto{display:flex}
+.panel{background:#fff;border-radius:26px;max-width:1060px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.panel .imgs{display:grid;gap:10px;padding:14px;align-content:start;background:var(--suave)}
+.panel .imgs img{border-radius:14px;width:100%;cursor:zoom-in}
+.panel .txt{padding:38px 36px}
+.panel .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.panel .meta span{font-size:.74rem;font-weight:600;color:var(--gris);border:1px solid var(--linea);border-radius:999px;padding:4px 11px}
+.panel h3{font-size:1.75rem;line-height:1.1;letter-spacing:-.02em;margin-bottom:22px}
+.bloque{padding:14px 0;border-top:1px solid var(--linea)}
+.bloque dt{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--gris);margin-bottom:6px}
+.bloque dd{font-size:.95rem}
+.bloque ul{margin-left:18px}
+.x{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;border:0;background:var(--tinta);color:#fff;font-size:1.3rem;cursor:pointer;z-index:2}
+.lb{position:fixed;inset:0;background:rgba(15,15,17,.94);display:none;align-items:center;justify-content:center;z-index:80;padding:4vh 4vw;flex-direction:column;gap:14px}
+.lb.abierto{display:flex}
+.lb img{max-height:84vh;max-width:92vw;border-radius:10px;object-fit:contain}
+.lb p{color:#eee;font-size:.9rem}
+.lb button{position:absolute;background:rgba(255,255,255,.14);border:0;color:#fff;width:46px;height:46px;border-radius:50%;font-size:1.4rem;cursor:pointer}
+.lb .cerrar{top:20px;right:20px}.lb .ant{left:20px;top:50%}.lb .sig{right:20px;top:50%}
+
+.off .flota,.off .cursor{animation-play-state:paused}
+@media (prefers-reduced-motion:reduce){.flota,.cursor{animation:none!important}*{transition:none!important}.portada-wrap{height:auto}.portada{position:relative}}
+@media (max-width:980px){
+  .pasos,.servicios{grid-template-columns:1fr 1fr}
+  .ia-tiles{grid-template-columns:1fr}
+  .grupo{grid-template-columns:1fr}
+  .fila{grid-template-columns:1fr}
+  .panel{grid-template-columns:1fr}
+  .p-i2,.p-i3,.p-i5,.p-i7,.p-i8{display:none}
+  .p-i1{left:5%;top:auto;bottom:20%}.p-i4{right:5%;top:auto;bottom:20%}.p-i6{display:none}
+  .f-21k{display:none}.f-oreo{left:4%;top:9%}.f-web{right:4%;top:9%}.foto img{width:72px!important}
+  .p-nombre{top:31%;font-size:clamp(2.2rem,10vw,3.4rem)}
+  .p-folder{top:37.5%}
+  .p-label{top:calc(37.5% + 230px/1.3 + 10px)}
+  .mesa{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:40px 20px;padding:30px 20px}
+  .mesa-centro{position:static;transform:none;grid-column:1/-1;width:100%}
+  .obj{position:relative!important;inset:auto!important;width:min(var(--w),80%)!important;justify-self:center}
+  .obj .num{position:static;display:block;margin-bottom:6px}
+  .obj .dato{position:static;transform:none;opacity:1;width:auto;margin-top:8px;background:transparent;color:var(--gris);padding:0}
+  .pista-hover{display:none}
+  .abanico{height:380px}.carta{width:110px}
+  .abanico.visto .carta{transform:translate(calc(var(--i)*52px + 30px),calc(var(--i)*var(--i)*6px - 30px)) rotate(calc(var(--i)*8deg - 6deg))}
+  .cards{grid-template-columns:1fr}
+  .card.doble .img{aspect-ratio:16/10}
+}
+@media (max-width:600px){.pasos,.servicios{grid-template-columns:1fr}.g-piezas{grid-template-columns:repeat(2,1fr)}.doc .pg{width:80px;height:104px}}
+
+b,strong,h1,h2,h3,dt,th{font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- ============ PORTADA ============ -->
+<div class="portada-wrap" id="inicio">
+  <div class="portada">
+    <div class="escena">
+      <div class="p-nombre">Ariana Cossio’s<span>portafolio</span></div>
+      <div class="esparcidos">
+        <a class="icono flota p-i1" href="#casos"><div class="mf" style="--w:100px"><div class="tr"></div><div class="papel"></div><div class="fr"></div></div>casos</a>
+        <div class="icono flota b p-i2"><div class="app"><svg viewBox="0 0 24 24" aria-label="Claude"><path fill="#d97757" d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg></div></div>
+        <div class="icono flota c p-i3"><div class="app"><svg viewBox="0 0 24 24" aria-label="Canva"><path fill="#00a3c4" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.962 7.68c.754 0 1.337.549 1.405 1.2.069.583-.171 1.097-.822 1.406-.343.171-.48.172-.549.069-.034-.069 0-.137.069-.206.617-.514.617-.926.548-1.508-.034-.378-.308-.618-.583-.618-1.2 0-2.914 2.674-2.674 4.629.103.754.549 1.646 1.509 1.646.308 0 .65-.103.96-.24.5-.264.799-.47 1.097-.8-.073-.885.704-2.046 1.851-2.046.515 0 .926.205.96.583.068.514-.377.582-.514.582s-.378-.034-.378-.17c-.034-.138.309-.07.275-.378-.035-.206-.24-.274-.446-.274-.72 0-1.131.994-1.029 1.611.035.275.172.549.447.549.205 0 .514-.31.617-.755.068-.308.343-.514.583-.514.102 0 .17.034.205.171v.138c-.034.137-.137.548-.102.651 0 .069.034.171.17.171.092 0 .436-.18.777-.459.117-.59.253-1.298.253-1.357.034-.24.137-.48.617-.48.103 0 .171.034.205.171v.138l-.136.617c.445-.583 1.097-.994 1.508-.994.172 0 .309.102.309.274 0 .103 0 .274-.069.446-.137.377-.309.96-.412 1.474 0 .137.035.274.207.274.171 0 .685-.206 1.096-.754l.007-.004c-.002-.068-.007-.134-.007-.202 0-.411.035-.754.104-.994.068-.274.411-.514.617-.514.103 0 .205.069.205.171 0 .035 0 .103-.034.137-.137.446-.24.857-.24 1.269 0 .24.034.582.102.788 0 .034.035.069.07.069.068 0 .548-.445.89-1.028-.308-.206-.48-.549-.48-.96 0-.72.446-1.097.858-1.097.343 0 .617.24.617.72 0 .308-.103.65-.274.96h.102a.77.77 0 0 0 .584-.24.293.293 0 0 1 .134-.117c.335-.425.83-.74 1.41-.74.48 0 .924.205.959.582.068.515-.378.618-.515.618l-.002-.002c-.138 0-.377-.035-.377-.172 0-.137.309-.068.274-.376-.034-.206-.24-.275-.446-.275-.686 0-1.13.891-1.028 1.611.034.275.171.583.445.583.206 0 .515-.308.652-.754.068-.274.343-.514.583-.514.103 0 .17.034.205.171 0 .069 0 .206-.137.652-.17.308-.171.48-.137.617.034.274.171.48.309.583.034.034.068.102.068.102 0 .069-.034.138-.137.138-.034 0-.068 0-.103-.035-.514-.205-.72-.548-.789-.891-.205.24-.445.377-.72.377-.445 0-.89-.411-.96-.926a1.609 1.609 0 0 1 .075-.649c-.203.13-.422.203-.623.203h-.17c-.447.652-.927 1.098-1.27 1.303a.896.896 0 0 1-.377.104c-.068 0-.171-.035-.205-.104-.095-.152-.156-.392-.193-.667-.481.527-1.145.805-1.453.805-.343 0-.548-.206-.582-.55v-.376c.102-.754.377-1.2.377-1.337a.074.074 0 0 0-.069-.07c-.24 0-1.028.824-1.166 1.373l-.103.445c-.068.309-.377.515-.582.515-.103 0-.172-.035-.206-.172v-.137l.046-.233c-.435.31-.87.508-1.075.508-.308 0-.48-.172-.514-.412-.206.274-.445.412-.754.412-.352 0-.696-.24-.862-.593-.244.275-.523.553-.852.764-.48.309-1.028.549-1.68.549-.582 0-1.097-.309-1.371-.583-.412-.377-.651-.96-.686-1.509-.205-1.68.823-3.84 2.4-4.8.378-.205.755-.343 1.132-.343zm9.77 3.291c-.104 0-.172.172-.172.343 0 .274.137.583.309.755a1.74 1.74 0 0 0 .102-.583c0-.343-.137-.515-.24-.515z"/></svg></div></div>
+        <a class="icono flota p-i4" href="#trabajos"><div class="mf" style="--w:100px"><div class="tr"></div><div class="papel"></div><div class="fr"></div></div>trabajos</a>
+        <div class="icono flota b p-i5"><div class="app"><svg viewBox="0 0 24 24" aria-label="ChatGPT"><path fill="#1d1d1f" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg></div></div>
+        <a class="icono flota c p-i6" href="#ia"><div class="mf" style="--w:100px"><div class="tr"></div><div class="papel"></div><div class="fr"></div></div>skills_ia</a>
+        <a class="icono flota p-i7" href="docs/Ariana-Cossio-CV-Visual.pdf" download><div class="pdf"><b>PDF</b></div>CV_ariana.pdf</a>
+        <a class="icono foto flota c f-oreo" href="#contacto" style="--r:-4deg"><img src="img/portada/oreo.webp" alt="Oreo, el gato de Ariana" style="--w:104px">oreo.jpeg</a>
+        <a class="icono foto flota f-web" href="#casos" style="--r:3deg"><img src="img/portada/enterx-web.webp" alt="Web de EnterX" style="--w:112px">enterx_web.jpeg</a>
+        <a class="icono foto flota b f-21k" href="#sobre-mi" style="--r:5deg"><img src="img/portada/21k-lima.webp" alt="Ariana en la media maratón de Lima" style="--w:100px">21k_lima.jpeg</a>
+        <a class="icono flota b p-i8" href="#sobre-mi"><div class="mf" style="--w:100px"><div class="tr"></div><div class="papel"></div><div class="fr"></div></div>sobre_mi</a>
+      </div>
+      <div class="p-folder" id="pFolder" role="button" aria-label="Abrir portafolio" tabindex="0">
+        <div class="tr"></div>
+        <div class="p-hojas">
+          <div class="p-hoja" data-i="0"></div>
+          <div class="p-hoja" data-i="1"></div>
+          <div class="p-hoja" data-i="2"></div>
+        </div>
+        <div class="fr" id="pFront"></div>
+      </div>
+      <div class="p-label" id="pLabel">mi trabajo</div>
+      <svg class="cursor p-cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 L4 20 L9 15.5 L12.2 22 L15 20.7 L11.8 14.3 L18.5 14.3 Z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <div class="p-hint" id="pHint"><i></i>Desliza para abrir</div>
+    </div>
+  </div>
+</div>
+
+<main class="ancho">
+
+<!-- ============ QUIÉN SOY ============ -->
+<section class="quien pad" id="sobre-mi">
+ <div class="quien-wrap">
+ <div>
+  <span class="rotulo">sobre_mi</span>
+  <h2 class="titulo">Soy comunicadora especializada en Relaciones Públicas. Conecto lo que necesita el cliente con lo que el equipo puede crear, <em>y coordino campañas, eventos y contenidos de principio a fin.</em></h2>
+  <div class="quien-pie">
+    <a class="enlace" href="#trayectoria">Ver trayectoria →</a>
+  </div>
+ </div>
+  <figure class="quien-foto"><img loading="lazy" src="img/portada/ariana-pbf.webp" alt="Ariana Cossio en Perú Business Fest 2026"><figcaption>ariana_pbf_2026.jpeg</figcaption></figure>
+ </div>
+</section>
+
+<!-- ============ CÓMO TRABAJO ============ -->
+<section class="pad">
+  <span class="rotulo">como_trabajo</span>
+  <h2 class="titulo">Del brief al resultado, en cuatro pasos.</h2>
+  <div class="pasos">
+    <div class="paso"><b>01</b><hr><h3>Escucho</h3><p>Entiendo al cliente: qué quiere lograr, a quién le habla y qué lo hace distinto.</p></div>
+    <div class="paso"><b>02</b><hr><h3>Diseño la estrategia</h3><p>Convierto los objetivos en un concepto, mensajes claros y un plan con canales y tiempos.</p></div>
+    <div class="paso"><b>03</b><hr><h3>Coordino</h3><p>Alineo a diseño, contenido, tecnología, proveedores y dirección para entregar a tiempo.</p></div>
+    <div class="paso"><b>04</b><hr><h3>Mido y mejoro</h3><p>Recojo datos y feedback, reporto resultados y ajusto la siguiente versión.</p></div>
+  </div>
+</section>
+
+<!-- ============ CASOS ============ -->
+<section class="pad" id="casos">
+  <span class="rotulo">casos</span>
+  <h2 class="titulo">Casos destacados.</h2>
+  <div class="cards">
+    <button class="card" data-caso="enterx"><div class="img"><img loading="lazy" src="img/casos/enterx-merch.webp" alt="" style="object-position:center 40%"></div><div class="txt"><div><h3>EnterX: una marca para empresas, desde cero</h3><div class="sub">Branding · ENTER · 2026</div></div><span class="fl">↗</span></div></button>
+    <button class="card" data-caso="pbf"><div class="img"><img loading="lazy" src="img/casos/pbf-concepto.webp" alt=""></div><div class="txt"><div><h3>La primera feria presencial de ENTER</h3><div class="sub">Eventos · Perú Business Fest · 2026</div></div><span class="fl">↗</span></div></button>
+    <button class="card" data-caso="workshop"><div class="img"><img loading="lazy" src="img/casos/workshop-foto2.webp" alt="" style="object-position:center 35%"></div><div class="txt"><div><h3>Workshop «IA para Líderes»: de la idea al evento</h3><div class="sub">Producto y comunicación · EnterX · 2026</div></div><span class="fl">↗</span></div></button>
+    <button class="card" data-caso="redes"><div class="img"><img loading="lazy" src="img/enter/programas.webp" alt="" style="object-position:center 25%"></div><div class="txt"><div><h3>Las redes con el mayor engagement de su categoría</h3><div class="sub">Redes sociales · Enter Tech School · 2025 – 2026</div></div><span class="fl">↗</span></div></button>
+    <button class="card doble" data-caso="cetemin"><div class="img"><img loading="lazy" src="img/cetemin/indice.webp" alt="" style="object-position:center 30%"></div><div class="txt"><div><h3>Workbooks de Inglés Técnico para CETEMIN</h3><div class="sub">Diseño editorial · Producto educativo · 2026</div></div><span class="fl">↗</span></div></button>
+    <button class="card doble" data-caso="axel"><div class="img"><img loading="lazy" src="img/casos/axel-hero.webp" alt=""></div><div class="txt"><div><h3>Media kit para un creador de contenido de tecnología</h3><div class="sub">Freelance · Landing web · 2026</div></div><span class="fl">↗</span></div></button>
+  </div>
+</section>
+
+<!-- ============ MI TRABAJO INCLUYE ============ -->
+<section class="pad">
+  <span class="rotulo">servicios</span>
+  <h2 class="titulo">Mi trabajo incluye.</h2>
+  <div class="servicios">
+    <div class="serv"><div class="img"><img loading="lazy" src="img/servicios/contenido-celular.webp" alt="Grilla de contenido en celular"></div><h3>Estrategia de contenido</h3><p>Grillas, copys y piezas para redes que construyen comunidad y generan resultados.</p></div>
+    <div class="serv"><div class="img"><img loading="lazy" src="img/servicios/branding-manual.webp" alt="Manual de marca"></div><h3>Branding</h3><p>Concepto, identidad visual, manuales y rebranding de marcas.</p></div>
+    <div class="serv"><div class="img"><img loading="lazy" src="img/servicios/web-laptop.webp" alt="Web en laptop"></div><h3>Web y landing pages</h3><p>Estructura, contenidos y diseño de webs pensadas para convertir.</p></div>
+    <div class="serv"><div class="img"><img loading="lazy" src="img/servicios/interna-laptop.webp" alt="Manual de comunicación inclusiva"></div><h3>Comunicación interna y PR</h3><p>Manuales, planes de comunicación y relación con stakeholders.</p></div>
+  </div>
+</section>
+
+<!-- ============ TRABAJOS ============ -->
+<section class="pad" id="trabajos">
+  <span class="rotulo">trabajos</span>
+  <h2 class="titulo">Trabajos, <em>con el criterio detrás de cada uno.</em></h2>
+  <div class="grupos"><article class="grupo">
+      <div><span class="g-num">01</span><h3>Un sistema visual para lanzar bootcamps</h3><div class="g-marca">Enter Tech School · Instagram</div>
+        <p class="g-par"><b>El reto</b>Presentar tres programas distintos sin que el feed se viera desordenado.</p><p class="g-par"><b>La idea</b>Misma estructura para todos (nombre, sello «IA incluida» y tres datos clave) y un color por programa, para que el usuario compare de un vistazo.</p></div>
+      <div class="g-piezas" style="--n:3;"><figure><img loading="lazy" decoding="async" src="img/enter/fullstack.webp" alt="Bootcamp Fullstack Developer"></figure><figure><img loading="lazy" decoding="async" src="img/enter/ciberseguridad.webp" alt="Bootcamp Ciberseguridad"></figure><figure><img loading="lazy" decoding="async" src="img/enter/data-analytics.webp" alt="Bootcamp Data Analytics"></figure></div>
+    </article>
+    <article class="grupo">
+      <div><span class="g-num">02</span><h3>Contenido educativo que engancha</h3><div class="g-marca">Enter Tech School · Instagram</div>
+        <p class="g-par"><b>El reto</b>Atraer a personas que todavía no conocen la escuela, sin hablar de venta.</p><p class="g-par"><b>La idea</b>Primero el gancho («herramientas que casi nadie conoce»), después valor gratuito y al final una invitación a conversar.</p></div>
+      <div class="g-piezas" style="--n:3;"><figure><img loading="lazy" decoding="async" src="img/enter/herramientas-ia.webp" alt="6 herramientas de IA que casi nadie conoce"></figure><figure><img loading="lazy" decoding="async" src="img/enter/google-ia.webp" alt="Google tiene IA gratis que nadie usa"></figure><figure><img loading="lazy" decoding="async" src="img/enter/ia-en-serio.webp" alt="¿Quieres aprender a aplicar IA en serio?"></figure></div>
+    </article>
+    <article class="grupo">
+      <div><span class="g-num">03</span><h3>Humanizar la marca</h3><div class="g-marca">Enter Tech School · Instagram y reels</div>
+        <p class="g-par"><b>El reto</b>Que la escuela no se viera como una marca fría, sino como un equipo de personas.</p><p class="g-par"><b>La idea</b>Personas reales del equipo frente a cámara, nostalgia y situaciones con las que el público se identifica.</p></div>
+      <div class="g-piezas" style="--n:3;"><figure><img loading="lazy" decoding="async" src="img/enter/reel-error-tech.webp" alt="Reel: El error que cometen todos al aprender tech"></figure><figure><img loading="lazy" decoding="async" src="img/enter/mujeres-enter.webp" alt="Las mujeres detrás de Enter Tech School"></figure><figure><img loading="lazy" decoding="async" src="img/enter/tu-vs-2026.webp" alt="Tú vs tu versión tech 2026"></figure></div>
+    </article>
+    <article class="grupo">
+      <div><span class="g-num">04</span><h3>Explicar IA a gerentes</h3><div class="g-marca">EnterX · Instagram y LinkedIn</div>
+        <p class="g-par"><b>El reto</b>Hablarle a líderes de empresa sobre conceptos técnicos sin perderlos.</p><p class="g-par"><b>La idea</b>Analogías simples (cerebro + cuerpo), diagramas limpios y una estética sobria, más cercana a una consultora que a una escuela.</p></div>
+      <div class="g-piezas" style="--n:3;"><figure><img loading="lazy" decoding="async" src="img/enterx/harness.webp" alt="Lo que cambia es el harness"></figure><figure><img loading="lazy" decoding="async" src="img/enterx/analogia.webp" alt="La analogía: cerebro + cuerpo"></figure><figure><img loading="lazy" decoding="async" src="img/enterx/antes-de-invertir.webp" alt="Antes de invertir más en IA"></figure></div>
+    </article>
+    <article class="grupo">
+      <div><span class="g-num">05</span><h3>Del teaser al lanzamiento</h3><div class="g-marca">EnterX · Instagram</div>
+        <p class="g-par"><b>El reto</b>Anunciar productos y eventos nuevos generando expectativa.</p><p class="g-par"><b>La idea</b>La carpeta como recurso narrativo: primero se insinúa lo que viene y después se «abre» para mostrar el producto o el evento.</p></div>
+      <div class="g-piezas" style="--n:3;"><figure><img loading="lazy" decoding="async" src="img/enterx/que-viene.webp" alt="¿Qué se viene en EnterX?"></figure><figure><img loading="lazy" decoding="async" src="img/enterx/nuevo-producto.webp" alt="Nuevo producto: Workshop in Company"></figure><figure><img loading="lazy" decoding="async" src="img/enterx/pbf-hoy.webp" alt="¡Es hoy! Perú Business Fest"></figure></div>
+    </article>
+    <article class="grupo">
+      <div><span class="g-num">06</span><h3>Comunidad: OpenLabs y OpenTalks</h3><div class="g-marca">EnterX · Comunidad</div>
+        <p class="g-par"><b>El reto</b>Crear espacios gratuitos que acerquen a la comunidad antes de cualquier venta.</p><p class="g-par"><b>La idea</b>Una identidad propia para cada formato: OpenLabs para talleres prácticos y OpenTalks para charlas de IA aplicada al trabajo.</p></div>
+      <div class="g-piezas" style="--n:3;--ar:1/1;"><figure><img loading="lazy" decoding="async" src="img/enterx/openlabs-logo.webp" alt="Identidad de OpenLabs"></figure><figure><img loading="lazy" decoding="async" src="img/enterx/opentalks.webp" alt="Identidad de OpenTalks"></figure><figure><img loading="lazy" decoding="async" src="img/casos/openlabs.webp" alt="OpenLabs: construye tu dashboard con IA"></figure></div>
+    </article>
+    <article class="grupo">
+      <div><span class="g-num">07</span><h3>Contenido para marcas locales</h3><div class="g-marca">Freelance · Alexander Construye, Dirección Estratégica, La Badiane y Oslo Languages</div>
+        <p class="g-par"><b>El reto</b>Darle a cada marca una voz propia en redes, con equipos y presupuestos pequeños.</p><p class="g-par"><b>La idea</b>Entender primero el negocio (inmobiliaria, consultora, cafetería, idiomas) y adaptar el tono: informativo, cercano o divertido según el público.</p></div>
+      <div class="g-piezas" style="--n:4;--ar:1/1;"><figure><img loading="lazy" decoding="async" src="img/trabajos/alexander-renovado.webp" alt="Alexander Construye: ¡Nos hemos renovado!"></figure><figure><img loading="lazy" decoding="async" src="img/trabajos/direccion-curriculums.webp" alt="Dirección Estratégica: selección de personal"></figure><figure><img loading="lazy" decoding="async" src="img/trabajos/badiane-llamada.webp" alt="La Badiane: la llamada que no puedes rechazar"></figure><figure><img loading="lazy" decoding="async" src="img/trabajos/oslo-nativo.webp" alt="Oslo Languages: ¿quieres sonar más nativo?"></figure></div>
+    </article></div>
+</section>
+
+<!-- ============ IA ============ -->
+<section class="pad" id="ia">
+  <span class="rotulo">skills_ia</span>
+  <h2 class="titulo">Uso la IA para que el equipo dedique su tiempo a pensar, <em>no a repetir.</em></h2>
+  <div class="skills">
+    <div class="docs">
+      <div class="doc" style="--r:-6deg"><div class="pg"><div><b>SKILL</b></div></div><span>ai-tana.md</span><p>Asistente que ordena la producción mensual de contenido: grilla, piezas, copys y publicación.</p></div>
+      <div class="doc"><div class="pg"><div><b>SKILL</b></div></div><span>enter-benefits.md</span><p>Automatiza el programa de incentivos: datos y pieza para la comunidad, sin hacerlo a mano.</p></div>
+      <div class="doc" style="--r:6deg"><div class="pg"><div><b>SKILL</b></div></div><span>copiloto-enterx.md</span><p>9 manuales con los criterios del área para trabajar con agentes de IA.</p></div>
+    </div>
+    <div class="mf" style="--w:180px"><div class="tr"></div><div class="papel"></div><div class="fr"></div></div>
+    <span class="fol-nom">Mis skills de comunicación</span>
+    <svg class="cursor cur-sk" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2 L4 20 L9 15.5 L12.2 22 L15 20.7 L11.8 14.3 L18.5 14.3 Z" fill="#111" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  </div>
+  <div class="tools"><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg><span>Claude</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg><span>ChatGPT</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></svg><span>Gemini</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z"/></svg><span>Perplexity</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.999 3.201C5.372 3.201 0 8.528 0 15.101V20.8h2.212v-.568c0-2.666 2.178-4.827 4.866-4.827 2.688 0 4.866 2.16 4.866 4.827v.568h2.212v-.568c0-3.877-3.17-7.019-7.078-7.019A7.075 7.075 0 0 0 2.992 14.5a7.355 7.355 0 0 1 6.568-4.016c4.057 0 7.347 3.264 7.347 7.287V20.8h2.212V17.77c0-5.235-4.28-9.481-9.56-9.481a9.563 9.563 0 0 0-6.217 2.28A9.795 9.795 0 0 1 12 5.393c5.406 0 9.788 4.346 9.788 9.707V20.8H24V15.1c-.001-6.573-5.373-11.9-12.001-11.9Z"/></svg><span>NotebookLM</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.066 6.028v2.22h5.729q.075-.001.148.005l-5.853 5.752a2 2 0 0 1-.024-.309V8.247h-2.353v5.45c0 2.322 1.935 4.222 4.258 4.222h5.675v-2.22h-5.675q-.03 0-.059-.003l5.729-5.629q.006.082.006.166v5.465H24v-5.465a4.204 4.204 0 0 0-4.205-4.205zM0 8.245l8.28 9.266c.839.94 2.396.346 2.396-.914V8.245H8.19v5.44l-4.86-5.44Z"/></svg><span>v0</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.38 3.498c-.27 0-.511.19-.566.465L9.85 18.986a.578.578 0 0 0 .453.678l4.095.826a.58.58 0 0 0 .682-.455l2.963-15.021a.578.578 0 0 0-.453-.678l-4.096-.826a.589.589 0 0 0-.113-.012zm-5.876.098a.576.576 0 0 0-.516.318L.062 17.697a.575.575 0 0 0 .256.774l3.733 1.877a.578.578 0 0 0 .775-.258l6.926-13.781a.577.577 0 0 0-.256-.776L7.762 3.658a.571.571 0 0 0-.258-.062zm11.74.115a.576.576 0 0 0-.576.576v15.426c0 .318.258.578.576.578h4.178a.58.58 0 0 0 .578-.578V4.287a.578.578 0 0 0-.578-.576Z"/></svg><span>Make</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.962 7.68c.754 0 1.337.549 1.405 1.2.069.583-.171 1.097-.822 1.406-.343.171-.48.172-.549.069-.034-.069 0-.137.069-.206.617-.514.617-.926.548-1.508-.034-.378-.308-.618-.583-.618-1.2 0-2.914 2.674-2.674 4.629.103.754.549 1.646 1.509 1.646.308 0 .65-.103.96-.24.5-.264.799-.47 1.097-.8-.073-.885.704-2.046 1.851-2.046.515 0 .926.205.96.583.068.514-.377.582-.514.582s-.378-.034-.378-.17c-.034-.138.309-.07.275-.378-.035-.206-.24-.274-.446-.274-.72 0-1.131.994-1.029 1.611.035.275.172.549.447.549.205 0 .514-.31.617-.755.068-.308.343-.514.583-.514.102 0 .17.034.205.171v.138c-.034.137-.137.548-.102.651 0 .069.034.171.17.171.092 0 .436-.18.777-.459.117-.59.253-1.298.253-1.357.034-.24.137-.48.617-.48.103 0 .171.034.205.171v.138l-.136.617c.445-.583 1.097-.994 1.508-.994.172 0 .309.102.309.274 0 .103 0 .274-.069.446-.137.377-.309.96-.412 1.474 0 .137.035.274.207.274.171 0 .685-.206 1.096-.754l.007-.004c-.002-.068-.007-.134-.007-.202 0-.411.035-.754.104-.994.068-.274.411-.514.617-.514.103 0 .205.069.205.171 0 .035 0 .103-.034.137-.137.446-.24.857-.24 1.269 0 .24.034.582.102.788 0 .034.035.069.07.069.068 0 .548-.445.89-1.028-.308-.206-.48-.549-.48-.96 0-.72.446-1.097.858-1.097.343 0 .617.24.617.72 0 .308-.103.65-.274.96h.102a.77.77 0 0 0 .584-.24.293.293 0 0 1 .134-.117c.335-.425.83-.74 1.41-.74.48 0 .924.205.959.582.068.515-.378.618-.515.618l-.002-.002c-.138 0-.377-.035-.377-.172 0-.137.309-.068.274-.376-.034-.206-.24-.275-.446-.275-.686 0-1.13.891-1.028 1.611.034.275.171.583.445.583.206 0 .515-.308.652-.754.068-.274.343-.514.583-.514.103 0 .17.034.205.171 0 .069 0 .206-.137.652-.17.308-.171.48-.137.617.034.274.171.48.309.583.034.034.068.102.068.102 0 .069-.034.138-.137.138-.034 0-.068 0-.103-.035-.514-.205-.72-.548-.789-.891-.205.24-.445.377-.72.377-.445 0-.89-.411-.96-.926a1.609 1.609 0 0 1 .075-.649c-.203.13-.422.203-.623.203h-.17c-.447.652-.927 1.098-1.27 1.303a.896.896 0 0 1-.377.104c-.068 0-.171-.035-.205-.104-.095-.152-.156-.392-.193-.667-.481.527-1.145.805-1.453.805-.343 0-.548-.206-.582-.55v-.376c.102-.754.377-1.2.377-1.337a.074.074 0 0 0-.069-.07c-.24 0-1.028.824-1.166 1.373l-.103.445c-.068.309-.377.515-.582.515-.103 0-.172-.035-.206-.172v-.137l.046-.233c-.435.31-.87.508-1.075.508-.308 0-.48-.172-.514-.412-.206.274-.445.412-.754.412-.352 0-.696-.24-.862-.593-.244.275-.523.553-.852.764-.48.309-1.028.549-1.68.549-.582 0-1.097-.309-1.371-.583-.412-.377-.651-.96-.686-1.509-.205-1.68.823-3.84 2.4-4.8.378-.205.755-.343 1.132-.343zm9.77 3.291c-.104 0-.172.172-.172.343 0 .274.137.583.309.755a1.74 1.74 0 0 0 .102-.583c0-.343-.137-.515-.24-.515z"/></svg><span>Canva</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.85 8.42c-.37-.15-.77-.21-1.18-.2-.26 0-.49 0-.68.01-.2-.01-.34 0-.41.01v3.36c.14.01.27.02.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03.01-.31-.07-.62-.23-.89-.17-.26-.41-.46-.7-.57zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.899c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.391 11.65c-.399.56-.959.98-1.609 1.22-.68.25-1.43.34-2.25.34-.24 0-.4 0-.5-.01s-.24-.01-.43-.01v3.209c.01.07-.04.131-.11.141H5.52c-.08 0-.12-.041-.12-.131V6.42c0-.07.03-.11.1-.11.17 0 .33 0 .56-.01.24-.01.49-.01.76-.02s.56-.01.87-.02c.31-.01.61-.01.91-.01.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.149.42.229.85.229 1.3.001.86-.199 1.57-.6 2.13zm7.091 3.89c-.28.4-.671.709-1.12.891-.49.209-1.09.318-1.811.318-.459 0-.91-.039-1.359-.129-.35-.061-.7-.17-1.02-.32-.07-.039-.121-.109-.111-.189v-1.74c0-.029.011-.07.041-.09.029-.02.06-.01.09.01.39.23.8.391 1.24.49.379.1.779.15 1.18.15.38 0 .65-.051.83-.141.16-.07.27-.24.27-.42 0-.141-.08-.27-.24-.4-.16-.129-.489-.279-.979-.471-.51-.18-.979-.42-1.42-.719-.31-.221-.569-.51-.761-.85-.159-.32-.239-.67-.229-1.021 0-.43.12-.84.341-1.21.25-.4.619-.72 1.049-.92.469-.239 1.059-.349 1.769-.349.41 0 .83.03 1.24.09.3.04.59.12.86.23.039.01.08.05.1.09.01.04.02.08.02.12v1.63c0 .04-.02.08-.05.1-.09.02-.14.02-.18 0-.3-.16-.62-.27-.96-.34-.37-.08-.74-.13-1.12-.13-.2-.01-.41.02-.601.07-.129.03-.24.1-.31.2-.05.08-.08.18-.08.27s.04.18.101.26c.09.11.209.2.34.27.229.12.47.23.709.33.541.18 1.061.43 1.541.73.33.209.6.49.789.83.16.318.24.67.23 1.029.011.471-.129.94-.389 1.331z"/></svg><span>Photoshop</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.53 10.73c-.1-.31-.19-.61-.29-.92-.1-.31-.19-.6-.27-.89-.08-.28-.15-.54-.22-.78h-.02c-.09.43-.2.86-.34 1.29-.15.48-.3.98-.46 1.48-.14.51-.29.98-.44 1.4h2.54c-.06-.211-.14-.46-.23-.721-.09-.269-.18-.559-.27-.859zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zM14.7 16.83h-2.091c-.069.01-.139-.04-.159-.11l-.82-2.38H7.91l-.76 2.35c-.02.09-.1.15-.19.141H5.08c-.11 0-.14-.061-.11-.18L8.19 7.38c.03-.1.06-.21.1-.33.04-.21.06-.43.06-.65-.01-.05.03-.1.08-.11h2.59c.08 0 .12.03.13.08l3.65 10.3c.03.109 0 .16-.1.16zm3.4-.15c0 .11-.039.16-.129.16H16.01c-.1 0-.15-.061-.15-.16v-7.7c0-.1.041-.14.131-.14h1.98c.09 0 .129.05.129.14v7.7zm-.209-9.03c-.231.24-.571.37-.911.35-.33.01-.65-.12-.891-.35-.23-.25-.35-.58-.34-.92-.01-.34.12-.66.359-.89.242-.23.562-.35.892-.35.391 0 .689.12.91.35.22.24.34.56.33.89.01.34-.11.67-.349.92z"/></svg><span>Illustrator</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.15 8.42a2.93 2.93 0 00-1.18-.2 13.9 13.9 0 00-1.09.02v3.36l.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03a1.45 1.45 0 00-.93-1.46zM19.75.3H4.25A4.25 4.25 0 000 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.09 11.65c-.4.56-.96.98-1.61 1.22-.68.25-1.43.34-2.25.34l-.5-.01-.43-.01v3.21a.12.12 0 01-.11.14H5.82c-.08 0-.12-.04-.12-.13V6.42c0-.07.03-.11.1-.11l.56-.01.76-.02.87-.02.91-.01c.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.15.42.23.85.23 1.3 0 .86-.2 1.57-.6 2.13zm6.82-3.15v1.95c0 .08-.05.11-.16.11a4.35 4.35 0 00-1.92.37c-.19.09-.37.21-.51.37v5.1c0 .1-.04.14-.13.14h-1.97a.14.14 0 01-.16-.12v-5.58l-.01-.75-.02-.78c0-.23-.02-.45-.04-.68a.1.1 0 01.07-.11h1.78c.1 0 .18.07.2.16a3.03 3.03 0 01.13.92c.3-.35.67-.64 1.08-.86a3.1 3.1 0 011.52-.39c.07-.01.13.04.14.11v.04z"/></svg><span>Premiere</span></div><div class="tool"><span class="sin"></span><span>CapCut</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.358-2.602zm-10.201.553c1.265 0 2.058.791 2.675 1.446.307.327.737.871 1.234 1.579l-1.02 1.566c-.757 1.163-1.882 3.017-2.837 4.338-1.191 1.649-1.81 1.817-2.486 1.817-.524 0-1.038-.237-1.383-.794-.263-.426-.464-1.13-.464-2.046 0-2.221.63-4.535 1.66-6.088.454-.687.964-1.226 1.533-1.533a2.264 2.264 0 0 1 1.088-.285z"/></svg><span>Meta Ads</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.267 0C6.791-.015-1.82 10.246 1.397 12.964l.79.669a3.88 3.88 0 0 0-.22 1.792c.084.84.518 1.644 1.22 2.266.666.59 1.542.964 2.392.964 1.406 3.24 4.62 5.228 8.386 5.34 4.04.12 7.433-1.776 8.854-5.182.093-.24.488-1.316.488-2.267 0-.956-.54-1.352-.885-1.352-.01-.037-.078-.286-.172-.586-.093-.3-.19-.51-.19-.51.375-.563.382-1.065.332-1.35-.053-.353-.2-.653-.496-.964-.296-.311-.902-.63-1.753-.868l-.446-.124c-.002-.019-.024-1.053-.043-1.497-.014-.32-.042-.822-.197-1.315-.186-.668-.508-1.253-.911-1.627 1.112-1.152 1.806-2.422 1.804-3.511-.003-2.095-2.576-2.729-5.746-1.416l-.672.285A678.22 678.22 0 0 0 12.7.504C12.304.159 11.817.002 11.267 0zm.073.873c.166 0 .322.019.465.058.297.084 1.28 1.224 1.28 1.224s-1.826 1.013-3.52 2.426c-2.28 1.757-4.005 4.311-5.037 7.082-.811.158-1.526.618-1.963 1.253-.261-.218-.748-.64-.834-.804-.698-1.326.761-3.902 1.781-5.357C5.834 3.44 9.37.867 11.34.873zm3.286 3.273c.04-.002.06.05.028.074-.143.11-.299.26-.413.414a.04.04 0 0 0 .031.064c.659.004 1.587.235 2.192.574.041.023.012.103-.034.092-.915-.21-2.414-.369-3.97.01-1.39.34-2.45.863-3.224 1.426-.04.028-.086-.023-.055-.06.896-1.035 1.999-1.935 2.987-2.44.034-.018.07.019.052.052-.079.143-.23.447-.278.678-.007.035.032.063.062.042.615-.42 1.684-.868 2.622-.926zm3.023 3.205l.056.001a.896.896 0 0 1 .456.146c.534.355.61 1.216.638 1.845.015.36.059 1.229.074 1.478.034.571.184.651.487.751.17.057.33.098.563.164.706.198 1.125.4 1.39.658.157.162.23.333.253.497.083.608-.472 1.36-1.942 2.041-1.607.746-3.557.935-4.904.785l-.471-.053c-1.078-.145-1.693 1.247-1.046 2.201.417.615 1.552 1.015 2.688 1.015 2.604 0 4.605-1.111 5.35-2.072a.987.987 0 0 0 .06-.085c.036-.055.006-.085-.04-.054-.608.416-3.31 2.069-6.2 1.571 0 0-.351-.057-.672-.182-.255-.1-.788-.344-.853-.891 2.333.72 3.801.039 3.801.039a.072.072 0 0 0 .042-.072.067.067 0 0 0-.074-.06s-1.911.283-3.718-.378c.197-.64.72-.408 1.51-.345a11.045 11.045 0 0 0 3.647-.394c.818-.234 1.892-.697 2.727-1.356.281.618.38 1.299.38 1.299s.219-.04.4.073c.173.106.299.326.213.895-.176 1.063-.628 1.926-1.387 2.72a5.714 5.714 0 0 1-1.666 1.244c-.34.18-.704.334-1.087.46-2.863.935-5.794-.093-6.739-2.3a3.545 3.545 0 0 1-.189-.522c-.403-1.455-.06-3.2 1.008-4.299.065-.07.132-.153.132-.256 0-.087-.055-.179-.102-.243-.374-.543-1.669-1.466-1.409-3.254.187-1.284 1.31-2.189 2.357-2.135.089.004.177.01.266.015.453.027.85.085 1.223.1.625.028 1.187-.063 1.853-.618.225-.187.405-.35.71-.401.028-.005.092-.028.215-.028zm.022 2.18a.42.42 0 0 0-.06.005c-.335.054-.347.468-.228 1.04.068.32.187.595.32.765.175-.02.343-.022.498 0 .089-.205.104-.557.024-.942-.112-.535-.261-.872-.554-.868zm-3.66 1.546a1.724 1.724 0 0 0-1.016.326c-.16.117-.311.28-.29.378.008.032.031.056.088.063.131.015.592-.217 1.122-.25.374-.023.684.094.923.2.239.104.386.173.443.113.037-.038.026-.11-.031-.204-.118-.192-.36-.387-.618-.497a1.601 1.601 0 0 0-.621-.129zm4.082.81c-.171-.003-.313.186-.317.42-.004.236.131.43.303.432.172.003.314-.185.318-.42.004-.236-.132-.429-.304-.432zm-3.58.172c-.05 0-.102.002-.155.008-.311.05-.483.152-.593.247-.094.082-.152.173-.152.237a.075.075 0 0 0 .075.076c.07 0 .228-.063.228-.063a1.98 1.98 0 0 1 1.001-.104c.157.018.23.027.265-.026.01-.016.022-.049-.01-.1-.063-.103-.311-.269-.66-.275zm2.26.4c-.127 0-.235.051-.283.148-.075.154.035.363.246.466.21.104.443.063.52-.09.075-.155-.035-.364-.246-.467a.542.542 0 0 0-.237-.058zm-11.635.024c.048 0 .098 0 .149.003.73.04 1.806.6 2.052 2.19.217 1.41-.128 2.843-1.449 3.069-.123.02-.248.029-.374.026-1.22-.033-2.539-1.132-2.67-2.435-.145-1.44.591-2.548 1.894-2.811.117-.024.252-.04.398-.042zm-.07.927a1.144 1.144 0 0 0-.847.364c-.38.418-.439.988-.366 1.19.027.073.07.094.1.098.064.008.16-.039.22-.2a1.2 1.2 0 0 0 .017-.052 1.58 1.58 0 0 1 .157-.37.689.689 0 0 1 .955-.199c.266.174.369.5.255.81-.058.161-.154.469-.133.721.043.511.357.717.64.738.274.01.466-.143.515-.256.029-.067.005-.107-.011-.125-.043-.053-.113-.037-.18-.021a.638.638 0 0 1-.16.022.347.347 0 0 1-.294-.148c-.078-.12-.073-.3.013-.504.011-.028.025-.058.04-.092.138-.308.368-.825.11-1.317-.195-.37-.513-.602-.894-.65a1.135 1.135 0 0 0-.138-.01z"/></svg><span>Mailchimp</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.992 1.966c-.434 0-.87.086-1.28.257L1.779 5.917c-.503.208-.49.908.012 1.116l8.982 3.558a3.266 3.266 0 0 0 2.454 0l8.982-3.558c.503-.196.503-.908.012-1.116l-8.957-3.694a3.255 3.255 0 0 0-1.272-.257zM23.4 8.056a.589.589 0 0 0-.222.045l-10.012 3.877a.612.612 0 0 0-.38.564v8.896a.6.6 0 0 0 .821.552L23.62 18.1a.583.583 0 0 0 .38-.551V8.653a.6.6 0 0 0-.6-.596zM.676 8.095a.644.644 0 0 0-.48.19C.086 8.396 0 8.53 0 8.69v8.355c0 .442.515.737.908.54l6.27-3.006.307-.147 2.969-1.436c.466-.22.43-.908-.061-1.092L.883 8.138a.57.57 0 0 0-.207-.044z"/></svg><span>Airtable</span></div><div class="tool"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span></div></div>
+</section>
+
+<!-- ============ TRAYECTORIA ============ -->
+<section class="pad" id="trayectoria">
+  <span class="rotulo">trayectoria</span>
+  <h2 class="titulo">Dónde he trabajado.</h2>
+  <div style="margin-top:30px">
+    <div class="fila"><span class="anio">2026 — hoy</span><div><b>ENTER · EnterX</b><span>Brand &amp; Communications Lead</span></div><p>Marca B2B, relación con clientes corporativos y stakeholders, eventos y workshops.</p></div>
+    <div class="fila"><span class="anio">2025 — 2026</span><div><b>Enter Tech School</b><span>Asistente de Marketing → Social Media Manager</span></div><p>Contenido orgánico, comunidad y automatizaciones con IA.</p></div>
+    <div class="fila"><span class="anio">2024</span><div><b>Chio Lecca Fashion School</b><span>Asistente de Comunicaciones → Gestora entre áreas</span></div><p>Relación con empresas, ONG y aliados, eventos e imagen del CEO.</p></div>
+    <div class="fila"><span class="anio">2024</span><div><b>Dirección Estratégica</b><span>Asistente de Comunicaciones</span></div><p>Rebranding completo, web, LinkedIn del CEO y email marketing.</p></div>
+  </div>
+</section>
+
+<!-- ============ ESCRITORIO + CONTACTO ============ -->
+<section class="escritorio pad" id="contacto">
+  <div class="mesa">
+    <div class="mesa-centro">
+      <h2>En mi escritorio</h2>
+      <span class="pill">edición comunicadora</span>
+    </div>
+    <div class="obj flota b" tabindex="0" style="--w:300px;left:1%;top:3%;--r:-2deg"><svg viewBox="0 0 220 150" aria-hidden="true"><defs><linearGradient id="gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f97c9"/><stop offset=".6" stop-color="#9ad6f2"/><stop offset="1" stop-color="#e3f3fb"/></linearGradient></defs>
+<rect x="30" y="6" width="160" height="106" rx="9" fill="#1d1d1f"/><rect x="37" y="13" width="146" height="92" rx="3" fill="url(#gl)"/>
+<rect x="47" y="25" width="70" height="7" rx="3.5" fill="#fff" opacity=".9"/><rect x="47" y="38" width="100" height="4" rx="2" fill="#fff" opacity=".55"/><rect x="47" y="46" width="88" height="4" rx="2" fill="#fff" opacity=".55"/>
+<rect x="47" y="60" width="40" height="34" rx="5" fill="#fff" opacity=".25"/><rect x="93" y="60" width="40" height="34" rx="5" fill="#fff" opacity=".25"/><rect x="139" y="60" width="34" height="34" rx="5" fill="#fff" opacity=".25"/>
+<path d="M6 114 h208 l-9 15 a7 7 0 0 1 -6 3 H21 a7 7 0 0 1 -6 -3z" fill="#d3cdcd"/><rect x="90" y="114" width="40" height="5" rx="2.5" fill="#aaa3a3"/></svg><span class="num" style="left:-8px;bottom:-26px">(01)</span><span class="dato">Mi laptop: aquí viven mis agentes de IA, mis skills y todas las grillas.</span></div>
+    <div class="obj flota c" tabindex="0" style="--w:118px;left:40%;top:2%"><svg viewBox="0 0 150 150" aria-hidden="true"><ellipse cx="70" cy="132" rx="58" ry="10" fill="#e7ded4"/>
+<path d="M30 44 h80 v56 a26 26 0 0 1 -26 26 h-28 a26 26 0 0 1 -26 -26z" fill="#faf6f1" stroke="#ddd2c6" stroke-width="2"/>
+<path d="M110 58 h8 a17 17 0 0 1 0 34 h-8" fill="none" stroke="#ddd2c6" stroke-width="8" stroke-linecap="round"/>
+<ellipse cx="70" cy="44" rx="40" ry="8" fill="#5a3620"/><ellipse cx="70" cy="44" rx="40" ry="8" fill="none" stroke="#ddd2c6" stroke-width="2"/>
+<path d="M62 41 q8 -4 16 0 q-8 4 -16 0z" fill="#c8a27a" opacity=".8"/>
+<rect x="30" y="72" width="80" height="16" fill="#9ad6f2" opacity=".85"/>
+<g fill="none" stroke="#c9bfb5" stroke-width="3" stroke-linecap="round"><path d="M56 32 q-8 -9 0 -17 q8 -8 0 -16"/><path d="M80 32 q-8 -9 0 -17 q8 -8 0 -16"/></g></svg><span class="num" style="left:-46px;bottom:10px">(02)</span><span class="dato">Café. Sin café no hay grilla.</span></div>
+    <div class="obj flota" tabindex="0" style="--w:150px;right:28%;top:6%;--r:4deg"><svg viewBox="0 0 170 124" aria-hidden="true"><rect x="30" y="16" width="42" height="18" rx="4" fill="#2b2426"/><rect x="8" y="28" width="154" height="88" rx="13" fill="#1d1d1f"/><rect x="8" y="50" width="154" height="10" fill="#2b2426"/>
+<circle cx="85" cy="74" r="33" fill="#3a3335"/><circle cx="85" cy="74" r="25" fill="#0f0d0e"/><circle cx="85" cy="74" r="14" fill="#41304a"/><circle cx="77" cy="66" r="5" fill="#fff" opacity=".55"/>
+<circle cx="140" cy="42" r="5" fill="#3f97c9"/><rect x="128" y="88" width="22" height="16" rx="3" fill="#2b2426"/></svg><span class="num" style="right:-42px;bottom:4px">(03)</span><span class="dato">Para coberturas en vivo, como la de los Premios ANDA 2024.</span></div>
+    <div class="obj flota b" tabindex="0" style="--w:200px;right:3%;top:4%;--r:4deg"><img loading="lazy" src="img/escritorio/agenda.webp" alt=""><span class="num" style="right:-38px;bottom:16px">(04)</span><span class="dato">La libreta de EnterX: «Pensar mejor. Ejecutar mejor.» Todo empieza en papel.</span></div>
+    <div class="obj flota c" tabindex="0" style="--w:190px;left:4%;bottom:2%"><svg viewBox="0 0 170 210" aria-hidden="true"><ellipse cx="86" cy="200" rx="62" ry="8" fill="#e2d9cf"/>
+<path d="M126 182 C162 184 168 140 146 126" fill="none" stroke="#141113" stroke-width="13" stroke-linecap="round"/>
+<path d="M52 196 C30 196 30 152 42 122 C50 102 56 94 62 86 L108 86 C114 94 120 106 128 124 C140 154 134 196 114 196 Z" fill="#141113"/>
+<path d="M66 196 v-26 M104 196 v-26" stroke="#2a2326" stroke-width="3"/>
+<circle cx="85" cy="62" r="36" fill="#141113"/>
+<path d="M53 46 L55 8 L79 32 Z" fill="#141113"/><path d="M117 46 L115 8 L91 32 Z" fill="#141113"/>
+<path d="M59 38 L60 20 L72 32 Z" fill="#3b2c31"/><path d="M111 38 L110 20 L98 32 Z" fill="#3b2c31"/>
+<ellipse cx="71" cy="60" rx="8" ry="9" fill="#d8c84c"/><ellipse cx="99" cy="60" rx="8" ry="9" fill="#d8c84c"/>
+<ellipse cx="71" cy="60" rx="2.4" ry="7" fill="#141113"/><ellipse cx="99" cy="60" rx="2.4" ry="7" fill="#141113"/>
+<circle cx="73" cy="56" r="1.8" fill="#fff"/><circle cx="101" cy="56" r="1.8" fill="#fff"/>
+<path d="M82 76 h6 l-3 4z" fill="#9ad6f2"/>
+<g stroke="#6b6468" stroke-width="1.4" stroke-linecap="round"><path d="M64 78 l-26 -4"/><path d="M64 82 l-26 4"/><path d="M106 78 l26 -4"/><path d="M106 82 l26 4"/></g>
+<path d="M60 96 Q85 108 110 96" fill="none" stroke="#9ad6f2" stroke-width="7" stroke-linecap="round"/><circle cx="85" cy="106" r="6" fill="#d9b25c"/></svg><span class="num" style="left:-10px;top:-6px">(05)</span><span class="dato">Oreo, mi gato negro y supervisor oficial de cada entrega.</span></div>
+    <div class="obj flota" tabindex="0" style="--w:150px;left:28%;bottom:5%;--r:-4deg"><img loading="lazy" src="img/escritorio/tote.webp" alt=""><span class="num" style="right:-40px;top:0">(06)</span><span class="dato">El tote de EnterX: la primera pieza de merch que diseñé para la marca.</span></div>
+    <div class="obj flota b" tabindex="0" style="--w:190px;left:50%;bottom:3%;--r:2deg"><svg viewBox="0 0 190 150" aria-hidden="true"><ellipse cx="95" cy="140" rx="80" ry="7" fill="#e2d9cf"/>
+<rect x="18" y="104" width="152" height="30" rx="3" fill="#3b4a35"/><rect x="18" y="104" width="10" height="30" fill="#2b3727"/><rect x="40" y="112" width="44" height="14" rx="2" fill="#efe6d6"/><text x="62" y="123" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#3b4a35">vol. 1</text>
+<g transform="rotate(-4 95 88)"><rect x="24" y="72" width="146" height="30" rx="3" fill="#e9dfcd"/><rect x="24" y="72" width="10" height="30" fill="#d6c9b2"/><rect x="46" y="80" width="44" height="14" rx="2" fill="#5b3a29"/><text x="68" y="91" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#efe6d6">vol. 2</text></g>
+<g transform="rotate(3 95 56)"><rect x="14" y="40" width="150" height="30" rx="3" fill="#5b3a29"/><rect x="14" y="40" width="10" height="30" fill="#472c1f"/><rect x="36" y="48" width="44" height="14" rx="2" fill="#efe6d6"/><text x="58" y="59" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#5b3a29">vol. 3</text></g>
+<path d="M100 40 C112 22 132 26 140 34 C150 44 158 40 166 34 L170 44 C160 54 146 54 136 46 C128 40 116 40 108 52 Z" fill="#b3282f"/>
+<path d="M150 46 L158 82 L148 84 L144 52 Z" fill="#9e1f26"/><path d="M146 84 l-2 8 M151 83 l1 8 M156 82 l3 7" stroke="#9e1f26" stroke-width="2" stroke-linecap="round"/></svg><span class="num" style="right:-40px;bottom:10px">(07)</span><span class="dato">Fan de Shingeki no Kyojin.</span></div>
+    <div class="obj flota c" tabindex="0" style="--w:190px;right:4%;bottom:16%"><svg viewBox="0 0 160 150" aria-hidden="true"><path d="M28 98 Q28 18 80 18 Q132 18 132 98" fill="none" stroke="#1d1d1f" stroke-width="13" stroke-linecap="round"/><path d="M40 70 Q44 34 80 32" fill="none" stroke="#3a3335" stroke-width="3" stroke-linecap="round"/>
+<rect x="12" y="80" width="38" height="60" rx="18" fill="#2b2426"/><rect x="110" y="80" width="38" height="60" rx="18" fill="#2b2426"/><rect x="19" y="89" width="24" height="42" rx="12" fill="#3d3538"/><rect x="117" y="89" width="24" height="42" rx="12" fill="#3d3538"/></svg><span class="num" style="left:20px;bottom:-24px">(08)</span><span class="dato">Playlist para concentrarme.</span></div>
+  </div>
+  <p class="pista-hover">Pasa el cursor sobre cada objeto para conocerme un poco más.</p>
+  <div class="cierre">
+    <h3>¿Tienes una marca o un cliente que necesita estrategia?</h3>
+    <p>Escríbeme y conversemos sobre cómo puedo sumar a tu equipo.</p>
+    <div class="c-acc">
+      <a class="btn btn-negro" href="mailto:arianacossiotabata@gmail.com">arianacossiotabata@gmail.com ↗</a>
+      <a class="btn btn-borde" href="https://www.linkedin.com/in/arianacossio/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-borde" href="https://wa.me/51964401918" target="_blank" rel="noopener">WhatsApp ↗</a>
+      <a class="btn btn-borde" href="docs/Ariana-Cossio-CV-Visual.pdf" download>Descargar CV ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><span>Ariana Cossio Tabata · Lima, Perú</span><span>Comunicación Digital, Marketing y PR · 2026</span></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Detalle del caso">
+  <div class="panel"><button class="x" aria-label="Cerrar">×</button><div class="imgs"></div><div class="txt"></div></div>
+</div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="cerrar" aria-label="Cerrar">×</button><button class="ant" aria-label="Anterior">‹</button><img alt=""><p></p><button class="sig" aria-label="Siguiente">›</button>
+</div>
+
+<script>
+const CASOS = {
+  enterx: {meta:['EnterX · ENTER','2026','Branding'], titulo:'EnterX: una marca para empresas, creada desde cero',
+    imgs:[['img/casos/enterx-merch.webp','Merch de EnterX: tote, tarjetero, libreta y flyer'],['img/casos/enterx-brochure.webp','Brochure de EnterX'],['img/enterx/enter-soluciones.webp','Banner Enter Soluciones'],['img/casos/enterx-tote.webp','Merch: tote bag'],['img/casos/enterx-tote-arte.webp','Arte del tote para serigrafía'],['img/casos/enterx-web.webp','Web enterx.pe']],
+    reto:'ENTER necesitaba hablarle a empresas con una marca propia, distinta a la de su escuela para estudiantes.',
+    hice:['Concepto, identidad visual y voz de marca.','Merch: tote bag, tarjetero para celular, libreta «Pensar mejor. Ejecutar mejor.» y flyer.','Brochures y materiales para cada servicio.','Co-lideré con el líder de TI el diseño de la web, pensada para convertir.'],
+    res:'Una marca con su propia línea de servicios (workshops, Workshop in Company y Cotiza) y presencia en web, redes y eventos.'},
+  pbf: {meta:['ENTER · Perú Business Fest','Octubre 2026','Eventos'], titulo:'La primera feria presencial de ENTER',
+    imgs:[['img/casos/pbf-concepto.webp','Guía de concepto del stand'],['img/casos/pbf-stand.webp','Concepto del stand'],['img/casos/pbf-post.webp','Anuncio de la participación']],
+    reto:'Llevar a ENTER por primera vez a una feria empresarial presencial, sin experiencia previa en este tipo de eventos.',
+    hice:['Impulsé la participación y llevé la gestión documental.','Trabajé con el equipo el concepto del stand.','Diseñé el flyer «Continúa la conversación», con QR, diagnóstico gratis y descuento para seguir el contacto después de la feria.','Coordiné con los proveedores la producción del merch.','Supervisé el día del evento y conté la experiencia en LinkedIn.'],
+    res:'ENTER estuvo presente en el Perú Business Fest 2026, con un stand propio que mostraba cómo piensa la marca.'},
+  workshop: {meta:['EnterX','2026','Producto y comunicación'], titulo:'Workshop «IA para Líderes»: de la idea al evento',
+    imgs:[['img/casos/workshop-foto2.webp','Workshop de IA para Líderes, edición presencial'],['img/casos/wic-portada.webp','Brochure de Workshop in Company']],
+    reto:'Crear un formato que llevara a los líderes de empresa de “usar IA” a trabajar con ella, y comunicarlo bien.',
+    hice:['Diseñé la idea del producto y su estrategia de comunicación.','Mensajes, campaña digital y experiencia del participante.','Una encuesta previa a los inscritos para adaptar los casos de la sesión.','Seguimiento posterior: feedback, certificados y testimonios.'],
+    res:'Varias ediciones abiertas, presenciales y virtuales, y una versión a medida para empresas (Workshop in Company).'},
+  redes: {meta:['Enter Tech School','2025 – 2026','Redes sociales'], titulo:'Las redes con el mayor engagement de su categoría',
+    imgs:[['img/enter/programas.webp','Nuestros programas'],['img/enter/enters-benefits.webp','Enters Benefits'],['img/casos/aitana.webp','ai.tana: asistente de contenido con IA']],
+    reto:'Destacar en el rubro de bootcamps y educación tech con contenido orgánico, sin depender de la pauta.',
+    hice:['Lideré la estrategia de contenido orgánico y la gestión de la comunidad.','Creé ai.tana, un asistente con IA que ordenó la producción mensual de contenido.','Automaticé Enter Benefits, el programa de incentivos para estudiantes.'],
+    res:'El mayor engagement entre bootcamps y escuelas de tecnología, según el benchmark de competencia que realicé, y un flujo constante de leads orgánicos.'},
+  cetemin: {meta:['EnterX × CETEMIN','2026','Diseño editorial'], titulo:'Workbooks de Inglés Técnico para CETEMIN',
+    imgs:[['img/cetemin/portada-mmp.webp','Portada: Mantenimiento de Maquinaria Pesada'],['img/cetemin/portada-mseii.webp','Portada: Sistemas Eléctricos e Instrumentación'],['img/cetemin/indice.webp','Índice de sesiones'],['img/cetemin/introduccion.webp','Introducción del curso'],['img/cetemin/sesion-alumno.webp','Sesión: versión alumno'],['img/cetemin/sesion-docente.webp','Sesión: versión docente con respuestas'],['img/cetemin/sistema-refrigeracion.webp','Ejercicio técnico: sistema de refrigeración'],['img/cetemin/reporte.webp','Ejercicio: reporte de mantenimiento']],
+    reto:'CETEMIN, instituto técnico minero, necesitaba material de inglés técnico propio para sus carreras, coherente con su marca y útil en clase.',
+    hice:['Lideré el diseño del producto: sistema visual, estructura de sesiones y guía de estilo.','Diseñé dos ediciones por carrera: Student Workbook y Teacher’s Edition con respuestas resaltadas.','Adapté el sistema a cada especialidad (Maquinaria Pesada y Sistemas Eléctricos e Instrumentación), con imágenes y ejercicios del rubro.'],
+    res:'Workbooks de 10 sesiones listos para imprimir, con un sistema de diseño reutilizable para nuevas carreras.'},
+  axel: {meta:['Freelance','2026','Landing web'], titulo:'Media kit para un creador de contenido de tecnología',
+    imgs:[['img/casos/axel-hero.webp','Portada del media kit'],['img/casos/axel-2.webp','Sección «Sobre mí»'],['img/casos/axel-3.webp','Audiencia y resultados']],
+    reto:'Un creador de contenido de tecnología necesitaba presentar su audiencia y su propuesta a las marcas de forma profesional.',
+    hice:['Ordené su historia y su propuesta de valor para marcas.','Estructura, copy y diseño de la landing.','Publiqué la web en línea, lista para enviar a marcas.'],
+    res:'Un media kit en formato web, fácil de compartir con marcas.', link:'https://kitmedia-axel.vercel.app'}
+};
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+
+/* --- Portada: el cursor abre la carpeta al bajar --- */
+const wrap = $('.portada-wrap'), cur = $('.p-cursor'), front = $('#pFront'), folder = $('#pFolder');
+const hojas = $$('.p-hoja'), esparcidos = $('.esparcidos'), nombre = $('.p-nombre'), label = $('#pLabel'), hint = $('#pHint');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const tramo = (p, a, b) => clamp((p - a) / (b - a), 0, 1);
+function escena() {
+  const r = wrap.getBoundingClientRect();
+  const p = reduce ? 0 : clamp(-r.top / (wrap.offsetHeight - innerHeight), 0, 1);
+  const f = folder.getBoundingClientRect();
+  // 0 → 0.4: el cursor viaja desde abajo a la derecha hasta la carpeta
+  const t = tramo(p, 0, .4), e = 1 - Math.pow(1 - t, 3);
+  const x0 = innerWidth * .78, y0 = innerHeight * .86, x1 = f.left + f.width * .62, y1 = f.top + f.height * .62;
+  const clic = tramo(p, .4, .48), escala = 1 - .18 * Math.sin(clic * Math.PI);
+  cur.style.transform = `translate(${x0 + (x1 - x0) * e - innerWidth / 2}px, ${y0 + (y1 - y0) * e - innerHeight / 2}px) scale(${escala})`;
+  label.classList.toggle('sel', p > .44);
+  // 0.48 → 0.75: la carpeta se abre y salen las hojas
+  const a = tramo(p, .48, .75);
+  front.style.transform = `perspective(900px) rotateX(${-58 * a}deg)`;
+  hojas.forEach((h, i) => h.style.transform = `translate(${(i - 1) * 150 * a}px, ${-(95 - Math.abs(i - 1) * 25) * a}px) rotate(${(i - 1) * 12 * a}deg)`);
+  // 0.75 → 1: todo se desvanece para dar paso al contenido
+  const fin = tramo(p, .78, 1);
+  esparcidos.style.opacity = 1 - tramo(p, .1, .45);
+  nombre.style.opacity = 1 - fin;
+  hint.style.opacity = 1 - tramo(p, 0, .1);
+  $('.escena').style.opacity = 1 - fin * .9;
+  $('.escena').style.transform = `scale(${1 + fin * .08})`;
+}
+addEventListener('scroll', () => requestAnimationFrame(escena), {passive: true});
+addEventListener('resize', escena); escena();
+const abrir = () => scrollTo({top: wrap.offsetHeight - innerHeight * .2, behavior: 'smooth'});
+folder.addEventListener('click', abrir);
+folder.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); } });
+hojas.forEach((h, i) => h.addEventListener('click', ev => { ev.stopPropagation(); $(['#casos', '#trabajos', '#sobre-mi'][i]).scrollIntoView({behavior: 'smooth'}); }));
+
+/* --- Visor de imágenes --- */
+const lb = $('#lb'), lbImg = lb.querySelector('img'), lbCap = lb.querySelector('p');
+let lista = [], idx = 0;
+const abrirLB = (items, i) => { lista = items; idx = i; verLB(); lb.classList.add('abierto'); };
+const verLB = () => { lbImg.src = lista[idx].src; lbCap.textContent = lista[idx].cap; };
+const mover = d => { idx = (idx + d + lista.length) % lista.length; verLB(); };
+lb.querySelector('.cerrar').onclick = () => lb.classList.remove('abierto');
+lb.querySelector('.ant').onclick = () => mover(-1);
+lb.querySelector('.sig').onclick = () => mover(1);
+lb.onclick = e => { if (e.target === lb) lb.classList.remove('abierto'); };
+
+/* --- Casos --- */
+const modal = $('#modal');
+$$('.card').forEach(c => c.addEventListener('click', () => {
+  const k = CASOS[c.dataset.caso];
+  modal.querySelector('.imgs').innerHTML = k.imgs.map(([f, cap]) => `<img decoding="async" src="${f}" alt="${cap}" data-cap="${cap}">`).join('');
+  modal.querySelector('.txt').innerHTML = `<div class="meta">${k.meta.map(m => `<span>${m}</span>`).join('')}</div><h3>${k.titulo}</h3>
+    <dl><div class="bloque"><dt>El reto</dt><dd>${k.reto}</dd></div>
+    <div class="bloque"><dt>Lo que hice</dt><dd><ul>${k.hice.map(h => `<li>${h}</li>`).join('')}</ul></dd></div>
+    <div class="bloque"><dt>Resultado</dt><dd>${k.res}</dd></div></dl>${k.link ? `<a class="btn btn-negro" style="margin-top:18px" href="${k.link}" target="_blank" rel="noopener">Ver la landing ↗</a>` : ''}`;
+  const ims = [...modal.querySelectorAll('.imgs img')];
+  ims.forEach((im, i) => im.onclick = () => abrirLB(ims.map(x => ({src: x.src, cap: x.dataset.cap})), i));
+  modal.classList.add('abierto');
+}));
+modal.querySelector('.x').onclick = () => modal.classList.remove('abierto');
+modal.onclick = e => { if (e.target === modal) modal.classList.remove('abierto'); };
+
+/* --- Trabajos: visor por grupo --- */
+$$('.g-piezas').forEach(g => {
+  const ims = [...g.querySelectorAll('img')];
+  ims.forEach((im, i) => im.parentElement.onclick = () => abrirLB(ims.map(x => ({src: x.src, cap: x.alt})), i));
+});
+
+/* --- Abanico y pausa de animaciones fuera de pantalla --- */
+const vis = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('off', !e.isIntersecting)), {rootMargin: '100px'});
+$$('main > section, .portada-wrap').forEach(s => vis.observe(s));
+document.addEventListener('keydown', e => {
+  if (lb.classList.contains('abierto')) {
+    if (e.key === 'Escape') lb.classList.remove('abierto');
+    if (e.key === 'ArrowLeft') mover(-1);
+    if (e.key === 'ArrowRight') mover(1);
+  } else if (e.key === 'Escape') modal.classList.remove('abierto');
+});
+</script>
+</body>
+</html>
