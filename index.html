@@ -290,6 +290,8 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .tag-tipo{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;background:#e3f3fb;color:#1f5f86;border-radius:999px;padding:3px 10px}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:32px}
 .pcard{border:1px solid var(--linea);border-radius:18px;overflow:hidden;background:#fff;transition:transform .2s,box-shadow .2s}
+.pcard.dest{position:relative;border:1.5px solid #3f97c9;background:linear-gradient(180deg,#eef7fc,#fff 55%);box-shadow:0 14px 30px -18px rgba(31,95,134,.45)}
+.dest-tag{position:absolute;top:12px;left:12px;z-index:2;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:#1f5f86;color:#fff;border-radius:999px;padding:4px 10px}
 .pcard:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.07)}
 .pimg{aspect-ratio:4/3;background:var(--suave);display:grid;place-items:center;overflow:hidden}
 .pimg img{width:100%;height:100%;object-fit:cover}
@@ -398,6 +400,16 @@ b,strong,h1,h2,h3,dt,th{font-weight:600}
 .lap-base{height:16px;margin:0 -7%;background:linear-gradient(#dcdde0,#b5b7bc);border-radius:0 0 18px 18px;position:relative}
 .lap-base::after{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:15%;height:6px;background:#a6a8ad;border-radius:0 0 8px 8px}
 .lap figcaption{font-size:.84rem;color:var(--gris);text-align:center;margin-top:14px}
+.desfs{display:grid;gap:56px;margin:34px 0 20px}
+.desf header{display:flex;gap:18px;align-items:baseline;margin-bottom:22px}
+.desf-n{font-size:.8rem;font-weight:600;color:#3f97c9;letter-spacing:.1em}
+.desf h3{font-size:1.4rem;font-weight:600;letter-spacing:-.02em}
+.desf p{font-size:.92rem;color:var(--gris);margin-top:4px}
+.desf-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.desf-f{border:0;background:#fff;cursor:zoom-in;padding:8px;border-radius:6px;box-shadow:0 24px 40px -22px rgba(0,0,0,.5);transform:rotate(var(--r));transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.desf-f img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:3px}
+.desf-f:hover,.desf-f:focus-visible{transform:rotate(0) translateY(-10px) scale(1.04);box-shadow:0 34px 50px -24px rgba(0,0,0,.55);position:relative;z-index:2}
+@media (max-width:700px){.desf-fotos{grid-template-columns:1fr 1fr}}
 .apoyo-sec h3{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);font-weight:600;margin-bottom:18px}
 .fan-hint{font-size:.8rem;color:var(--gris);margin-top:4px}
 .galeria2{display:none}
@@ -589,7 +601,7 @@ const AREAS = [
   {id: "contenido", nombre: "Contenido y redes", carpeta: "contenido_y_redes", desc: "Estrategia, piezas y copys para redes sociales.",
     proyectos: ["enter-redes", "enterx-redes", "ads", "podcast", "cetemin-training", "direccion", "alexander-contenido", "badiane", "oslo", "moda"]},
   {id: "eventos", nombre: "Eventos y comunidad", carpeta: "eventos", desc: "Ferias, workshops y espacios para la comunidad.",
-    proyectos: ["pbf", "workshop", "comunidad", "alumni-night", "impulsa", "quimera", "origenes", "egresadas", "anda"]},
+    proyectos: ["pbf", "workshop", "comunidad", "alumni-night", "impulsa", "desfiles", "anda"]},
   {id: "web", nombre: "Web y producto", carpeta: "web_y_producto", desc: "Webs y landings pensadas para convertir.",
     proyectos: ["enterx-web", "move", "axel", "direccion-web"]},
   {id: "ia", nombre: "IA y automatización", carpeta: "ia", desc: "Sistemas que ordenan el trabajo del equipo.",
@@ -695,7 +707,7 @@ const P = {
     res: "Un buen MVP: la primera participación presencial de ENTER, sostenida por un equipo que se encargó de la producción del stand, los materiales y la atención a visitantes.",
     cita: "Antes de descartar una idea, hay que darse la oportunidad de probarla.",
     imgs: [["img/portada/ariana-pbf.webp", "En el Perú Business Fest 2026"], ["img/casos/pbf-concepto.webp", "Guía de concepto"], ["img/casos/pbf-stand.webp", "Concepto del stand"], ["img/casos/pbf-stand-real.webp", "El stand en la feria"], ["img/casos/pbf-entrevista.webp", "Entrevista en el stand"], ["img/casos/pbf-post.webp", "Anuncio de la participación"], ["img/enterx/pbf-hoy.webp", "Post del día de la feria"]]},
-  "ads": {titulo: "Meta Ads para el workshop «IA para Líderes»", marca: "EnterX", tipo: "Trabajo", anio: "2026",
+  "ads": {titulo: "Meta Ads para el workshop «IA para Líderes»", marca: "EnterX", tipo: "Trabajo", destaque: "Pauta pagada", anio: "2026",
     portada: "img/enterx/nuevo-producto.webp",
     resumen: "Campañas de pauta que llenaron tres ediciones del workshop abierto y midieron qué funcionaba.",
     reto: "Conseguir participantes para un workshop pagado dirigido a líderes de empresa, con un presupuesto pequeño y sin prueba social al inicio.",
@@ -726,21 +738,12 @@ const P = {
     reto: "Llevar a Rocío Lecca, presidenta de Chio Lecca, a Loreto, Cajamarca y Cusco con una conferencia gratuita para diseñadores, confeccionistas y emprendedores, y que cada región se enterara.",
     hice: ["Lideré la edición Cusco: coordiné con los aliados locales, entre ellos la Municipalidad Provincial del Cusco. Asistieron cerca de 200 personas.", "Gestioné la prensa: redacté las notas de prensa y las cartas a los medios locales, y conseguí entrevistas para la CEO, como en «Hablemos Claro» de Tevesur (Canal 23, Cusco).", "Invitaciones personalizadas para invitados especiales, como la diseñadora Jessica Newton.", "Campaña de expectativa en redes «Algo grande está llegando a…» para cada región, y volante del evento con inscripción por QR."],
     imgs: [["img/p/impulsa/conferencia.webp", "Conferencia en el Palacio Municipal del Cusco"], ["img/p/impulsa/auditorio.webp", "Cerca de 200 asistentes"], ["img/p/impulsa/tv-cusco.webp", "Rocío Lecca en «Hablemos Claro», Tevesur"], ["img/p/impulsa/cusco-evento.webp", "Rocío Lecca con invitados locales"], ["img/p/impulsa/volante.webp", "Volante del evento en Cusco"], ["img/p/impulsa/invitacion.webp", "Invitación personalizada"], ["img/p/impulsa/expectativa-1.webp", "Campaña de expectativa por región"], ["img/p/impulsa/expectativa-2.webp", "Campaña de expectativa por región"], ["img/p/impulsa/expectativa-3.webp", "Campaña de expectativa por región"], ["img/p/impulsa/expotextil.webp", "Expotextil Perú 2024 · área de comunicaciones"]]},
-  "quimera": {titulo: "Desfile Quimera", marca: "Chio Lecca Fashion School", tipo: "Trabajo", anio: "2024",
+  "desfiles": {titulo: "Cobertura de desfiles de moda", marca: "Chio Lecca Fashion School", tipo: "Trabajo", anio: "2024",
     portada: "img/chiolecca/qu-1.webp?v=2",
-    resumen: "Cobertura en foto, video y redes en vivo de un desfile nocturno entre jardines.",
-    hice: ["Foto y video del desfile y de la exhibición de las colecciones.", "Contenido en vivo para las redes de Chio Lecca."],
-    imgs: [["img/chiolecca/qu-1.webp?v=2", "Quimera"], ["img/chiolecca/qu-2.webp?v=2", "Quimera"], ["img/chiolecca/qu-3.webp?v=2", "Quimera"]]},
-  "origenes": {titulo: "Desfile Orígenes", marca: "Chio Lecca Fashion School", tipo: "Trabajo", anio: "2024",
-    portada: "img/chiolecca/or-1.webp?v=2",
-    resumen: "Cobertura en foto, video y redes en vivo, con Ani Alvarez Calderón, KUNA y Gaya Joyas.",
-    hice: ["Foto y video del desfile.", "Contenido en vivo para las redes de Chio Lecca."],
-    imgs: [["img/chiolecca/or-1.webp?v=2", "Orígenes · en pasarela"], ["img/chiolecca/or-2.webp?v=2", "Orígenes · Ani Alvarez Calderón"], ["img/chiolecca/or-3.webp?v=2", "Orígenes · KUNA Luxury"]]},
-  "egresadas": {titulo: "Desfile de egresadas", marca: "Chio Lecca Fashion School", tipo: "Trabajo", anio: "2024",
-    portada: "img/chiolecca/eg-1.webp?v=2",
-    resumen: "Cobertura del desfile final de las egresadas de Chio Lecca.",
-    hice: ["Foto y video del desfile.", "Contenido en vivo para las redes de Chio Lecca."],
-    imgs: [["img/chiolecca/eg-1.webp?v=2", "Desfile de egresadas"], ["img/chiolecca/eg-2.webp?v=2", "Desfile de egresadas"], ["img/chiolecca/eg-3.webp?v=2", "Desfile de egresadas"]]},
+    resumen: "Foto, video y contenido en vivo para tres desfiles: Quimera, Orígenes y el desfile de egresadas.",
+    hice: ["Cubrí los desfiles con foto y video desde la pasarela.", "Contenido en vivo para las redes de Chio Lecca durante cada evento.", "Selección y edición de las mejores tomas para publicar."],
+    grupos: [["Quimera", "Cobertura en foto, video y redes en vivo de un desfile nocturno entre jardines.", ["img/chiolecca/qu-1.webp?v=2", "img/chiolecca/qu-2.webp?v=2", "img/chiolecca/qu-3.webp?v=2"]], ["Orígenes", "Cobertura en foto, video y redes en vivo, con Ani Alvarez Calderón, KUNA y Gaya Joyas.", ["img/chiolecca/or-1.webp?v=2", "img/chiolecca/or-2.webp?v=2", "img/chiolecca/or-3.webp?v=2"]], ["Desfile de egresadas", "Cobertura del desfile final de las egresadas de Chio Lecca.", ["img/chiolecca/eg-1.webp?v=2", "img/chiolecca/eg-2.webp?v=2", "img/chiolecca/eg-3.webp?v=2"]]],
+    imgs: []},
   "anda": {titulo: "Premios ANDA 2024: cobertura en vivo", marca: "ANDA Perú", tipo: "Freelance", anio: "2024",
     portada: "img/anda/trofeos-1.webp",
     resumen: "Piezas, foto, video y cobertura en vivo de la premiación.",
@@ -920,7 +923,7 @@ function vistaArea(a) {
   migas.innerHTML = `<a href="#mi-trabajo" data-cerrar>mi_trabajo</a><span>/</span><b>${a.carpeta}</b>`;
   cuerpo.innerHTML = `<header class="v-head"><h2>${a.nombre}</h2><p>${a.desc}</p></header>
     <div class="pgrid">${a.proyectos.map(k => { const p = P[k]; return `
-      <a class="pcard" href="#/${a.id}/${k}">
+      <a class="pcard${p.destaque ? ' dest' : ''}" href="#/${a.id}/${k}">${p.destaque ? `<span class="dest-tag">${p.destaque}</span>` : ''}
         <div class="pimg">${p.portada ? `<img loading="lazy" src="${p.portada}" alt="" style="object-position:${p.pos || 'center'}">` : skillDoc}</div>
         <div class="ptxt">${tag(p)}<h3>${p.titulo}</h3><span class="pmeta">${meta(p)}</span><p>${p.resumen}</p></div>
       </a>`; }).join('')}</div>`;
@@ -965,6 +968,7 @@ function vistaProyecto(a, k) {
   cuerpo.innerHTML = `<a class="volver" href="#/${a.id}">← ${a.nombre}</a>
     <header class="v-head"><div class="chips">${tag(p)}<span>${meta(p)}</span></div><h2>${p.titulo}</h2><p>${p.resumen}</p></header>
     ${p.pantalla ? `<figure class="lap"><div class="lap-tapa"><div class="lap-bar"><i></i><i></i><i></i><b>${p.pantalla[1]}</b></div><div class="lap-scroll" tabindex="0" aria-label="Vista de ${p.pantalla[1]}: desliza para recorrerla"><img src="${p.pantalla[0]}" alt="Captura completa de ${p.pantalla[1]}"></div></div><div class="lap-base"></div><figcaption>Desliza dentro de la pantalla para recorrerla ↕</figcaption></figure>` : ''}
+    ${p.grupos ? `<div class="desfs">${p.grupos.map(([n, d, ims], g) => `<section class="desf"><header><span class="desf-n">0${g + 1}</span><div><h3>${n}</h3><p>${d}</p></div></header><div class="desf-fotos">${ims.map((f, i) => `<button class="desf-f" style="--r:${[-3, 1.5, 4][i % 3]}deg" aria-label="${n}, foto ${i + 1}"><img loading="lazy" src="${f}" alt="${n}" data-cap="${n}"></button>`).join('')}</div></section>`).join('')}</div>` : ''}
     ${p.giro ? `<div class="vitrina">${p.giro.map(([fr, es, c, t]) => `<figure class="giro ${t}"><div class="giro-esc" tabindex="0" aria-label="${c}: arrastra para girar"><div class="giro-obj"><img class="cara" src="${fr}" alt="${c}, frente" draggable="false"><img class="cara atras${es ? '' : ' espejo'}" src="${es || fr}" alt="${c}, espalda" draggable="false"></div><i class="giro-sombra"></i></div><figcaption>${c} · arrastra para girar</figcaption></figure>`).join('')}</div>` : ''}
     ${gal && !p.giro ? `<div class="orbita" style="--alto:${n > 8 ? 660 : 560}px"><div class="eje"><i class="tr"></i><i class="fr"></i><span>${k}</span></div>${gal}</div><p class="fan-hint">Toca una pieza para verla en grande.</p>` : ''}
     <div class="pdet solo">
@@ -974,7 +978,7 @@ function vistaProyecto(a, k) {
     ${apoyoHtml}
     ${marcas ? `<div class="marcas">${marcas}</div>` : ''}
     <a class="siguiente" href="#/${a.id}/${sig}"><span>Siguiente proyecto</span><b>${P[sig].titulo} →</b></a>`;
-  const ims = [...cuerpo.querySelectorAll('.orbita img, .apoyo img, .fan img')];
+  const ims = [...cuerpo.querySelectorAll('.orbita img, .desf-f img, .apoyo img, .fan img')];
   const orb = cuerpo.querySelector('.orbita');
   if (orb) { requestAnimationFrame(() => requestAnimationFrame(() => orb.classList.add('lista')));
     orb.onmousemove = e => { const r = orb.getBoundingClientRect(); orb.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5).toFixed(3)); orb.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5).toFixed(3)); };
@@ -1009,7 +1013,7 @@ function vistaProyecto(a, k) {
     fg.addEventListener('mousemove', e => { const b = fg.getBoundingClientRect(); fg.style.setProperty('--ry', (((e.clientX - b.left) / b.width - .5) * 14).toFixed(1) + 'deg'); fg.style.setProperty('--rx', ((.5 - (e.clientY - b.top) / b.height) * 10).toFixed(1) + 'deg'); });
     fg.addEventListener('mouseleave', () => { fg.style.setProperty('--rx', '0deg'); fg.style.setProperty('--ry', '0deg'); });
   });
-  ims.forEach((im, i) => (im.closest('.astro') || im.closest('.ap-img') || im.closest('.naipe') || im).onclick = () => abrirLB(ims.map(x => ({src: x.src, cap: x.dataset.cap})), i));
+  ims.forEach((im, i) => (im.closest('.astro') || im.closest('.desf-f') || im.closest('.ap-img') || im.closest('.naipe') || im).onclick = () => abrirLB(ims.map(x => ({src: x.src, cap: x.dataset.cap})), i));
 }
 function ruta() {
   const m = location.hash.match(/^#\/([\w-]+)(?:\/([\w-]+))?/);
